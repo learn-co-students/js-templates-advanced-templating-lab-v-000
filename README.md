@@ -86,7 +86,7 @@ Let's look at a quick example.
 Handlebars.registerPartial('namePartial', document.getElementById("partial-template").innerHTML)
 function renderMain() {
   var template = Handlebars.compile(document.getElementById("main-template").innerHTML);
-  html = template({name: 'Gordon Ramsay'});
+  var html = template({name: 'Gordon Ramsay'});
 }
 ```
 
