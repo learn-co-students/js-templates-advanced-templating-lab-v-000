@@ -1,9 +1,9 @@
 global.expect = require('expect');
 
 const babel = require('babel-core');
+const fs = require('fs');
 const jsdom = require('jsdom');
 const path = require('path');
-window.Handlebars = require('handlebars')
 
 
 before(function(done) {
@@ -11,12 +11,17 @@ before(function(done) {
     presets: ['es2015']
   });
 
-  //const src = path.resolve(__dirname, '..', 'index.js');
+  const html = fs.readFileSync(
+    path.resolve(__dirname, '..', 'index.html'),
+    'utf-8'
+  );
 
-  jsdom.env('<div></div>', [], {src: babelResult.code}, (err, window) => {
+  jsdom.env(html, [], {src: babelResult.code}, (err, window) => {
     if (err) {
       return done(err);
     }
+
+    window.Handlebars = require('handlebars');
 
     Object.keys(window).forEach(key => {
       global[key] = window[key];
@@ -24,4 +29,4 @@ before(function(done) {
 
     return done();
   });
-}); 
+});
