@@ -76,7 +76,7 @@ function renderMain() {
 }
 ```
 
-By default, the partial will receive the same context object as the template that calls it, so our partial has the same acces to `name` as the main template does.
+By default, the partial will receive the same context object as the template that calls it, so our partial has the same access to `name` as the main template does.
 
 ## Instructions
 
