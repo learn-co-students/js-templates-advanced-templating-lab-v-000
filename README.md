@@ -81,7 +81,7 @@ By default, the partial will receive the same context object as the template tha
 ## Instructions
 
 1. Create a form template with an `id` of `recipe-form-template` that will be used to enter new recipes. Make the form submit with a `createRecipe()` function. Provide inputs for recipe `name`, `description`, and at least five `ingredients`. **Hint:** Get comfy collecting values with `getElementsByName()`.
-2. Create a template with an `id` of `recipe-template`. This template should contain the recipe `name` and an "Edit Recipe" link, and render the `recipeDetailsPartial` in step 3\. Render this template with the recipe data when the user submits the form.
+2. Create a template with an `id` of `recipe-template`. This template should contain the recipe `name` and an "Edit Recipe" link, and render the `recipeDetailsPartial` in step 3. Render this template with the recipe data when the user submits the form.
 3. Register a partial called `recipeDetailsPartial` for the `description` and `ingredients` of the recipe. Create a template with an `id` of `recipe-details-partial` to hold the markup. Use the `each` helper to display the collection of `ingredients`.
 4. Use a custom helper called `displayIngredient` to display each ingredient within the `each` block.
 5. On click of your "Edit Recipe" link, call a `displayEditForm()` function that renders a template called `recipe-form-template`. Allow your recipe to be edited using this form, and re-render the recipe template with the updated information using a `updateRecipe()` function on form submit.
