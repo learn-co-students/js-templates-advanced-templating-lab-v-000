@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Mocha</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="node_modules/mocha/mocha.css" />
+  </head>
+  <body>
+    <main id="main">
+    <h1>Recipe Form</h1>
+    <form id='recipe-form' onsubmit="createRecipe(); return false;">
+      Name: <input type="text" id="name"><br>
+      Description: <input type="text" id="description"><br>
+      Ingredient1: <input type="text" id="ingredient1"><br>
+      Ingredient2: <input type="text" id="ingredient2"><br>
+      Ingredient3: <input type="text" id="ingredient3"><br>
+      Ingredient4: <input type="text" id="ingredient4"><br>
+      Ingredient5: <input type="text" id="ingredient5"><br>
+      <input type="submit">
+    </form>
+
+    <div id="recipes"></div>
+    <!-- render recipes here -->
+
+    <!-- <script id="recipe-template" type="text/x-handlebars-template">
+      <div>
+        <p>Name: {{ name }}</p>
+        <p>Details: {{> recipeDetailsPartial }}</p>
+        <a href="#">Edit Recipe</a>
+      </div>
+    </script>
+     -->
+    <script id="recipe-form-template" type="text/x-handlebars-template">
+      <div>
+        <p>Name: {{ name }}</p>
+        <p>Details: {{> recipeDetailsPartial }}</p>
+        <a href="#">Edit Recipe</a>
+      </div>
+    </script>
+
+    <script id="recipe-details-partial" type="text/x-handlebars-template">
+      <div id="recipe-details">
+        <p>Description: {{description}}</p>
+        <ul>
+          {{#each ingredients}}
+          <li>{{> displayIngredient }}</li>
+          {{/each}}
+        </ul>
+        <a href="displayEditForm()">Edit Recipe</a>
+      </div>
+    </script>
+
+
+
+
+    
+    </main>
+    <script src="node_modules/handlebars/dist/handlebars.min.js"></script>
+    <script src="index.js"></script>
+    <!-- Open this file and call `mocha.run()` in console to run tests -->
+    <div id="mocha"></div>
+    <script src="node_modules/mocha/mocha.js"></script>
+    <script src="node_modules/expect/umd/expect.min.js"></script>
+    <script>mocha.setup('bdd');</script>
+    <script src="test/index-test.js"></script>
+  </body>
+</html>
