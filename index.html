@@ -9,6 +9,38 @@
   <body>
     <main id="main">
     </main>
+    <script id="recipe-form-template" type="text/x-handlebars-template">
+      <form id="recipe-form" onsubmit="{{submitAction}};return false;">
+        <h2>Recipe Name:</h2>
+        <input type="text" name="recipeName" value="{{recipeName}}"><br>
+        <h2>Description:</h2>
+        <input type="text" name="recipeDescription" value="{{recipeDescription}}"><br>
+        <h2>Ingredients:</h2>
+        {{#each ingredients}}
+          <input name="recipeIngredients" type="text" value="{{this}}"><br>
+        {{else}}
+          <input type="text" name="recipeIngredients"><br>
+          <input type="text" name="recipeIngredients"><br>
+          <input type="text" name="recipeIngredients"><br>
+          <input type="text" name="recipeIngredients"><br>
+          <input type="text" name="recipeIngredients"><br>
+        {{/each}}
+        <input type="submit">
+      </form>
+    </script>
+    <script id="recipe-template" type="text/x-handlebars-template">
+      <h1>{{recipeName}}</h1>
+      {{> recipesDetailsPartial }}
+      <a href="#" onclick="displayEditForm();">Edit Recipe</a>
+    </script>
+    <script id="recipe-details-partial" type="text/x-handlebars-template">
+      <p>{{recipeDescription}}</p>
+      <ul>
+        {{#each recipeIngredients}}
+          {{displayIngredient}}
+        {{/each}}
+      </ul>
+    </script>
     <script src="node_modules/handlebars/dist/handlebars.min.js"></script>
     <script src="index.js"></script>
     <!-- Open this file and call `mocha.run()` in console to run tests -->
