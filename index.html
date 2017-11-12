@@ -13,13 +13,13 @@
 
     <script id="recipe-form-template" type="text/x-handlebars-template">
       <form id="recipe-form" onsubmit="createRecipe();return false;">
-        Name: <input type="text" id="recipeName"><br>
-        Description: <input type="text" id="recipeDescription"><br>
-        Ingredient: <input type="text" class="ingredients"><br>
-        Ingredient: <input type="text" class="ingredients"><br>
-        Ingredient: <input type="text" class="ingredients"><br>
-        Ingredient: <input type="text" class="ingredients"><br>
-        Ingredient: <input type="text" class="ingredients"><br>
+        Name: <input type="text" id="name"><br>
+        Description: <input type="text" id="description"><br>
+        Ingredient: <input type="text" name="ingredients"><br>
+        Ingredient: <input type="text" name="ingredients"><br>
+        Ingredient: <input type="text" name="ingredients"><br>
+        Ingredient: <input type="text" name="ingredients"><br>
+        Ingredient: <input type="text" name="ingredients"><br>
         <input type="submit">
       </form>
     </script>
@@ -27,8 +27,18 @@
     <script id="recipe-template" type="text/x-handlebars-template">
       <div id="recipe">
         <p>{{name}}</p>
+        {{> recipeDetailsPartial }}
         <a href="#">Edit Recipe</a>
       </div>
+    </script>
+
+    <script id="recipe-details-partial" type="text/x-handlebars-template">
+        <p>{{description}}</p>
+        <ul>
+          {{#each ingredients}}
+          <li>{{name}}</li>
+          {{/each}}
+        </ul>
     </script>
 
     <script src="node_modules/handlebars/dist/handlebars.min.js"></script>
