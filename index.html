@@ -7,8 +7,61 @@
     <link rel="stylesheet" href="node_modules/mocha/mocha.css" />
   </head>
   <body>
+
+    <!-- 'main'is where the recipe-form-template will go -->
     <main id="main">
+
     </main>
+
+<!-- Recipte form template -->
+    <script id="recipe-form-template" type="text/x-handlebars-template">
+      <!-- onsubmit and return false prevents page refresh -->
+      <form id="recipe-form" onsubmit="createRecipe(); return false;">
+        {{name}} <input type=text id="recipe-name"><br>
+        {{description}} <textarea type="text" id="recipe-description"></textarea><br>
+        {{#each ingredients}}
+        {{ingredient}} <input type="text" id="name" name="ingredients"><br>
+        {{/each}}
+        {{submit}} <input type="submit"  value="Submit">
+      </form>
+    </script>
+
+<!-- create a partial template -->
+    <script id="recipe-details-partial" type="text/x-handlebars-template">
+
+    </script>
+
+<!-- Collecting input from form -->
+<!-- An element to put the template in once it's rendered -->
+<!-- <main id="main"></main> -->
+
+<!-- Create div in which to put template -->
+  <div class="template-wrap">
+    <div id="recipe-container">
+    </div>
+  </div>
+
+<!-- create template -->
+  <script id="recipe-template" type="text/x-handlebars-template">
+    <div id="recipe">
+      <h1>Recipe</h1>
+      <p style="color: red">{{name}}</p>
+
+      <!-- partial for description and ingredients-->
+      <div>{{> recipeDetailsPartial}}</div>
+
+      <!-- need to build displayEditForm() -->
+      <footer><a href="#" onclick="displayEditForm();">Edit Recipe</a></footer>
+    </div>
+  </script>
+  <!-- partial recipe details template -->
+  <script id="recipe-details-partial" type="text/x-handlebars-template">
+    <p style="color: blue">{{description}}</p>
+    {{#each ingredients}}
+    <p>{{ingredient}}</p>
+    {{/each}}
+  </script>
+<!-- Import the Handlebars library in your app by inserting the following <script> before the <script> tag that references your main.js file -->
     <script src="node_modules/handlebars/dist/handlebars.min.js"></script>
     <script src="index.js"></script>
     <!-- Open this file and call `mocha.run()` in console to run tests -->
