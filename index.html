@@ -27,9 +27,6 @@
     </script>
 
 <!-- create a partial template -->
-    <script id="recipe-details-partial" type="text/x-handlebars-template">
-
-    </script>
 
 <!-- Collecting input from form -->
 <!-- An element to put the template in once it's rendered -->
@@ -54,6 +51,7 @@
       <footer><a href="#" onclick="displayEditForm();">Edit Recipe</a></footer>
     </div>
   </script>
+
   <!-- partial recipe details template -->
   <script id="recipe-details-partial" type="text/x-handlebars-template">
     <p style="color: blue">{{description}}</p>
@@ -61,6 +59,8 @@
     <p>{{ingredient}}</p>
     {{/each}}
   </script>
+
+
 <!-- Import the Handlebars library in your app by inserting the following <script> before the <script> tag that references your main.js file -->
     <script src="node_modules/handlebars/dist/handlebars.min.js"></script>
     <script src="index.js"></script>

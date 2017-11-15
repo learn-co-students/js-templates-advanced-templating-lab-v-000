@@ -4,6 +4,11 @@ function init() {
   // register recipeDetailsPartial
   Handlebars.registerPartial('recipeDetailsPartial', document.getElementById("recipe-details-partial").innerHTML)
 
+  // register displayIngredient helper
+  Handlebars.registerHelper('displayIngredient', function(){
+    // I'll gather the input, and iterate
+
+  })
 }
 document.addEventListener("DOMContentLoaded", function(event) {
   init()
@@ -32,13 +37,13 @@ function createFormTemplate() {
 }
 
 
-
 // createRecipe()
 function createRecipe(){
   // Grab and compile template from index.html
   var recipeTemplate = Handlebars.compile(document.getElementById("recipe-template").innerHTML);
 
   // Define data variable, user input
+  // moved outside of createRecipe() function
   var recipeFromInput = {
       name: document.getElementById("recipe-name").value,
       description: document.getElementById("recipe-description").value,
@@ -58,4 +63,25 @@ function createRecipe(){
   var recipeContainer = document.getElementById("recipe-container");
   recipeContainer.innerHTML = recipeHTML
 
+}
+
+// displayEditForm()
+function displayEditForm() {
+  var editForm = {
+    name: 'Name:',
+    description: "Description:",
+    ingredients: [
+    {ingredient: "Ingredient:"},
+    {ingredient: "Ingredient:"},
+    {ingredient: "Ingredient:"},
+    {ingredient: "Ingredient:"},
+    {ingredient: "Ingredient:"},
+  ]
+};
+
+  // Grab the template script
+  var editFormTemplate = Handlebars.compile(document.getElementById("recipe-form-template").innerHTML);
+// Put the data inside the form template
+  var editFormHTML = editFormTemplate(editForm);
+  document.getElementsByTagName("main")[0].innerHTML += editFormHTML;
 }
