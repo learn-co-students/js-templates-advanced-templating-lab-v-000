@@ -1,9 +1,9 @@
 function init() {
   Handlebars.registerPartial('recipeDetailsPartial', document.getElementById("recipe-details-partial").innerHTML)
-  Handlebars.registerPartial('recipeFormPartial', document.getElementById("recipe-details-partial").innerHTML)
+  Handlebars.registerPartial('recipeFormPartial', document.getElementById("recipe-form-partial").innerHTML)
 
   Handlebars.registerHelper('displayIngredient', function(ingredient) {
-          return new Handlebars.SafeString("<li>" + this.ingredient + "</li>");
+          return new Handlebars.SafeString('<li name="recipeIngredients">' + ingredient + '</li>');
   })
   
   page();
@@ -14,29 +14,49 @@ document.addEventListener("DOMContentLoaded", function(event) {
 })
 
 function page() {
-  const template = Handlebars.compile(document.getElementById("recipe-template").innerHTML);
+  const template = Handlebars.compile(document.getElementById("recipe-form-template").innerHTML);
   document.getElementById("main").innerHTML += template();
 }
 
 function createRecipe() {
-  const template = Handlebars.compile(document.getElementById("recipe-form-template").innerHTML);
-  const nameField = document.getElementById("name").innerHTML;
-  const descriptionField = document.getElementById("description").innerHTML;
-  const ingredientsField = document.getElementsByName("ingredients").innerHTML;
+  
+  const name = document.getElementById("name").value;
+  const description = document.getElementById("description").value;
+  const ingredientsField = document.getElementsByName("ingredients");
 
-  const ingredients = template(ingredientsField);
-  document.getElementById("recipe-details-partial").innerHTML = result;
+  let ingredients = [];
+  for(const ingredient of ingredientsField) {
+    if(ingredient.value !== ""){
+      ingredients << ingredient
+    }
+  }
 
-  const description = template(descriptionField);
-  document.getElementById("recipe-details-partial").innerHTML = description;
+  const template = Handlebars.compile(document.getElementById("recipe-template").innerHTML);
 
-  const name = template(nameField)
-  document.getElementById("recipe-template").innerHTML = name;
+  const recipe = template(name, description, ingredients);
+  document.getElementById("main").innerHTML = recipe;
 }
 
 function displayEditForm(){
+ 
+  const name = document.getElementById("recipeName").innerText;
+  const description = document.getElementById("recipeDescription").innerText;
+  const ingredientsField = document.getElementsByName("recipeIngredients");
+
+  let ingredients = [];
+  for(let ingredient of ingredientsField) {
+    if(ingredient.value !== "") {
+      ingredients << ingredient.innerText
+    }
+  }
+
   const template = Handlebars.compile(document.getElementById("recipe-form-template").innerHTML);
+  
+    const recipe = template(name, description, ingredients);
+    document.getElementById("main").innerHTML = recipe;
+
 }
+
 
 function updateRecipe() {
   createRecipe();
