@@ -7,10 +7,61 @@
     <link rel="stylesheet" href="node_modules/mocha/mocha.css" />
   </head>
   <body>
+
     <main id="main">
+
     </main>
+
     <script src="node_modules/handlebars/dist/handlebars.min.js"></script>
     <script src="index.js"></script>
+
+    <!--recipe-template-->
+    <script id="recipe-template" type="text/x-handlebars-template">
+      <article>
+        <header id="header-name"><h1>{{name}}</h1></header>
+        <div>{{> recipeDetailsPartial }}</div>
+        <footer><a href="#" onclick="displayEditForm();">Edit Recipe</a></footer>
+      </article>
+    </script>
+
+    <!--recipe-details-partial-->
+    <script id="recipe-details-partial" type="text/x-handlebars-template">
+      <p id="recipeDescription">{{description}}</p>
+      <h3>Ingredients:</h3>
+      <ul>
+        {{#each ingredients}}
+        {{displayIngredient this}}
+        {{/each}}
+      </ul>
+    </script>
+
+    <!--recipe-form-template  -->
+    <script id="recipe-form-template" type="text/x-handlebars-template">
+      <form id="recipe-form" onsubmit="createRecipe();return false;">
+        {{> recipeFormPartial }}
+      </form>
+    </script>
+
+    <!--recipe-form-partial-->
+    <script id="recipe-form-partial" type="text/x-handlebars-template">
+      <h4 style="display:inline">Recipe Name:</h4><br>
+      <input type="text" id="name" value="{{name}}"><br>
+      <h4 style="display:inline">Description:</h4><br>
+      <input type="text" id="description" value={{description}}><br>
+      <h3>Ingredients</h3>
+      {{#each ingredients}}
+      <input type="text" name="ingredients" value="{{this}}"><br>
+      {{else}}
+      <input type="text" name="ingredients"><br>
+      <input type="text" name="ingredients"><br>
+      <input type="text" name="ingredients"><br>
+      <input type="text" name="ingredients"><br>
+      <input type="text" name="ingredients"><br>
+      {{/each}}
+      <input type="submit"
+    </script>
+
+
     <!-- Open this file and call `mocha.run()` in console to run tests -->
     <div id="mocha"></div>
     <script src="node_modules/mocha/mocha.js"></script>
