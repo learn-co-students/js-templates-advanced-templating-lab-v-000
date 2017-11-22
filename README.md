@@ -2,9 +2,9 @@
 
 ## Objectives
 
-1. Practice using Handlebars templates
-2. Practice defining Handlebars helpers
-3. Practice using Handlebars partials
+1. Practice using Handlebars templates.
+2. Practice defining Handlebars helpers.
+3. Practice using Handlebars partials.
 
 ## Introduction
 
