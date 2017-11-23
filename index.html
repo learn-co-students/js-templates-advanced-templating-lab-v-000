@@ -9,6 +9,9 @@
   <body>
     <main id="main">
       <!-- <a href="#" onclick="loadRecipeForm(); return false;">Load Recipe Form</a> -->
+      <div id = "recipes"></div>
+
+
     </main>
     <script src="node_modules/handlebars/dist/handlebars.min.js"></script>
     <script src="index.js"></script>
@@ -21,32 +24,43 @@
 
     <script id="recipe-form-template" type="text/x-handlebars-template">
       <form id="recipe-form" onsubmit="createRecipe();return false;">
-        Name: <br>
-        <input type="text" id="name"><br>
-        Description: <br>
-        <textarea form="recipe-form" id="description"></textarea> <br>
-        Ingredients: <br>
-        <div id = "ingredients-fields">
-          <input type='text' name='ingredients'><br>
-          <input type='text' name='ingredients'><br>
-          <input type='text' name='ingredients'><br>
-          <input type='text' name='ingredients'><br>
-          <input type='text' name='ingredients'><br>
-        </div>
-        <a href='#' onclick='addIngredientField(); return false;'>+ Ingredient</a>
-        <br>
-        <input type="submit">
+        {{> recipeFormPartial}}
       </form>
     </script>
 
+    <script id='recipe-form-partial' type="text/x-handlebars-template">
+      Name: <br>
+      <input type="text" id="name"><br>
+      Description: <br>
+      <textarea form="recipe-form" id="description"></textarea> <br>
+      Ingredients: <br>
+      <div id = "ingredients-fields">
+        <input type='text' name='ingredients'><br>
+        <input type='text' name='ingredients'><br>
+        <input type='text' name='ingredients'><br>
+        <input type='text' name='ingredients'><br>
+        <input type='text' name='ingredients'><br>
+      </div>
+      <a href='#' onclick='addIngredientField(); return false;'>+ Ingredient</a>
+      <br>
+      <input type="submit">
+    </script>
+
     <script id="recipe-template" type="text/x-handlebars-template">
+      <h3 class="recipe-name">{{name}}</h3>
+      {{> recipeDetailsPartial}}
+      <a href='#' onclick='displayEditForm();return false;'>Edit Recipe</a>
     </script>
 
     <script id="recipe-details-partial" type="text/x-handlebars-template">
+      <p class="recipe-description">{{description}}</p>
+      <h4>Ingredients:</h4>
+      <ul>
+        {{#each ingredients}}
+        <li>{{displayIngredient this}}</li>
+        {{/each}}
+      </ul>
     </script>
-
-
-
 
 
   </body>
