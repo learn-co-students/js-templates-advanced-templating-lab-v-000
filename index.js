@@ -87,6 +87,10 @@ function displayEditForm(recipe) {
 
 }
 
+function updateRecipe(){
+  
+}
+
 //helpers
 
 function createObjectFromRecipe(recipesDiv){
@@ -95,7 +99,14 @@ function createObjectFromRecipe(recipesDiv){
   debugger
   recipeObj.name = recipeInfo[1].innerText
   recipeObj.description = recipeInfo[3].innerText
+
+  recipeObj.ingredients = []
+  let ingredientsList = recipeInfo[7].children
+  for (let ingredient of ingredientsList) {
+    recipeObj.ingredients.push(ingredient.innerHTML)
+  }
   debugger
+  return recipeObj
 }
 
 function getExistingRecipeForm(){
