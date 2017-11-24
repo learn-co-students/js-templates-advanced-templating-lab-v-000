@@ -5,7 +5,17 @@ function init() {
   Handlebars.registerHelper('displayIngredient', function(ingredient) {
     return new Handlebars.SafeString(ingredient)
   })
-  loadRecipeForm()
+
+  Handlebars.registerHelper('correctFormFunction', function(){
+    if (this.length === undefined) {
+      return "createRecipe(); return false;"
+    } else {
+      debugger
+      return new Handlebars.SafeString("updateRecipe(); return false;")
+    }
+  })
+
+loadRecipeForm()
 }
 document.addEventListener("DOMContentLoaded", function(event) {
   init()
@@ -49,13 +59,15 @@ function createRecipe(){
   }
   // debugger
   let recipesDiv = document.getElementById('recipes')
-  debugger
+  // debugger
   let recipeTemplate = Handlebars.compile(document.getElementById('recipe-template').innerHTML)
-  debugger
+  // debugger
   let result = recipeTemplate(recipe)
   recipesDiv.innerHTML += result
 }
 
-function displayEditForm(){
+function displayEditForm(recipe){
+
+  let recipeFormTemplate = Handlebars.compile(document.getElementById("recipe-form-template").innerHTML)
 
 }
