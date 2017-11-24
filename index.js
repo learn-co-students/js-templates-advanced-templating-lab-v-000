@@ -88,7 +88,24 @@ function displayEditForm(recipe) {
 }
 
 function updateRecipe(){
-  
+  let recipeNameVar = document.querySelector('form#recipe-form input#name').value
+  // debugger
+  let recipeDescriptionVar = document.querySelector('textarea#description').value
+  // debugger
+  let recipeIngredientsNodeList = document.getElementsByName('ingredients')
+  let recipeIngredientsArr = convertNodeListToArray(recipeIngredientsNodeList)
+  let recipeObject = createObjectFromRecipe(selectRecipesDiv())
+  recipeObject.name = recipeNameVar
+  recipeObject.description = recipeDescriptionVar
+  recipeObject.ingredients = recipeIngredientsArr
+
+  let recipeTemplate = Handlebars.compile(document.getElementById('recipe-template').innerHTML)
+  // debugger
+  let result = recipeTemplate(recipeObject)
+  debugger
+  let recipesDiv = selectRecipesDiv()
+  debugger
+  recipesDiv.innerHTML = result
 }
 
 //helpers
