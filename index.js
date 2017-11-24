@@ -7,11 +7,15 @@ function init() {
   })
 
   Handlebars.registerHelper('correctFormFunction', function(){
-    if (this.length === undefined) {
-      return "createRecipe(); return false;"
+    let recipesDiv = selectRecipesDiv()
+    let recipeInfo = recipesDiv.childNodes
+    debugger
+    if (recipeInfo.length > 0) {
+      debugger
+      return new Handlebars.SafeString(`updateRecipe();`)
     } else {
       debugger
-      return new Handlebars.SafeString("updateRecipe(); return false;")
+      return new Handlebars.SafeString(`createRecipe();`)
     }
   })
 
@@ -20,6 +24,10 @@ loadRecipeForm()
 document.addEventListener("DOMContentLoaded", function(event) {
   init()
 })
+
+// main variables
+
+//MAIN FUNCTIONS
 
 function convertNodeListToArray(nodeList){
   let newArray = []
@@ -63,11 +71,39 @@ function createRecipe(){
   let recipeTemplate = Handlebars.compile(document.getElementById('recipe-template').innerHTML)
   // debugger
   let result = recipeTemplate(recipe)
+  debugger
   recipesDiv.innerHTML += result
+
+  let main = document.querySelector("main")
+
+  let recipeForm = getExistingRecipeForm()
+  main.removeChild(recipeForm)
 }
 
-function displayEditForm(recipe){
-
+function displayEditForm(recipe) {
+  debugger
+  loadRecipeForm()
   let recipeFormTemplate = Handlebars.compile(document.getElementById("recipe-form-template").innerHTML)
 
+}
+
+//helpers
+
+function createObjectFromRecipe(recipesDiv){
+  let recipeInfo = recipesDiv.childNodes
+  let recipeObj = {}
+  debugger
+  recipeObj.name = recipeInfo[1].innerText
+  recipeObj.description = recipeInfo[3].innerText
+  debugger
+}
+
+function getExistingRecipeForm(){
+  let recipeForm = document.getElementById('recipe-form')
+  return recipeForm
+}
+
+function selectRecipesDiv() {
+  let recipesDiv = document.getElementById('recipes')
+  return recipesDiv
 }
