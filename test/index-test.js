@@ -10,7 +10,7 @@ describe('Handlebars Templates Lab', function() {
       expect(recipeForm).toMatch(/onsubmit="createRecipe()"/)
       var ingredients = document.getElementsByName("ingredients")
       expect(ingredients.length).toBeGreaterThanOrEqualTo(5)
-      var nameField = document.getElementById("name")
+      var nameField = document.getElementById("recipeName")
       expect(nameField).toExist()
     })
   })
