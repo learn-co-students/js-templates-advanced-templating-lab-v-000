@@ -8,7 +8,44 @@
   </head>
   <body>
     <main id="main">
+      <h1>Flatiron Recipes</h1>
     </main>
+    <!-- templates -->
+    <script id="recipe-form-template" type="text/x-handlebars-template">
+      <form id="recipe-form" onsubmit="{{submitAction}};return false;">
+        Name: <input type="text" id="recipeName" value="{{name}}"/><br>
+        Description: <input type="textarea" id="recipeDescription" value="{{description}}"><br>
+        <h3>Ingredients: </h3>
+        {{#each ingredients}}
+          <input type="text" name="ingredients" value="{{this}}">
+        {{else}}
+          <input type="text" name="ingredients" value="{{ingedients}}"><br>
+          <input type="text" name="ingredients" value="{{ingedients}}"><br>
+          <input type="text" name="ingredients" value="{{ingedients}}"><br>
+          <input type="text" name="ingredients" value="{{ingedients}}"><br>
+          <input type="text" name="ingredients" value="{{ingedients}}"><br>
+        {{/each}}
+        
+        <input type="submit">
+      </form>
+    </script>
+
+    <script id="recipe-template" type="text/x-handlebars-template">
+      Recipe: <h3 id="recipe-name">{{name}}</h3><span> <a href="#" onclick="{{submitAction}};return false;">Edit Recipe</a></span>
+      {{>recipeDetailsPartial}}
+    </script>
+
+    <script id="recipe-details-partial" type="text/x-handlebars-template">
+      <div id="recipe">
+        <p id="recipe-description">{{description}}</p>
+        <ul>
+          {{#each ingredients}}
+            {{displayIngredient this}}
+          {{/each}}
+        </ul>
+      </div>
+    </script>
+
     <script src="node_modules/handlebars/dist/handlebars.min.js"></script>
     <script src="index.js"></script>
     <!-- Open this file and call `mocha.run()` in console to run tests -->
