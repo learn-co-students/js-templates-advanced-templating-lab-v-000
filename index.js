@@ -16,11 +16,13 @@ document.addEventListener("DOMContentLoaded", function(event) {
 // Handlebars.registerPartial("recipeFormPartial", document.getElementById("recipe-form-template"));
 
 function createRecipe() {
+  // debugger;
   let recipeName = document.getElementById("name").value;
   let recipeDescription = document.getElementById("description").value;
+  let ingredients = document.getElementsByName("ingredients");
   let recipeTemplate = document.getElementById("recipe-template").innerHTML;
   let template = Handlebars.compile(recipeTemplate);
-  let html = template({name: recipeName, description: recipeDescription});
+  let html = template({name: recipeName, description: recipeDescription, ingredients: ingredients});
   document.getElementById("main").innerHTML += html;
 }
 
