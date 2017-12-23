@@ -21,16 +21,16 @@
       </form>
 
       <script id="recipe-template" type="text/x-handlebars-template">
-        <p>{{name}}</p>
+        <p>Recipe Name: {{name}}</p>
         {{> recipeDetailsPartial }}
         <a href="#" onclick="displayEditForm();">Edit Recipe</a>
       </script>
 
       <script id="recipe-details-partial" type="text/x-handlebars-template">
-        <p>{{description}} </p>
+        <p>Description: {{description}} </p>
         <ul>
           {{#each ingredients}}
-          <li>{{value}}</li>
+          <li>{{displayIngredient this}}</li>
           {{/each}}
         </ul>
       </script>
