@@ -21,9 +21,11 @@
       </form>
 
       <script id="recipe-template" type="text/x-handlebars-template">
-        <p>Recipe Name: {{name}}</p>
-        {{> recipeDetailsPartial }}
-        <a href="#" onclick="displayEditForm();">Edit Recipe</a>
+        <div id="thing">
+          <p>Recipe Name: {{name}}</p>
+          {{> recipeDetailsPartial }}
+          <a href="#" onclick="displayEditForm();">Edit Recipe</a>
+        </div>
       </script>
 
       <script id="recipe-details-partial" type="text/x-handlebars-template">
@@ -36,16 +38,18 @@
       </script>
 
       <script id="recipe-form-template" type="text/x-handlebars-template">
-        <!-- to be refactored later -->
-        <!-- putting this below for error purpose...actually belongs in rdp -->
-        <!-- <ul>
-          {{#each ingredients}}
-          <li>{{displayIngredient this}} </li>
-          {{/each}}
-        </ul> -->
+        <form onsubmit="updateRecipe();return false;" id="recipe-form">
+          Name: <input type="text" id="name"><br>
+          Description: <input type="text" id="description"> <br>
+          Ingredients: <br>
+          <input type="text" id="ingredients1" name="ingredients" ><br>
+          <input type="text" id="ingredients2" name="ingredients" ><br>
+          <input type="text" id="ingredients3" name="ingredients" ><br>
+          <input type="text" id="ingredients4" name="ingredients" ><br>
+          <input type="text" id="ingredients5" name="ingredients" ><br>
+          <input type="submit">
+        </form>
       </script>
-
-
 
     </main>
     <!-- Open this file and call `mocha.run()` in console to run tests -->

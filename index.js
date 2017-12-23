@@ -5,18 +5,13 @@ function init() {
   });
   Handlebars.registerPartial('recipeDetailsPartial', document.getElementById("recipe-details-partial").innerHTML);
   Handlebars.registerPartial('recipeFormPartial', document.getElementById("recipe-form-template").innerHTML);
+}
 
-
-} // close init()
 document.addEventListener("DOMContentLoaded", function(event) {
   init()
 })
 
-// Handlebars.registerPartial("recipeDetailsPartial", document.getElementById("recipe-details-partial"));
-// Handlebars.registerPartial("recipeFormPartial", document.getElementById("recipe-form-template"));
-
 function createRecipe() {
-  // debugger;
   let recipeName = document.getElementById("name").value;
   let recipeDescription = document.getElementById("description").value;
   let ingredients = document.getElementsByName("ingredients");
@@ -27,7 +22,8 @@ function createRecipe() {
 }
 
 function displayEditForm() {
-
+  let form = document.getElementById("recipe-form-template").innerHTML;
+  document.getElementById("thing").innerHTML += form;
 }
 
 function updateRecipe() {
