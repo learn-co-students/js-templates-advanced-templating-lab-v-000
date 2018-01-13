@@ -9,6 +9,46 @@
   <body>
     <main id="main">
     </main>
+
+    <script id="recipe-form-template" type="text/x-handlebars-template">
+      <form id="recipe-form" onsubmit="{{submitForm}};return false;">
+        {{> recipeFormPartial }}
+      </form>
+    </script>
+
+    <script id="recipe-form-partial" type="text/x-handlebars-template">
+      <strong>Name:</strong> <input type="text" id="name" value="{{name}}"><br><br>
+      <strong>Description:</strong><input type="text" id="description" value="{{description}}"><br><br>
+      <strong>Ingredients:</strong> <br><br>
+      <ul>
+      {{#each ingredients}}
+        <input type="text" name="ingredients" value="{{this}}"><br>
+      {{else}}
+        <li><input type="text" name="ingredients"></li><br>
+        <li><input type="text" name="ingredients"></li><br>
+        <li><input type="text" name="ingredients"></li><br>
+        <li><input type="text" name="ingredients"></li><br>
+        <li><input type="text" name="ingredients"></li><br>
+      {{/each}}
+    </ul>
+      <input type="submit">
+    </script>
+
+    <script id="recipe-template" type="text/x-handlebars-template">
+      {{> recipeDetailsPartial }}
+      <div id="name">{{name}}</div>
+      <p><a href="#" onclick="displayEditForm();">Edit Recipe</a></p>
+    </script>
+
+    <script id="recipe-details-partial" type="text/x-handlebars-template">
+      <div id="description">{{description}}</div>
+      <ul>
+        {{#each ingredients}}
+        {{displayIngredient this}}
+        {{/each}}
+      </ul>
+    </script>
+
     <script src="node_modules/handlebars/dist/handlebars.min.js"></script>
     <script src="index.js"></script>
     <!-- Open this file and call `mocha.run()` in console to run tests -->
