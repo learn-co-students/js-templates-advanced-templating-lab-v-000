@@ -1,14 +1,14 @@
 function init() {
   //put any page initialization/handlebars initialization here
   registerAddOns();
-  form();
+  initForm();
 }
 
 document.addEventListener("DOMContentLoaded", function(event) {
   init();
 });
 
-function form() {
+function initForm() {
   var template = Handlebars.compile(document.getElementById("recipe-form-template").innerHTML);
   document.getElementById("main").innerHTML = template({submitForm: 'createRecipe()'});
 }
@@ -21,7 +21,7 @@ function registerAddOns() {
   Handlebars.registerPartial('recipeDetailsPartial', document.getElementById("recipe-details-partial").innerHTML);
 }
 
-function createRecipe(){
+function getRecipeValues() {
   var name = document.getElementById("name").value;
   var description = document.getElementById("description").value;
   var ingredientList = document.getElementsByName("ingredients");
@@ -34,6 +34,11 @@ function createRecipe(){
   }
 
   var recipe = {name, description, ingredients};
+  return(recipe)
+}
+
+function createRecipe(){
+  var recipe = getRecipeValues();
 
   var template = Handlebars.compile(document.getElementById("recipe-template").innerHTML);
   document.getElementById('main').innerHTML = template(recipe);
@@ -58,18 +63,7 @@ function displayEditForm() {
 }
 
 function updateRecipe() {
-  var name = document.getElementById("name").value;
-  var description = document.getElementById("description").value;
-  var ingredientList = document.getElementsByName("ingredients");
-
-  var ingredients = [];
-  for (var i = 0; i < ingredientList.length; i++) {
-    if (ingredientList[i] !== "") {
-      ingredients.push(ingredientList[i].value);
-    }
-  }
-
-  var recipe = {name, description, ingredients};
+  var recipe = getRecipeValues();
 
   var template = Handlebars.compile(document.getElementById("recipe-template").innerHTML);
   document.getElementById('main').innerHTML = template(recipe);
