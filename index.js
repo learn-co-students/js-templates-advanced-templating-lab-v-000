@@ -5,7 +5,7 @@ function displayEditForm(test) {
 	recipe.name = document.getElementById('recipeName').innerHTML;
 	recipe.description = document.getElementById('description').innerHTML;
 	recipe.ingredients = Array.from(document.getElementsByClassName('ingredient')).map(function(ingredient) {return {name: ingredient.innerHTML}});
-	console.log(recipe.ingredients)
+
 	var recipeForm = document.getElementById('recipe-form-template').innerHTML;
   var recipeFormTemplate = Handlebars.compile(recipeForm);
   document.getElementById('main').innerHTML = recipeFormTemplate(recipe)
