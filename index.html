@@ -8,9 +8,79 @@
   </head>
   <body>
     <main id="main">
+
     </main>
     <script src="node_modules/handlebars/dist/handlebars.min.js"></script>
     <script src="index.js"></script>
+
+    <script id="recipe-form-partial" type="text/x-handlebars-template">
+      <!--<form id="recipe-form" onsubmit="createRecipe()">-->
+        <h3>Name: <input type="text" id="name" placeholder="{{name}}"></h3>
+        <h4>Description: <input type="text" id="description" placeholder="{{description}}"></h4>
+        <div name='ingredients'>
+          <h6><strong>Name:<input type='text' class="name" placeholder="{{ingredients.0.name}}"></strong></h6>
+          <h6><strong>Quantity: <input type='text' class='quantity' placeholder="{{ingredients.0.quantity}}"></strong></h6>
+        </div>
+        <div name='ingredients'>
+          <h6><strong>Name:<input type='text' class='name' placeholder="{{ingredients.1.name}}"></strong></h6>
+          <h6><strong>Quantity: <input type='text' class='quantity' placeholder="{{ingredients.1.quantity}}"></strong></h6>
+        </div>
+        <div name='ingredients'>
+          <h6><strong>Name:<input type='text' class='name' placeholder="{{ingredients.2.name}}"></strong></h6>
+          <h6><strong>Quantity: <input type='text' class='quantity' placeholder="{{ingredients.2.quantity}}"></strong></h6>
+        </div>
+        <div name="ingredients">
+          <h6><strong>Name:<input type='text' class='name' placeholder="{{ingredients.3.name}}"></strong></h6>
+          <h6><strong>Quantity: <input type='text' class='quantity' placeholder="{{ingredients.3.quantity}}"></strong></h6>
+        </div>
+        <div name='ingredients'>
+          <h6><strong>Name:<input type='text' class='name' placeholder="{{ingredients.4.name}}"></strong></h6>
+          <h6><strong>Quantity: <input type='text' class='quantity' placeholder="{{ingredients.4.quantity}}"></strong></h6>
+        </div>
+        <input type="submit">
+      <!--</form>-->
+    </script>
+
+    <script id="recipe-form-template" type="text/x-handlebars-template">
+        <!--if a recipe exists, use updateRecipe; if not createRecipe-->
+        {{#if this.recipe}}
+          <form id="recipe-form" onsubmit="updateRecipe()">"
+          {{>recipeFormPartial}}
+          </form>
+        {{else}}
+          <form id="recipe-form" onsubmit="createRecipe()">
+            {{>recipeFormPartial}}
+          </form>
+        {{/if}}
+        <!--<div name='ingredients'>
+          <h6><strong>Name:<input type='text' class='name' placeholder="{{ingredients.2.name}}"></strong></h6>
+          <h6><strong>Quantity: <input type='text' class='quantity' placeholder="{{ingredients.2.quantity}}"></strong></h6>
+        </div>
+        <div name="ingredients">
+          <h6><strong>Name:<input type='text' class='name' placeholder="{{ingredients.3.name}}"></strong></h6>
+          <h6><strong>Quantity: <input type='text' class='quantity' placeholder="{{ingredients.3.quantity}}"></strong></h6>
+        </div>
+        <div name='ingredients'>
+          <h6><strong>Name:<input type='text' class='name' placeholder="{{ingredients.4.name}}"></strong></h6>
+          <h6><strong>Quantity: <input type='text' class='quantity' placeholder="{{ingredients.4.quantity}}"></strong></h6>
+        </div>-->
+    </script>
+
+    <script id="recipe-details-partial" type="text/x-handlebars-template">
+        <h4 id="recipe-description">{{description}}</h4>
+        <ul>
+        {{#each ingredients}}
+          {{displayIngredient this}}
+        {{/each}}
+        </ul>
+    </script>
+
+    <script id="recipe-template" type="text/x-handlebars-template">
+      <h3 id="recipe-name">{{name}}</h3>
+      {{>recipeDetailsPartial}}
+      <p><a href="#" onclick="displayEditForm()">Edit Recipe</a></p>
+    </script>
+
     <!-- Open this file and call `mocha.run()` in console to run tests -->
     <div id="mocha"></div>
     <script src="node_modules/mocha/mocha.js"></script>
