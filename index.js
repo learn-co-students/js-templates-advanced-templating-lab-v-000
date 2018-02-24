@@ -8,7 +8,7 @@ function init() {
   
   
   var recipeFormTemplate = Handlebars.compile(document.getElementById("recipe-form-template").innerHTML);
-  document.getElementsByTagName("main")[0].innerHTML = recipeFormTemplate() ;
+  document.getElementsByTagName("main")[0].innerHTML = recipeFormTemplate({submitAction: "createRecipe()"}) ;
   
  
   
@@ -19,27 +19,46 @@ document.addEventListener("DOMContentLoaded", function(event) {
 })
 
 function getRecipeValues() {
-  var recipeName = document.getElementById("name").value
-  var recipeDescription = document.getElementById("description").value
-  var recipeIngredients = []
-  var ingredients = document.getElementsByName("ingredients")
-  for (var i = 0; i< ingredients.length; i++) {
-    recipeIngredients.push(ingredients[i].value)
+  var name = document.getElementById("name").value
+  var description = document.getElementById("description").value
+  var ingredients = []
+  var ingredientsList = document.getElementsByName("ingredients")
+  for (var i = 0; i< ingredientsList.length; i++) {
+    ingredients.push(ingredientsList[i].value)
   }
   
-  return {recipeName, recipeDescription, recipeIngredients}
+  return {name, description, ingredients}
 }
 
 function createRecipe() {
   // var template = Handlebars.compile(document.getElementById("recipe-form-template").innerHTML);
   var newRecipe = getRecipeValues();
   var recipeTemplate = Handlebars.compile(document.getElementById("recipe-template").innerHTML);
-  // debugger
   document.getElementById("main").innerHTML = recipeTemplate(newRecipe) ;
   
 }
 
 function displayEditForm() {
   
+  var name = document.getElementById("recipeName").innerHTML
+  var description = document.getElementById("recipeDescription").innerHTML
+  
+  var ingredients = []
+  var ingredientsList = document.getElementsByTagName("li")
+  for (var i = 0; i< ingredientsList.length; i++) {
+    ingredients.push(ingredientsList[i].innerText)
+  }
+  
+  var submitAction = "updateRecipe()"
+  var newRecipe = {submitAction, name, description, ingredients}
+  var recipeTemplate = Handlebars.compile(document.getElementById("recipe-form-template").innerHTML);
+  document.getElementById("main").innerHTML = recipeTemplate(newRecipe) ;
+  
+}
+
+function updateRecipe() {
+  var newRecipe = getRecipeValues();
+  var recipeTemplate = Handlebars.compile(document.getElementById("recipe-template").innerHTML);
+  document.getElementById("main").innerHTML = recipeTemplate(newRecipe) ;
   
 }
