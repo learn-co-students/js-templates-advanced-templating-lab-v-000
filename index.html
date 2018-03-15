@@ -8,7 +8,60 @@
   </head>
   <body>
     <main id="main">
+
     </main>
+    <script id="recipe-form-template" type="text/x-handlebars-template">
+      {{#if name}}
+      <form id="recipe-form" onsubmit="updateRecipe()">
+        Name: <input type="text" id="recipeName" value="{{name}}"><br>
+        Description: <input type="text" id="description" value="{{description}}"><br>
+        {{#each ingredients}}
+        Ingredients: <input type="text" name="ingredients" value="{{this}}"><br>
+        {{/each}}
+
+        <input type="submit">
+    </form>
+      {{else}}
+      <form id="recipe-form" onsubmit="createRecipe()">
+        Name: <input type="text" id="name"><br>
+        Description: <textarea type="text" id="description"></textarea><br>
+        Ingredients: <input type="text" name="ingredients" ><br>
+        Ingredients: <input type="text" name="ingredients" ><br>
+        Ingredients: <input type="text" name="ingredients" ><br>
+        Ingredients: <input type="text" name="ingredients" ><br>
+        Ingredients: <input type="text" name="ingredients" ><br>
+
+        <input type="submit">
+    </form>
+    {{/if}}
+  </script>
+  <script id="recipe-forms-partial" type="text/x-handlebars-template">
+  </script>
+    <script id="recipe-template" type="text/x-handlebars-template">
+      <div class="recipeName">{{name}}</div>
+      <a onclick="displayEditForm()" href="#">Edit Recipe</a>
+      {{> recipeDetailsPartial}}
+    </script>
+    <script id="recipe-details-partial" type="text/x-handlebars-template">
+      <p id="description">{{description}}</p>
+      <ul>
+      {{#each ingredients}}
+      {{displayIngredient this}}
+      {{/each}}
+    </ul>
+
+    </script>
+    <script id="displayEditForm()" type="text/x-handlebars-template">
+      <form id="recipe-form" onsubmit="updateRecipe()">
+        Name: <input type="text" id="recipeName" value="{{name}}"><br>
+        Description: <textarea type="text" id="recipeDescription" value="{{description}}"></textarea><br>
+        {{#each ingredients}}
+        Ingredients: <input type="text" name="ingredients" value="{{this}}"><br>
+        {{/each}}
+
+        <input type="submit">
+    </form>
+    </script>
     <script src="node_modules/handlebars/dist/handlebars.min.js"></script>
     <script src="index.js"></script>
     <!-- Open this file and call `mocha.run()` in console to run tests -->
