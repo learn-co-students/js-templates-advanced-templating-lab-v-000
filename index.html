@@ -8,7 +8,83 @@
   </head>
   <body>
     <main id="main">
+      <form onsubmit="createRecipe(); return false;" id="recipe-form">
+        <p>
+          <label for="name">Name</label><br>
+          <input type="text" id="name"><br>
+        </p>
+        <p>
+          <label for="name">Description</label><br>
+          <input type="text" id="description"><br>
+        </p>
+        <p>
+          <label for="ingredient1">Ingredient 1</label><br>
+          <input type="text" name="ingredients" id="ingredient1"><br>
+        </p>
+        <p>
+          <label for="ingredient2">Ingredient 2</label><br>
+          <input type="text" name="ingredients" id="ingredient2"><br>
+        </p>
+        <p>
+          <label for="ingredient3">Ingredient 3</label><br>
+          <input type="text" name="ingredients" id="ingredient3"><br>
+        </p>
+        <p>
+          <label for="ingredient4">Ingredient 4</label><br>
+          <input type="text" name="ingredients" id="ingredient4"><br>
+        </p>
+        <p>
+          <label for="ingredient5">Ingredient 5</label><br>
+          <input type="text" name="ingredients" id="ingredient5"><br>
+        </p>
+        <input type="submit" />
+      </form>
+
+      <hr>
+
+      <script id="recipe-template" type="text/x-handlebars-template">
+        <div id="recipe">
+          <h2 id="recipe-name">{{ name }}</h2>
+          {{> recipeDetailsPartial }}
+          <a href="#" onclick="displayEditForm();">Edit Recipe</a>
+        </div>
+        <hr>
+      </script>
+
+      <script id="recipe-details-partial" type="text/x-handlebars-template">
+        <h3 id="recipe-description">{{description}}</h3>
+        <div>
+          <ul>
+            {{#each ingredients}}
+              {{ displayIngredient this }}
+            {{/each}}
+          </ul>
+        </div>
+      </script>
+
+      <script id="recipe-form-template" type="text/x-handlebars-template">
+        {{> recipeFormPartial }}
+      </script>
+
+      <script id="recipe-form-partial" type="text/x-handlebars-template">
+        <form onsubmit="updateRecipe(); return false;">
+            <p>
+              <label for="editedName">Name</label><br>
+              <input type="text" id="editedName" value="{{name}}"><br>
+            </p>
+            <p>
+              <label for="editedDescription">Name</label><br>
+              <input type="text" id="editedDescription" value="{{description}}"><br>
+            </p>
+            {{#each ingredients}}
+              {{ displayEditIngredient this }}
+            {{/each}}
+          <input type="submit" />
+        </form>
+      </script>
+
     </main>
+
     <script src="node_modules/handlebars/dist/handlebars.min.js"></script>
     <script src="index.js"></script>
     <!-- Open this file and call `mocha.run()` in console to run tests -->
