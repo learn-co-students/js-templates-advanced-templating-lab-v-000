@@ -7,8 +7,24 @@
     <link rel="stylesheet" href="node_modules/mocha/mocha.css" />
   </head>
   <body>
-    <main id="main">
+    <main id="main"><form id="recipe-form-template" onsubmit="createRecipe(); return false;">
+      Name: <input type="text" id="recipeName"><br>
+      Description: <input type="text" id="recipeDescription"><br>
+      Ingredient: <input type="text" id="recipeIngredient"><br>
+      Ingredient: <input type="text" id="recipeIngredient"><br>
+      Ingredient: <input type="text" id="recipeIngredient"><br>
+      Ingredient: <input type="text" id="recipeIngredient"><br>
+      Ingredient: <input type="text" id="recipeIngredient"><br>
+      <input type="sumbit">
+    </form>
     </main>
+    <script id="recipe-template" type="text/x-handlebars-template">
+      {{> name }}
+    </script>
+    <script id="recipe-details-partial" type="text/x-handlebars-template">
+      {{ description }}
+      {{ ingredients }}
+    </script>
     <script src="node_modules/handlebars/dist/handlebars.min.js"></script>
     <script src="index.js"></script>
     <!-- Open this file and call `mocha.run()` in console to run tests -->
