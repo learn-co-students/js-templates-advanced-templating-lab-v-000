@@ -8,36 +8,37 @@
   </head>
   <body>
 
-    <main>    </main>
+    <main>
+
+    </main>
 
     <script id="recipe-form-template" type="text/x-handlebars-template">
       <form onsubmit="createRecipe();return false;">
         Name: <input type="text" id="recipeName"><br>
-        Description: <input type="textarea" id="recipeDescription"><br>
-        Ingredient: <input type="text" name="ingredients"><br>
-        Ingredient: <input type="text" name="ingredients"><br>
-        Ingredient: <input type="text" name="ingredients"><br>
-        Ingredient: <input type="text" name="ingredients"><br>
-        Ingredient: <input type="text" name="ingredients"><br>
+        Description: <input type="text" id="recipeDescription"><br>
+        Ingredient: <input type="textarea" id="ingredient1"><br>
+        Ingredient: <input type="textarea" id="ingredient2"><br>
+        Ingredient: <input type="textarea" id="ingredient3"><br>
+        Ingredient: <input type="textarea" id="ingredient4"><br>
+        Ingredient: <input type="textarea" id="ingredient5"><br>
         <input type="submit">
       </form>
     </script>
 
     <script id="recipe-template" type="text/x-handlebars-template">
-      <h1>Recipe name: {{name}}</h1>
-      <br />
+      {{name}}
+
       {{> recipeDetailsPartial }}
       <a href="#" onclick="displayEditForm();">Edit Recipe</a>
     </script>
 
     <script id="recipe-details-partial" type="text/x-handlebars-template">
-      Description: {{description}}<br />
-      <ol>
-        {{#each ingredients}}
-          {{displayIngredient this}}
-        {{/each}}
-      </ol>
+      {{description}}
+      {{#each ingredients}}
+        <li>{{this}}</li>
+      {{/each}}
     </script>
+
 
     <script src="node_modules/handlebars/dist/handlebars.min.js"></script>
     <script src="index.js"></script>
