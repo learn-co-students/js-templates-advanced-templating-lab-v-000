@@ -11,27 +11,32 @@
     <main>    </main>
 
     <script id="recipe-form-template" type="text/x-handlebars-template">
-      <form onsubmit="createRecipe();return false;">
-        Name: <input type="text" id="recipeName"><br>
-        Description: <input type="textarea" id="recipeDescription"><br>
+      <form id="recipe-form" onsubmit="{{submitType}};return false;">
+        Name: <input id="name" type="text" value="{{name}}"><br>
+
+        Description: <input type="textarea" id="description" value="{{description}}"><br>
+        {{#each ingredients}}
+        <input name="ingredients" type="text" value="{{this}}"><br>
+        {{else}}
         Ingredient: <input type="text" name="ingredients"><br>
         Ingredient: <input type="text" name="ingredients"><br>
         Ingredient: <input type="text" name="ingredients"><br>
         Ingredient: <input type="text" name="ingredients"><br>
         Ingredient: <input type="text" name="ingredients"><br>
+        {{/each}}
         <input type="submit">
       </form>
     </script>
 
     <script id="recipe-template" type="text/x-handlebars-template">
-      <h1>Recipe name: {{name}}</h1>
+      <h1 id="name">{{name}}</h1>
       <br />
       {{> recipeDetailsPartial }}
       <a href="#" onclick="displayEditForm();">Edit Recipe</a>
     </script>
 
     <script id="recipe-details-partial" type="text/x-handlebars-template">
-      Description: {{description}}<br />
+      Description: <p id="description">{{description}}</p><br />
       <ol>
         {{#each ingredients}}
           {{displayIngredient this}}
