@@ -31,6 +31,7 @@ describe('Handlebars Templates Lab', function() {
       expect(recipeDetailsPartial.innerHTML).toMatch(/{{\s?description\s?}}/)
       expect(recipeDetailsPartial.innerHTML).toMatch(/{{\s?#each ingredients\s?}}/)
       expect(recipeDetailsPartial.innerHTML).toMatch(/{{\s?displayIngredient this\s?}}/, "Template must make use of displayIngredient custom helper inside the #each block helper")
+      console.log(/{{\s?displayIngredient this\s?}}/)
     })
     it('has a recipe form template', function() {
       var recipeFormTemplate = document.getElementById("recipe-form-template")
