@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Practice Handlebars</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  </head>
+  <body>
+    <!-- <main id="main"></main> -->
+    <script src="node_modules/handlebars/dist/handlebars.min.js"></script>
+    <script src="practiceindex.js"></script>
+    
+    <h1>Recipe</h1>
+    <script id="recipe-template" type="text/x-handlebars-template">
+      <div class="recipe">
+        <h2>{{name}}</h2>
+        <div class="description">
+          <p>{{description}}</p>
+        </div>
+      </div>
+    </script>
+  </body>
+</html>
