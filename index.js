@@ -1,5 +1,15 @@
 function init() {
-  //put any page initialization/handlebars initialization here
+  Handlebars.registerHelper('displayIngredient', function() {
+
+  })
+
+  function createRecipe() {
+
+  }
+
+  function displayEditForm() {
+
+  }
 }
 document.addEventListener("DOMContentLoaded", function(event) {
   init()
