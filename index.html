@@ -6,33 +6,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="node_modules/mocha/mocha.css" />
   </head>
-  <body onload="loadForm()">
+  <body>
     <main id="main">
-
     </main>
     <script id="recipe-form-template" type="text/x-handlebars-template">
-      <form id="recipe-form" onsubmit="createPost();return false;">
-        Name: <input type="text" id="recipeName"><br>
-        Description: <input type="text" id="recipeDescription"><br>
-        Ingredient: <input type="text" name="ingredient"><br>
-        Ingredient: <input type="text" name="ingredient"><br>
-        Ingredient: <input type="text" name="ingredient"><br>
-        Ingredient: <input type="text" name="ingredient"><br>
-        Ingredient: <input type="text" name="ingredient"><br>
+      <form id="recipe-form" onsubmit="createRecipe();return false;">
+        Name: <input type="text" id="recipeName" value={{name}}><br>
+        Description: <input type="text" id="recipeDescription" value={{description}} ><br>
+        {{#each ingredients}}
+          Ingredient: <input type="text" name="ingredients" value={{this}}><br>
+        {{/each}}
         <input type="submit">
       </form>
     </script>
     <script id="recipe-template" type="text/x-handlebars-template">
-      {{ name }}
       {{> recipeDetailsPartial }}
-      <a href="#" id="editRecipe" onclick="displayEditForm()">Edit Recipe</a>
+      <a href="#" id="editRecipe" onclick="displayEditForm();">Edit Recipe</a>
     </script>
     <script id="recipe-details-partial" type="text/x-handlebars-template">
       <div id="recipe">
-        <p>{{description}}</p>
+        <p>Name: <span id="recipeName">{{ name }}</span></p>
+        <p>Description: <span id="recipeDescription">{{description}}</span></p>
+        <p>Ingredients:</p>
         <ul>
-          {{#each}}
-          <li>{{displayIngredient}}</li>
+          {{#each ingredients}}
+            {{displayIngredient this}}
           {{/each}}
         </ul>
       </div>
