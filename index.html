@@ -6,16 +6,37 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="node_modules/mocha/mocha.css" />
   </head>
-  <body>
+  <body onload="loadForm()">
     <main id="main">
+
     </main>
     <script id="recipe-form-template" type="text/x-handlebars-template">
+      <form id="recipe-form" onsubmit="createPost();return false;">
+        Name: <input type="text" id="recipeName"><br>
+        Description: <input type="text" id="recipeDescription"><br>
+        Ingredient: <input type="text" name="ingredient"><br>
+        Ingredient: <input type="text" name="ingredient"><br>
+        Ingredient: <input type="text" name="ingredient"><br>
+        Ingredient: <input type="text" name="ingredient"><br>
+        Ingredient: <input type="text" name="ingredient"><br>
+        <input type="submit">
+      </form>
     </script>
     <script id="recipe-template" type="text/x-handlebars-template">
+      {{ name }}
+      {{> recipeDetailsPartial }}
+      <a href="#" id="editRecipe" onclick="displayEditForm()">Edit Recipe</a>
     </script>
     <script id="recipe-details-partial" type="text/x-handlebars-template">
+      <div id="recipe">
+        <p>{{description}}</p>
+        <ul>
+          {{#each}}
+          <li>{{displayIngredient}}</li>
+          {{/each}}
+        </ul>
+      </div>
     </script>
-
     <script src="node_modules/handlebars/dist/handlebars.min.js"></script>
     <script src="index.js"></script>
     <!-- Open this file and call `mocha.run()` in console to run tests -->
