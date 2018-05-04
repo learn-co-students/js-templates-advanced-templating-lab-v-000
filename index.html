@@ -8,6 +8,10 @@
   </head>
   <body>
     <main id="main">
+      <div id="recipe-form">
+        <h2>Create Recipe:</h2>
+      </div>
+      <div id="recipe"></div>
     </main>
     <script src="node_modules/handlebars/dist/handlebars.min.js"></script>
     <script src="index.js"></script>
@@ -17,5 +21,37 @@
     <script src="node_modules/expect/umd/expect.min.js"></script>
     <script>mocha.setup('bdd');</script>
     <script src="test/index-test.js"></script>
+    
+    <script id="recipe-form-template" type="text/x-handlebars-template">
+      <form onsubmit="{{submitFn}}">
+        Name: <input type="text" name="name" id="name" avlue={{name}}> <br>
+        {{> recipeFormPartial}}
+        <input type="submit">
+      </form> 
+    </script>
+
+    <script id="recipe-form-partial" type="text/x-handlebars-template">
+      Description: <input type="text" name="description" id="description" value={{description}}> <br>
+        Ingredient 1: <input type="text" name="ingredients" id="ingredient_1"> <br>
+        Ingredient 2: <input type="text" name="ingredients" id="ingredient_2"> <br>
+        Ingredient 3: <input type="text" name="ingredients" id="ingredient_3"> <br>
+        Ingredient 4: <input type="text" name="ingredients" id="ingredient_4"> <br>
+        Ingredient 5: <input type="text" name="ingredients" id="ingredient_5"> <br>
+    </script>
+    
+    <script id="recipe-template" type="text/x-handlebars-template">
+      <header><h2>{{name}}</h2></header>
+      <p><a href="#" onclick="displayEditForm()">Edit Recipe</a></p>
+      {{> recipeDetailsPartial}}
+    </script>
+
+    <script id="recipe-details-partial" type="text/x-handlebars-template">
+      <p>Description: {{description}}</p>
+      <ul>
+        {{#each ingredients}}
+        <li>{{displayIngredient this}}</li>
+        {{/each}}
+      </ul>
+    </script>
   </body>
 </html>
