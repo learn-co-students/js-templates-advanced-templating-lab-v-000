@@ -10,16 +10,18 @@
     <main id="main">
 
         <script id="recipe-form-template" type="text/x-handlebars-template">
-            <form onsubmit="createRecipe();return false;">
-              Name: <input type="text" id="commenterName">
-              Description: <input type="textarea" id="description">
-              Ingredient 1: <input type="textarea" id="ingredient 1">
-              Ingredient 2: <input type="textarea" id="ingredient 2">
-              Ingredient 3: <input type="textarea" id="ingredient 3">
-              Ingredient 4: <input type="textarea" id="ingredient 4">
-              Ingredient 5: <input type="textarea" id="ingredient 5">
+              Name: <input id="name" type="text" value="{{name}}"><br>
+              Description: <input id="description" type="textarea" value="{{description}}"><br>
+              {{#each ingredients}}
+                <input name="ingredients" type="text" value"{{this}}"><br>
+              {{else}}
+              <input name="ingredients" type="text"><br>
+              <input name="ingredients" type="text"><br>
+              <input name="ingredients" type="text"><br>
+              <input name="ingredients" type="text"><br>
+              <input name="ingredients" type="text"><br>
+              {{/each}}
               <input type="submit">
-            </form>
         </script>
 
         <script id="recipe-template" type="text/x-handlebars-template">
