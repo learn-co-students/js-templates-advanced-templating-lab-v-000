@@ -44,10 +44,10 @@
         
 
         <script id="recipe-form-template" type="text/x-handlebars-template">
-
+          <form id="recipe-form" onSubmit="{{submitAction}}; return false;">
+            {{> recipeFormPartial }}
+          </form>
         </script>
-
-
 
 
 
