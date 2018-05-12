@@ -35,7 +35,7 @@
         <article>
           <h2>{{name}}</h2>
           {{> recipeDetailsPartial}}
-          <footer>Edit Recipe</footer>
+          <footer><a href="#" onclick="displayEditForm();">Edit Recipe</a></footer>
         </article>
       </script>
 
@@ -43,7 +43,7 @@
         <p id="recipeDescription">{{description}}</p>
         <ul>
           {{#each ingredients}}
-            <h2>{{this}}</h2>
+            <h2>{{displayIngredient}}</h2>
           {{/each}}
         </ul>
       </script>

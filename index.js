@@ -1,6 +1,7 @@
 function init() {
   registerRecipeForm();
   registerRecipeDetailsPartial();
+  registerDisplayIngredientHelper();
 }
 
 function registerRecipeForm() {
@@ -12,6 +13,12 @@ function registerRecipeForm() {
 
 function registerRecipeDetailsPartial() {
   Handlebars.registerPartial('recipeDetailsPartial', document.getElementById('recipe-details-partial').innerHTML)
+}
+
+function registerDisplayIngredientHelper() {
+  Handlebars.registerHelper('displayIngredient', function() {
+    return new Handlebars.SafeString(this)
+  });
 }
 
 function getRecipe() {
@@ -37,6 +44,12 @@ function createRecipe() {
   // debugger;
   document.getElementById('main').innerHTML = template(recipe)
 }
+
+function displayEditForm() {
+  console.log("hello");
+}
+
+
 
 
 document.addEventListener("DOMContentLoaded", function(event) {
