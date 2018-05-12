@@ -28,8 +28,11 @@
       </script>
 
       <script id="recipe-template" type="text/x-handlebars-template">
-        
-        {{> recipeDetailsPartial }}
+        <article>
+          <h2>{{name}}</h2>
+          <div>{{> recipeDetailsPartial }}</div>
+          <footer>Edit Recipe</footer>
+        </article>
       </script>
 
       <script id="recipe-details-partial" type="text/x-handlebars-template">

@@ -24,7 +24,7 @@ function getRecipe() {
   var name = document.getElementById('name').value;
   var description = document.getElementById('description').value;
   var recipe = {name, ingredients, description};
-  return recipe
+  return(recipe)
 }
 
 function createRecipe() {
