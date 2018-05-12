@@ -16,10 +16,11 @@ function registerRecipeDetailsPartial() {
 }
 
 function registerDisplayIngredientHelper() {
-  Handlebars.registerHelper('displayIngredient', function() {
-    return new Handlebars.SafeString(this)
+  Handlebars.registerHelper('displayIngredient', function(ingredient) {
+    return new Handlebars.SafeString('<li name="ingredientsList">' + ingredient + '</li>')
   });
 }
+
 
 function getRecipe() {
   var ingredientsCol = document.getElementsByName('ingredients');
