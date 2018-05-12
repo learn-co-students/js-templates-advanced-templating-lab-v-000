@@ -1,9 +1,18 @@
 function init() {
   Handlebars.registerPartial('recipeDetailsPartial', document.getElementById("recipe-details-partial").innerHTML);
-  
+  Handlebars.registerPartial('recipeFormPartial', document.getElementById("recipe-form-partial").innerHTML)
+
   function renderRecipe() {
     var template = Handlebars.compile(document.getElementById("recipe-template").innerHTML);
     var html = template({name: 'Gordon Ramsay'});
+  }
+
+  function displayEditForm() {
+
+  }
+
+  function updateRecipe() {
+
   }
 
 }
