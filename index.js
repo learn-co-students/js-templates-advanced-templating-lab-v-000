@@ -1,4 +1,5 @@
 function init() {
+  registerRecipeFormPartial();
   registerRecipeForm();
   registerRecipeDetailsPartial();
   registerDisplayIngredientHelper();
@@ -10,7 +11,9 @@ function registerRecipeForm() {
   document.getElementsByTagName("main")[0].innerHTML = recipeFormTemplate({'submitAction': 'createRecipe()'})
 }
 
-
+function registerRecipeFormPartial() {
+  Handlebars.registerPartial('recipeFormPartial', document.getElementById("recipe-form-partial").innerHTML)
+}
 
 function registerRecipeDetailsPartial() {
   Handlebars.registerPartial('recipeDetailsPartial', document.getElementById('recipe-details-partial').innerHTML)
