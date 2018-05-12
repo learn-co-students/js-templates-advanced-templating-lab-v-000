@@ -1,19 +1,19 @@
 function init() {
-  recipeFormInit();
-  registerPartial();
+  registerRecipeForm();
+  registerRecipeDetailsPartial();
 }
 
-function recipeFormInit() {
+function registerRecipeForm() {
   var recipeFormHTML = document.getElementById("recipe-form-template").innerHTML
   var recipeFormTemplate = Handlebars.compile(recipeFormHTML)
   document.getElementById('main').innerHTML = recipeFormTemplate(recipeFormHTML)
 }
 
-function registerPartial() {
+function registerRecipeDetailsPartial() {
   Handlebars.registerPartial('recipeDetailsPartial', document.getElementById('recipe-details-partial').innerHTML)
 }
 
-function getRecipeVals() {
+function getRecipe() {
   var ingredientsCol = document.getElementsByName('ingredients');
   var ingredients = [];
   for (var i=0; i<ingredientsCol.length;i++) {
@@ -28,7 +28,7 @@ function getRecipeVals() {
 }
 
 function createRecipe() {
-  var recipe = getRecipeVals()
+  var recipe = getRecipe()
   var recipeTemplate = document.getElementById("recipe-template").innerHTML
   var template = Handlebars.compile(recipeTemplate)
   document.getElementById('main').innerHTML = template(recipe)
