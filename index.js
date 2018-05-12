@@ -6,7 +6,8 @@ function init() {
 function registerRecipeForm() {
   var recipeFormHTML = document.getElementById("recipe-form-template").innerHTML
   var recipeFormTemplate = Handlebars.compile(recipeFormHTML)
-  document.getElementById('main').innerHTML = recipeFormTemplate(recipeFormHTML)
+  document.getElementsByTagName("main")[0].innerHTML = recipeFormTemplate({'submitAction': 'createRecipe()'})
+
 }
 
 function registerRecipeDetailsPartial() {
@@ -28,9 +29,12 @@ function getRecipe() {
 }
 
 function createRecipe() {
-  var recipe = getRecipe()
+  console.log("hello");
+  var recipe = getRecipe();
+  console.log(recipe);
   var recipeTemplate = document.getElementById("recipe-template").innerHTML
   var template = Handlebars.compile(recipeTemplate)
+  // debugger;
   document.getElementById('main').innerHTML = template(recipe)
 }
 
