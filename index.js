@@ -8,8 +8,9 @@ function registerRecipeForm() {
   var recipeFormHTML = document.getElementById("recipe-form-template").innerHTML
   var recipeFormTemplate = Handlebars.compile(recipeFormHTML)
   document.getElementsByTagName("main")[0].innerHTML = recipeFormTemplate({'submitAction': 'createRecipe()'})
-
 }
+
+
 
 function registerRecipeDetailsPartial() {
   Handlebars.registerPartial('recipeDetailsPartial', document.getElementById('recipe-details-partial').innerHTML)
