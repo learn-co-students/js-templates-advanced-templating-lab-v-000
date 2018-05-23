@@ -15,9 +15,15 @@ function initForm(){
 }
 
 function getValues(){
-  var name = document.getElementById('recipeName').value
-  var description = document.getElementById('recipeDescription').value
-  var ingredients = document.getElementsByName('ingredients').map(function(ingredient){return ingredient.value})
+  var name = document.getElementById('name').value
+  var description = document.getElementById('description').value
+  var ingredientsArray = document.getElementsByName('ingredients')
+  var ingredients = []
+  for(var i=0; i<ingredientsArray.length; i++) {
+  if(ingredientsArray[i].value !== "") {
+    ingredients.push(ingredientsArray[i].value)
+  }
+}
   return {name, description, ingredients}
 }
 
@@ -32,6 +38,12 @@ function displayEditForm(){
   var submitAction = updateRecipe();
   var recipe = {}
   document.getElementById('main').innerHTML = template(recipe)
+}
+
+function updateRecipe(){
+  var recipe = getValues()
+  var template = Handlebars.compile(document.getElementById("recipe-template").innerHTML)
+  document.getElementById("main").innerHTML = template(recipe)
 }
 
 document.addEventListener("DOMContentLoaded", function(event) {
