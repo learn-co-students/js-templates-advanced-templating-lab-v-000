@@ -58,7 +58,7 @@ function displayEditForm() {
 
   document.getElementsByTagName("main")[0].innerHTML += editForm(context);
 }
-+function updateRecipe() {
+function updateRecipe() {
   const recipe = {
     name: document.getElementById("name").value,
     description: document.getElementById("description").value,
