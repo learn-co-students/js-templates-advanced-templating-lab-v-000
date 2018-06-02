@@ -6,9 +6,38 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="node_modules/mocha/mocha.css" />
   </head>
-  <body>
-    <main id="main">
-    </main>
+  <body onload="displayNewForm()">
+
+    <main id="main"></main>
+
+    <script id="recipe-form-template" type="text/x-handlebars-template">
+      <form id="recipe-form" onsubmit="{{submitFunc}}">
+        Name: <input id="name" name="name" value="{{nVal}}" type="text"/><br/>
+        Description: <input id="description" name="description"value="{{dVal}}" type="text"/><br/>
+        Ingredient 1: <input name="ingredients" value="{{iVal1}}" type="text"/><br/>
+        Ingredient 2: <input name="ingredients" value="{{iVal2}}" type="text"/><br/>
+        Ingredient 3: <input name="ingredients" value="{{iVal3}}" type="text"/><br/>
+        Ingredient 4: <input name="ingredients" value="{{iVal4}}" type="text"/><br/>
+        Ingredient 5: <input name="ingredients" value="{{iVal5}}" type="text"/><br/>
+        <input type="submit"/>
+      </form>
+    </script>
+
+    <script id="recipe-template" type="text/x-handlebars-template">
+      <h3>{{name}}</h3>
+      {{> recipeDetailsPartial}}
+      <a onclick="displayEditForm()">Edit Recipe</a>
+    </script>
+    
+    <script id="recipe-details-partial" type="text/x-handlebars-template">
+      <p>{{description}}</p>
+      <ul>
+        {{#each ingredients}}
+          {{displayIngredient this}}
+        {{/each}}
+      </ul>
+    </script>
+
     <script src="node_modules/handlebars/dist/handlebars.min.js"></script>
     <script src="index.js"></script>
     <!-- Open this file and call `mocha.run()` in console to run tests -->
