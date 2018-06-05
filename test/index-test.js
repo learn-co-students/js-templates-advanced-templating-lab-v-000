@@ -24,6 +24,7 @@ describe('Handlebars Templates Lab', function() {
       expect(recipeTemplate.innerHTML).toMatch(/<a.*displayEditForm().*>Edit Recipe<\/a>/, "Template must have an 'Edit Recipe' link that calls 'displayEditForm()'")
       expect(recipeTemplate.innerHTML).toMatch(/{{>\s?recipeDetailsPartial\s?}}/, "Template must render the recipeDetailsPartial")
     })
+
     it('has a recipe details partial template', function() {
       var recipeDetailsPartial = document.getElementById("recipe-details-partial")
       expect(recipeDetailsPartial).toExist("Must provide a template with an id of 'recipe-details-partial'")
@@ -32,6 +33,7 @@ describe('Handlebars Templates Lab', function() {
       expect(recipeDetailsPartial.innerHTML).toMatch(/{{\s?#each ingredients\s?}}/)
       expect(recipeDetailsPartial.innerHTML).toMatch(/{{\s?displayIngredient this\s?}}/, "Template must make use of displayIngredient custom helper inside the #each block helper")
     })
+
     it('has a recipe form template', function() {
       var recipeFormTemplate = document.getElementById("recipe-form-template")
       expect(recipeFormTemplate).toExist("Must provide a template with an id of 'recipe-form-template'")
