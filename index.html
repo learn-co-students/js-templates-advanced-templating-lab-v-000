@@ -1,3 +1,11 @@
+<!-- Create a form template with an id of  -->
+<!-- recipe-form-template that will be used  -->
+<!-- to enter new recipes. Make the form  -->
+<!-- submit with a createRecipe() function.  -->
+<!-- Provide inputs for recipe name, description,  -->
+<!-- and at least five ingredients. Hint: Get  -->
+<!-- comfy collecting values with getElementsByName() -->
+
 <!DOCTYPE html>
 <html>
   <head>
@@ -8,9 +16,55 @@
   </head>
   <body>
     <main id="main">
+
     </main>
+
     <script src="node_modules/handlebars/dist/handlebars.min.js"></script>
     <script src="index.js"></script>
+    <!-- Recipe Form Template -->
+    <script id="recipe-form-template" type="text/x-handlebars-template">
+      <form id="recipe-form" onsubmit="{{action}};return false;">
+        {{> recipeFormPartial}}
+      </form>
+    </script>
+    <!-- Recipe Form Partial -->
+    <script id="recipe-form-partial" type="text/x-handlebars-template">
+      {{#if ingredients}}
+        Name: <input type="text" id="updatedName" value="{{name}}"><br />
+        Description: <input type="textarea" id="updatedDescription" value="{{description}}"><br />
+        {{#each ingredients}}
+          <input name="updatedIngredients" type="text" value="{{this}}"><br />
+        {{/each}}
+      {{else}}
+      Name: <input type="text" id="name" value="{{name}}"><br />
+      Description: <input type="textarea" id="description" value="{{description}}"><br />
+      Ingredients:<br />
+        1. <input type="text" name="ingredients"><br />
+        2. <input type="text" name="ingredients"><br />
+        3. <input type="text" name="ingredients"><br />
+        4. <input type="text" name="ingredients"><br />
+        5. <input type="text" name="ingredients"><br />
+      {{/if}}
+        <input type="submit">
+    </script>
+    <!-- Recipe Template -->
+    <script id="recipe-template" type="text/x-handlebars-template">
+      <article id="recipe-display" >
+        <header><h1 id="recipeName"> {{name}} </h1></header>
+        <div>{{> recipeDetailsPartial}}</div>
+        <footer><a href="#" onclick="displayEditForm();">Edit Recipe</a></footer>
+      </article>
+    </script>
+    <!-- Reciple Details Partial -->
+    <script id="recipe-details-partial" type="text/x-handlebars-template">
+      <p id="recipeDescription"> {{description}} </p>
+      <ul>
+        {{#each ingredients}}
+        {{displayIngredient this}}
+        {{/each}}
+      </ul>
+    </script>
+
     <!-- Open this file and call `mocha.run()` in console to run tests -->
     <div id="mocha"></div>
     <script src="node_modules/mocha/mocha.js"></script>
