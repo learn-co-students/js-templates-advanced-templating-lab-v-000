@@ -8,6 +8,22 @@
   </head>
   <body>
     <main id="main">
+      <form id="recipe-form" onsubmit="createRecipe()">
+        <div id="recipe">
+        <ul>
+          {{#each ingredients}}
+          <li>{{name}}</li>
+          {{/each}}
+       </ul>
+       </div>
+      </form>
+      <script id="recipe-form-template" type="text/x-handlebars-template">
+      </script>
+      <script id="recipe-template" type="text/x-handlebars-template">
+        <div>{{\s?name\s?}}</div>
+        <div><a.*displayEditForm().*>Edit Recipe<\/a></div>
+        <div>{{>\s?recipeDetailsPartial\s?}}</div>
+      </script>
     </main>
     <script src="node_modules/handlebars/dist/handlebars.min.js"></script>
     <script src="index.js"></script>
