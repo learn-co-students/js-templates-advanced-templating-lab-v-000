@@ -9,12 +9,10 @@
   <body>
     <main id="main">
       <form id="recipe-form" onsubmit="createRecipe()">
-
-        Name: <input type="text" name="Name"><br>
-        Description: <input type="textarea" name="Description"><br>
+        Name: <input type="text" name="name"><br>
+        Description: <input type="textarea" name="description"><br>
         Ingredients: <input type="text" name="ingredients"><br>
         <input type="submit" value="Submit">
-
       </form>
       <script id="recipe-template" type="text/x-handlebars-template">
         <div>{{name}}</div>
