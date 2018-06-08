@@ -22,10 +22,20 @@
     </main>
     <script src="node_modules/handlebars/dist/handlebars.min.js"></script>
     <script src="index.js"></script>
+
     <script id="recipe-template" type="text/x-handlebars-template">
       <h3>{{name}}</h3>
       <div>{{> recipeDetailsPartial }}</div>
       <a href="#" onclick="displayEditForm()">Edit Recipe</a>
+    </script>
+
+    <script id="recipe-details-partial" type="text/x-handlebars-template">
+      <p>{{description}}</p>
+      <ul>
+        {{#each ingredients}}
+          {{displayIngredient this}}
+        {{/each}}
+      </ul>
     </script>
     <!-- Open this file and call `mocha.run()` in console to run tests -->
     <div id="mocha"></div>
