@@ -9,6 +9,69 @@
   <body>
     <main id="main">
     </main>
+
+    <script id="my-template" type="text/x-handlebars-template">
+    </script>
+
+    <script id="recipe-form" type="text/x-handlebars-template">
+      <form id="recipe-form" onsubmit="createRecipe()">
+          Name: <input type="text" id="name">
+          Description: <input type="text" id="description">
+          Ingredients: <input type="text" id="ingredients">
+          <input type="submit">
+      </form>
+    </script>
+
+    <script id="page-template">
+      <div>
+        Sidebar: <input type="text" id="sidebar">
+        Post: <input type="text" id="post">
+      </div>
+    </script>
+
+    <script id="recipe-template" type="text/x-handlebars-template">
+          {{ name }}
+          <a onsubmit="displayEditForm()">Edit Recipe</a>
+          {{> recipeDetailsPartial }}
+    </script>
+
+    <script id="recipe-details-partial" type="text/x-handlebars-template">
+          {{ description }}
+          {{ #each ingredients }}
+            {{ displayIngredient this}}
+          {{ /each }}
+    </script>
+
+    <script id="recipe-form-template" type="text/x-handlebars-template">
+      <form onsubmit="createRecipe()">
+        Name: <input type="text" id="name">
+        Description: <input type="text" id="description">
+        Ingredients: <input type="text" id="ingredients">
+        <input type="submit">
+      </form>
+    </script>
+
+    <script id="post-template" type="text/x-handlebars-template">
+      <article>
+          <head>Post's title: <input type="text"></head>
+          <footer>Post's Author: <input type="text"></footer>
+      </article>
+    </script>
+
+    <script id="comments-template" onsubmit="postComment()">
+    </script>
+
+    <script id="comment-template" type="text/x-handlebars-template">
+    </script>
+
+    <script id="post-form" type="text/x-handlebars-template">
+      <form onsubmit="createPost()">
+        Title: <input type="text" id="title">
+        Body: <input type="text" id="body">
+        Author: <input type="text" id="author">
+      </form>
+    </script>
+
     <script src="node_modules/handlebars/dist/handlebars.min.js"></script>
     <script src="index.js"></script>
     <!-- Open this file and call `mocha.run()` in console to run tests -->
