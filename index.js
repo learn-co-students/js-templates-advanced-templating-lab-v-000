@@ -1,4 +1,8 @@
 function init() {
+  Handlebars.registerHelper('displayIngredient', function(ingredient) {
+    return new Handlebars.SafeString(ingredient)
+  })
+
   var recipe = {
     description: 'yummy chicken noodle soup',
     ingredients: [
@@ -18,6 +22,11 @@ document.addEventListener("DOMContentLoaded", function(event) {
 })
 
 function createRecipe() {
+  var createRecipe = Handlebars.compile(document.getElementById("recipe-template").innerHTML);
+}
+
+function updateRecipe() {
+  var updatedRecipe = Handlebars.compile(document.getElementById("recipe-template").innerHTML);
 }
 
 function getElementsByName() {
