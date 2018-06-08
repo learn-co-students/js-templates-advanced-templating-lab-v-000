@@ -8,6 +8,17 @@
   </head>
   <body>
     <main id="main">
+      <form id="recipe-form" onsubmit="createRecipe()">
+        Name: <input type="text" id="name"><br>
+        Description: <input type="text" id="description"><br>
+        Ingredients: <br>
+          1: <input type="text" id="ingredient1" name="ingredients"><br>
+          2: <input type="text" id="ingredient2" name="ingredients"><br>
+          3: <input type="text" id="ingredient3" name="ingredients"><br>
+          4: <input type="text" id="ingredient4" name="ingredients"><br>
+          5: <input type="text" id="ingredient5" name="ingredients"><br>
+        <input type="submit">
+      </form>
     </main>
     <script src="node_modules/handlebars/dist/handlebars.min.js"></script>
     <script src="index.js"></script>
