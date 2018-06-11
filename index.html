@@ -9,15 +9,18 @@
   <body>
     <main id="main">
       <form id="recipe-form" onsubmit="createRecipe()">
-        Name: <input type="text" name="name"><br>
-        Description: <input type="textarea" name="description"><br>
-        Ingredients: <input type="text" name="ingredients"><br>
-        <input type="submit" value="Submit">
+        <ul>
+          {{#each ingredients}}
+          <li>{{name}}</li>
+          {{/each}}
+       </ul>
       </form>
+      <script id="recipe-form-template" type="text/x-handlebars-template">
+      </script>
       <script id="recipe-template" type="text/x-handlebars-template">
-        <div>{{name}}</div>
+        <div>{{\s?name\s?}}</div>
         <div><a.*displayEditForm().*>Edit Recipe<\/a></div>
-        <div>{{recipeDetailsPartial}}</div>
+        <div>{{>\s?recipeDetailsPartial\s?}}</div>
       </script>
     </main>
     <script src="node_modules/handlebars/dist/handlebars.min.js"></script>
