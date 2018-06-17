@@ -24,22 +24,32 @@
     </script>
     <script src="test/index-test.js"></script>
     <script id="recipe-form-template" type="text/x-handlebars-template">
-        <form onsubmit="return createRecipe()">
-            Name: <input type="text" name="name"></br>
+        <form id="recipe-form" onsubmit="return createRecipe()">
+            Name: <input type="text" id="name" name="name"></br>
             Description: <input type="text" name="description"></br>
-            Ingredients: <input type="text" name="ingredient">
-            <input type="text" name="ingredient">
-            <input type="text" name="ingredient">
-            <input type="text" name="ingredient">
-            <input type="text" name="ingredient"></br>
+            Ingredients:
+            <input type="text" name="ingredients">
+            <input type="text" name="ingredients">
+            <input type="text" name="ingredients">
+            <input type="text" name="ingredients">
+            <input type="text" name="ingredients"></br>
             <input type="submit">
         </form>
     </script>
     <script id="recipe-template" type="text/x-handlebars-template">
         <div id="recipe">
-            <h3>{{name}}</h3><a href=#>Edit Recipe</a>
+            <h3>{{name}}</h3>
+            {{>recipeDetailsPartial}}
+            <a href=# onclick="displayEditForm(this)">Edit Recipe</a>
         </div>
+    </script>
+    <script id="recipe-details-partial" type="text/x-handlebars-template">
+        <p>Description: {{description}}</p>
+        <p>Ingredients: </p>
+
+        <ul>{{#each ingredients}} {{displayIngredient this}} {{/each}}
+        </ul>
     </script>
 </body>
 
-</html>
+</html>>
