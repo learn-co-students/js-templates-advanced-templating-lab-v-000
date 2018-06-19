@@ -3,7 +3,7 @@ function init() {
     //Display form for recipes at the top of the page.
     Handlebars.registerPartial('recipeFormPartial', document.getElementById('recipe-form-partial').innerHTML);
     const template = Handlebars.compile(document.getElementById('recipe-form-template').innerHTML);
-    document.getElementById('main').innerHTML += template();
+    document.getElementById('main').innerHTML += template({ 'submitContext': 'createRecipe()' });
 
     //Register partials to display the created recipes
     Handlebars.registerHelper('displayIngredient', function() {
@@ -27,7 +27,6 @@ function createRecipe() {
             { name: document.getElementsByName("ingredients")[3].value },
             { name: document.getElementsByName("ingredients")[4].value }
         ],
-        submitContext: 'hello' //'createRecipe()'
     }
     console.log(recipe)
     const template = Handlebars.compile(document.getElementById("recipe-template").innerHTML);
@@ -53,10 +52,9 @@ function displayEditForm() {
     const html = template(recipe)
     console.log(html)
     document.getElementById("main").innerHTML = html
-        //return false;
+    return false;
 }
 
 function updateRecipe() {
-    return false
-
+    return createRecipe();
 }

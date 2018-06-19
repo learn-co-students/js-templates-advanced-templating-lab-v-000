@@ -22,7 +22,7 @@
     </script>
     <script src="test/index-test.js"></script>
     <script id="recipe-form-template" type="text/x-handlebars-template">
-        <form id="recipe-form" onsubmit='return createRecipe();'>
+        <form id="recipe-form" onsubmit='return {{submitContext}} ;'>
             {{>recipeFormPartial}}
         </form>
     </script>
