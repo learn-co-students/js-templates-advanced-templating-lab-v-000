@@ -10,8 +10,6 @@
 
 <body>
     <main id="main">
-        <div id="recipe-form"></div>
-        <div id="recipes"></div>
     </main>
     <script src="node_modules/handlebars/dist/handlebars.min.js"></script>
     <script src="index.js"></script>
@@ -24,32 +22,39 @@
     </script>
     <script src="test/index-test.js"></script>
     <script id="recipe-form-template" type="text/x-handlebars-template">
-        <form id="recipe-form" onsubmit="return createRecipe()">
-            Name: <input type="text" id="name" name="name"></br>
-            Description: <input type="text" name="description"></br>
-            Ingredients:
-            <input type="text" name="ingredients">
-            <input type="text" name="ingredients">
-            <input type="text" name="ingredients">
-            <input type="text" name="ingredients">
-            <input type="text" name="ingredients"></br>
-            <input type="submit">
+        <form id="recipe-form" onsubmit='return createRecipe();'>
+            {{>recipeFormPartial}}
         </form>
+    </script>
+    <script id="recipe-form-partial" type="text/x-handlebars-template">
+        Name: <input type="text" id="name" name="name" value='{{name}}'></br>
+        Description: <input type="text" name="description" value='{{description}}'></br>
+        Ingredients: {{#each ingredients}}
+        <input type="text" name="ingredients" value='{{name}}'></br>
+        {{else}}
+        <input type="text" name="ingredients">
+        <input type="text" name="ingredients">
+        <input type="text" name="ingredients">
+        <input type="text" name="ingredients">
+        <input type="text" name="ingredients"></br>
+        {{/each}}
+        <input type="submit">
     </script>
     <script id="recipe-template" type="text/x-handlebars-template">
         <div id="recipe">
-            <h3>{{name}}</h3>
+            <h3 id="rName">{{name}}</h3>
             {{>recipeDetailsPartial}}
-            <a href=# onclick="displayEditForm(this)">Edit Recipe</a>
+            <a href=# onclick="return displayEditForm()">Edit Recipe</a>
         </div>
     </script>
     <script id="recipe-details-partial" type="text/x-handlebars-template">
-        <p>Description: {{description}}</p>
+        Description:
+        <p id="rDescription">{{description}}</p>
         <p>Ingredients: </p>
-
         <ul>{{#each ingredients}} {{displayIngredient this}} {{/each}}
         </ul>
     </script>
+
 </body>
 
-</html>>
+</html>
