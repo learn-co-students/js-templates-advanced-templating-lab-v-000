@@ -1,14 +1,5 @@
 function init() {
   //put any page initialization/handlebars initialization here
-  var template = Handlebars.compile(document.getElementById("recipe-form").innerHTML);
-  var html = template(recipe);
-
-}
-document.addEventListener("DOMContentLoaded", function(event) {
-  init()
-})
-
-function createRecipe(){
   var recipe = {
     description: 'smoothie',
     ingredients: [
@@ -20,4 +11,20 @@ function createRecipe(){
     ]
   }
 
+  var template = Handlebars.compile(document.getElementById("recipe-form").innerHTML);
+  var html = template(recipe);
+
 }
+document.addEventListener("DOMContentLoaded", function(event) {
+  init()
+})
+
+Handlebars.registerPartial('recipeDetailsPartial', document.getElementById("recipe-details-partial").innerHTML)
+function createRecipe() {
+  var template = Handlebars.compile(document.getElementById("recipe-template").innerHTML);
+  var html = template({description: '', ingredients: ''});
+}
+
+Handlebars.registerHelper('displayIngredient', function(ingredients) {
+    return new Handlebars.SafeString(this.body)
+})

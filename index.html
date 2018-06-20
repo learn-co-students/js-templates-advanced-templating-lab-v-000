@@ -13,7 +13,7 @@
     <script src="node_modules/handlebars/dist/handlebars.min.js"></script>
     <script src="index.js"></script>
 
-     <form id="recipe-form-template" onsubmit="createRecipe()">
+     <form id="recipe-form" onsubmit="createRecipe()">
         <div id="recipe">
               Name: <input type="text" id="name"><br>
               Description: <input type="textarea" id="description"><br>
@@ -23,10 +23,11 @@
       </form>
       <script id="recipe-template" type="text/x-handlebars-template">
         <div>{{name}}</div>
-        <div><a displayEditForm()>Edit Recipe<\/a></div>
-        <div>{{recipeDetailsPartial}}</div>
+        <div><a.*displayEditForm().*>Edit Recipe<\/a></div>
+        <div>{{> recipeDetailsPartial}}</div>
       </script>
       <script id="recipe-details-partial" type="text/x-handlebars-template">
+        <div>{{description}}</div>
         <ul>
           {{#each ingredients}}
           <li>{{name}}</li>
