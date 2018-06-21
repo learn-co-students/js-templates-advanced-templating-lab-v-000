@@ -9,9 +9,10 @@
   <body>
     <main id="main">
         <form id="recipe-form" onsubmit="createRecipe();">
-            <input type="text" id="name">
-            <input type="text" id="description">
-    
+            Name: <input type="text" id="name"> <br>
+            Description: <input type="text" id="description"> <br>
+
+            <label for="ingredients">Ingredients</label><br>
             <input type="text" name="ingredients" id="">
             <input type="text" name="ingredients" id="">
             <input type="text" name="ingredients" id="">
@@ -28,6 +29,21 @@
       
     </script>
 
+
+    <script id="recipe-template" type="text/x-handlebars-template">
+      <p>{{name}}</p><br>
+      {{> recipeDetailsPartial }}
+      <a href="#" onclick="displayEditForm();">Edit Recipe</a>
+    </script>
+
+
+    <script id="recipe-details-partial" type="text/x-handlebars-template">
+      <p>{{description}}</p>
+
+      {{#each ingredients}}
+        {{displayIngredient this}}
+      {{/each}}
+    </script>
 
     <!-- Open this file and call `mocha.run()` in console to run tests -->
     <div id="mocha"></div>

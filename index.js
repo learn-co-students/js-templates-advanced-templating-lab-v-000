@@ -1,3 +1,12 @@
+Handlebars.registerHelper('displayIngredient', function() {
+  return new Handlebars.SafeString("<li>" + this.name + "</li>")
+})
+
+Handlebars.registerPartial('recipeDetailsPartial', document.getElementById('recipe-details-partial').innerHTML)
+
+
+
+
 function init() {
   //put any page initialization/handlebars initialization here
   createRecipe()
