@@ -26,5 +26,20 @@ function createRecipe() {
 }
 
 Handlebars.registerHelper('displayIngredient', function(ingredients) {
-    return new Handlebars.SafeString(this.body)
-})
+  var out = "<ul>";
+
+  for(var i=0; i < ingredients.length; i++){
+    out = out + "<li>" + options.fn(ingredients[i]) + "</li>";
+  }
+
+  return out + "</ul>";
+});
+
+
+//Handlebars.registerHelper('comment_body', function() {
+//  if(this.state === "closed") {
+//  return new Handlebars.SafeString(this.body)
+//  } else {
+//    return new Handlebars.SafeString("<strong>" + this.body + "</strong>")
+//  }
+//})
