@@ -25,7 +25,7 @@ function createRecipe() {
   var html = template({description: '', ingredients: ''});
 }
 
-Handlebars.registerHelper('displayIngredient', function(ingredients) {
+Handlebars.registerHelper('displayIngredient', function() {
   var out = "<ul>";
 
   for(var i=0; i < ingredients.length; i++){
@@ -33,7 +33,7 @@ Handlebars.registerHelper('displayIngredient', function(ingredients) {
   }
 
   return out + "</ul>";
-});
+})
 
 
 //Handlebars.registerHelper('comment_body', function() {
