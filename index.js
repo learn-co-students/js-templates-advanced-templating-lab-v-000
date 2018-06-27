@@ -25,9 +25,15 @@ function createRecipe() {
   var html = template({description: '', ingredients: ''});
 }
 
-Handlebars.registerHelper('displayIngredient', function() {
+Handlebars.registerHelper('displayIngredient', function(ingredients) {
+  var out = "<ul>";
 
-})
+  for(var i=0; i < ingredients.length; i++){
+    out = out + "<li>" + options.fn(ingredients[i]) + "</li>";
+  }
+
+  return out + "</ul>";
+});
 
 
 //Handlebars.registerHelper('comment_body', function() {
