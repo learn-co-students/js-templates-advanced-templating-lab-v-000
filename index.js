@@ -10,6 +10,28 @@ function init() {
       {name: 'blueberries'},
     ]
   }
+  Handlebars.registerHelper('displayIngredient', function(items) {
+    return items.name
+    // var out = "<ul>";
+    // for(var i=0; i < items.length; i++){
+    //   out = out + "<li>" + options.fn(ingredients[i]) + "</li>";
+    // }
+    // return out + "</ul>";
+  });
+
+// EXAMPLE
+  // var context = {
+  //   author: {firstName: "Alan", lastName: "Johnson"},
+  //   body: "I Love Handlebars",
+  //   comments: [{
+  //     author: {firstName: "Yehuda", lastName: "Katz"},
+  //     body: "Me too!"
+  //   }]
+  // };
+  // Handlebars.registerHelper('fullName', function(person) {
+  //   return person.firstName + " " + person.lastName;
+  // });
+
 
   var template = Handlebars.compile(document.getElementById("recipe-form").innerHTML);
   var html = template(recipe);
@@ -25,15 +47,8 @@ function createRecipe() {
   var html = template({description: '', ingredients: ''});
 }
 
-Handlebars.registerHelper('displayIngredient', function(ingredients) {
-  var out = "<ul>";
 
-  for(var i=0; i < ingredients.length; i++){
-    out = out + "<li>" + options.fn(ingredients[i]) + "</li>";
-  }
 
-  return out + "</ul>";
-});
 
 
 //Handlebars.registerHelper('comment_body', function() {
