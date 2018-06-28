@@ -43,7 +43,7 @@ var recipe = {
   ]
 }
 var template = Handlebars.compile(document.getElementById("recipe-template").innerHTML);
-var html = template('{{description}}', '{{ingredients}}');
+var html = template();
 
 };
 
