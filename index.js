@@ -21,6 +21,13 @@ function init() {
     // return out + "</ul>";
   });
 
+  Handlebars.registerPartial('recipeDetailsPartial', document.getElementById("recipe-details-partial").innerHTML)
+  function createRecipe() {
+    var template = Handlebars.compile(document.getElementById("recipe-template").innerHTML);
+    var html = template('{{description}}', '{{ingredients}}');
+  };
+
+
 // EXAMPLE
   // var context = {
   //   author: {firstName: "Alan", lastName: "Johnson"},
@@ -34,21 +41,15 @@ function init() {
   //   return person.firstName + " " + person.lastName;
   // });
 
-
   var template = Handlebars.compile(document.getElementById("recipe-form").innerHTML);
   var html = template(recipe);
-
 }
 document.addEventListener("DOMContentLoaded", function(event) {
   init()
 })
 
 
-Handlebars.registerPartial('recipeDetailsPartial', document.getElementById("recipe-details-partial").innerHTML)
-function createRecipe() {
-  var template = Handlebars.compile(document.getElementById("recipe-template").innerHTML);
-  var html = template('{{description}}', '{{ingredients}}');
-}
+
 
 
 
