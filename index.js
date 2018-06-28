@@ -11,10 +11,11 @@ function init() {
       {name: 'blueberries'},
     ]
   }
-};
-
   var template = Handlebars.compile(document.getElementById("recipe-template").innerHTML);
   var html = template('{{description}}', '{{ingredients}}');
+
+};
+
 
   Handlebars.registerHelper('displayIngredient', function(items) {
     return items.name
