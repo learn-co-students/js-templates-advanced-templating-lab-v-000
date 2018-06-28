@@ -42,8 +42,6 @@ var recipe = {
     {name: 'blueberries'},
   ]
 }
-var template = Handlebars.compile(document.getElementById("recipe-template").innerHTML);
-var html = template();
 
 };
 
