@@ -26,7 +26,7 @@
         </div>
       </form>
 
-      <script id="recipe-template" type="text/x-handlebars-template">
+      <script id="recipe-template" type="text/x-handlebars-template" onsubmit="displayEditForm()">
         <div>{{name}}</div>
         <div><a href="displayEditForm();">Edit Recipe</a></div>
         <div>{{> recipeDetailsPartial}}</div>
