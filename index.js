@@ -43,7 +43,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
 Handlebars.registerPartial('recipeDetailsPartial', document.getElementById("recipe-details-partial").innerHTML)
   var template = Handlebars.compile(document.getElementById("recipe-template").innerHTML);
-  var html = template('{{description}}' + '{{ingredients.name}}');
+  var html = template({{description}}, {{ingredients.name}});
 
 
 
