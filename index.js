@@ -1,22 +1,5 @@
 function init() {
   //put any page initialization/handlebars initialization here
-  function createRecipe() {
-  var recipe = {
-    description: 'smoothie',
-    ingredients: [
-      {name: 'milk'},
-      {name: 'banana'},
-      {name: 'honey'},
-      {name: 'peanutbutter'},
-      {name: 'blueberries'},
-    ]
-  }
-  var template = Handlebars.compile(document.getElementById("recipe-template").innerHTML);
-  var html = template('{{description}}', '{{ingredients}}');
-
-};
-
-
   Handlebars.registerHelper('displayIngredient', function(items) {
     return items.name
     // var out = "<ul>";
@@ -27,8 +10,6 @@ function init() {
   });
 
   Handlebars.registerPartial('recipeDetailsPartial', document.getElementById("recipe-details-partial").innerHTML)
-
-
 
 // EXAMPLE
   // var context = {
@@ -50,7 +31,21 @@ document.addEventListener("DOMContentLoaded", function(event) {
   init()
 })
 
+function createRecipe() {
+var recipe = {
+  description: 'smoothie',
+  ingredients: [
+    {name: 'milk'},
+    {name: 'banana'},
+    {name: 'honey'},
+    {name: 'peanutbutter'},
+    {name: 'blueberries'},
+  ]
+}
+var template = Handlebars.compile(document.getElementById("recipe-template").innerHTML);
+var html = template('{{description}}', '{{ingredients}}');
 
+};
 
 
 
