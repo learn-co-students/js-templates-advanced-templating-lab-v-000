@@ -11,6 +11,7 @@ function init() {
 
   Handlebars.registerPartial('recipeDetailsPartial', document.getElementById("recipe-details-partial").innerHTML)
 
+  Handlebars.registerPartial('recipeFormPartial', document.getElementById("recipe-details-partial").innerHTML)
 // EXAMPLE
   // var context = {
   //   author: {firstName: "Alan", lastName: "Johnson"},
@@ -48,7 +49,7 @@ var html = template('{{description}}', '{{ingredients}}');
 };
 
 function displayEditForm(){
-  
+
 }
 
 
