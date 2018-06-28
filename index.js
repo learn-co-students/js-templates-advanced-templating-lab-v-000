@@ -1,5 +1,6 @@
 function init() {
   //put any page initialization/handlebars initialization here
+function createRecipe(){
   var recipe = {
     description: 'smoothie',
     ingredients: [
@@ -10,6 +11,8 @@ function init() {
       {name: 'blueberries'},
     ]
   }
+}
+
   Handlebars.registerHelper('displayIngredient', function(items) {
     return items.name
     // var out = "<ul>";
