@@ -1,6 +1,6 @@
 function init() {
   //put any page initialization/handlebars initialization here
-function createRecipe(){
+
   var recipe = {
     description: 'smoothie',
     ingredients: [
@@ -11,7 +11,6 @@ function createRecipe(){
       {name: 'blueberries'},
     ]
   }
-}
 
   Handlebars.registerHelper('displayIngredient', function(items) {
     return items.name
@@ -44,7 +43,13 @@ document.addEventListener("DOMContentLoaded", function(event) {
   init()
 })
 
-Handlebars.registerPartial('recipeDetailsPartial', '{{description}}', '{{ingredients}}')
+
+Handlebars.registerPartial('recipeDetailsPartial', document.getElementById("recipe-details-partial").innerHTML)
+function createRecipe() {
+  var template = Handlebars.compile(document.getElementById("recipe-template").innerHTML);
+  var html = template('{{description}}', '{{ingredients}}');
+}
+
 
 
 
