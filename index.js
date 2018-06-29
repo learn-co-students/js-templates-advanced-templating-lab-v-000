@@ -44,16 +44,16 @@ var recipe = {
   ]
 }
 var template = Handlebars.compile(document.getElementById("recipe-template").innerHTML);
-var html = template('{{description}}', '{{ingredients}}');
-
 };
 
 function displayEditForm(){
   var template = Handlebars.compile(document.getElementById("recipe-form-template").innerHTML);
-  
+
 }
 
-
+function updateRecipe(){
+      Handlebars.compile(document.getElementById("recipe-template").innerHTML);
+}
 
 
 //Handlebars.registerHelper('comment_body', function() {
