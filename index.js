@@ -43,11 +43,11 @@ var recipe = {
     {name: 'blueberries'},
   ]
 }
-var template = Handlebars.compile(document.getElementById("recipe-template").innerHTML);
+  Handlebars.compile(document.getElementById("recipe-template").innerHTML);
 };
 
 function displayEditForm(){
-  var template = Handlebars.compile(document.getElementById("recipe-form-template").innerHTML);
+  Handlebars.compile(document.getElementById("recipe-form-template").innerHTML);
 
 }
 
