@@ -49,7 +49,8 @@ var html = template('{{description}}', '{{ingredients}}');
 };
 
 function displayEditForm(){
-
+  var template = Handlebars.compile(document.getElementById("recipe-form-template").innerHTML);
+  var html= template();
 }
 
 
