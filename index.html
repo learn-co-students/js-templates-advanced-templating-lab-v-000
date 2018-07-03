@@ -34,17 +34,29 @@
     </script>
 
     <script id="recipe-template" type="text/x-handlebars-template">
-      <div>Recipe Name: </div>;
-      <a href="#">Edit Recipe </a>;
-      {{ >recipeDetailsPartial }};
+      <div>Recipe Name: </div>
+      <a href="#">Edit Recipe </a><br>
+      {{> recipePartial }}
     </script>
 
     <script id="recipe-details-partial" type="text/x-handlebars-template">
-      <div>{{ description }}</div>
-      {{#each this}}
-        <p>{{ingredient}}</p>
-      {{/each}}
+      <div id="recipe">
+        <p>{{description}}</p>
+        <ul>
+          {{#each ingredients}}
+          <li>{{name}}</li>
+          {{/each}}
+        </ul>
+      </div>
     </script>
+
+    <script id="main-template" type="text/x-handlebars-template">
+      {{> namePartial }}
+    </script>
+    <script id="partial-template" type="text/x-handlebars-template">
+      <div>{{ name }}</div>
+    </script>
+
 
   </body>
 </html>
