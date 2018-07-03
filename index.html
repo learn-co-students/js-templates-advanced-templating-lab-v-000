@@ -17,5 +17,16 @@
     <script src="node_modules/expect/umd/expect.min.js"></script>
     <script>mocha.setup('bdd');</script>
     <script src="test/index-test.js"></script>
+
+
+    <script id="recipe-form-template" type="text/x-handlebars-template">
+      <form onsubmit="postComment();return false;">
+        Name: <input type="text" id="name"><br>
+        Description: <input type="textarea" id="description"><br>
+        Ingredient-01: <input type="textarea" id="description"><br>
+        <input type="submit">
+      </form>
+    </script>
+
   </body>
 </html>
