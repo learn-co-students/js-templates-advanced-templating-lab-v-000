@@ -39,5 +39,12 @@
       {{ >recipeDetailsPartial }};
     </script>
 
+    <script id="recipe-details-partial" type="text/x-handlebars-template">
+      <div>{{ description }}</div>
+      {{#each this}}
+        <p>{{ingredient}}</p>
+      {{/each}}
+    </script>
+
   </body>
 </html>

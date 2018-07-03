@@ -3,7 +3,15 @@ function init() {
   var template = Handlebars.compile(document.getElementById("recipe-form-template").innerHTML);
 
   document.getElementsByTagName("main")[0].innerHTML += template();
-  //debugger;
+
+//this is where the partial is coming from
+  Handlebars.recipeDetailsPartial('recipeDetailsPartial', document.getElementById("recipe-details-partial").innerHTML)
+//this is where the partial is going
+  function renderMain() {
+    var template = Handlebars.compile(document.getElementById("recipe-template").innerHTML);
+    var html = template({ingredient: 'test ingredient'});
+  }
+
 }
 
 
