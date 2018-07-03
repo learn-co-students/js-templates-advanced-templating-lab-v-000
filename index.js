@@ -5,8 +5,8 @@ function init() {
   document.getElementsByTagName("main")[0].innerHTML += template();
 
 //this is where the partial is coming from
-  Handlebars.recipeDetailsPartial('recipeDetailsPartial', document.getElementById("recipe-details-partial").innerHTML)
-//this is where the partial is going
+  Handlebars.registerPartial('recipeDetailsPartial', document.getElementById("recipe-details-partial").innerHTML)
+
   function renderMain() {
     var template = Handlebars.compile(document.getElementById("recipe-template").innerHTML);
     var html = template({ingredient: 'test ingredient'});
