@@ -41,11 +41,25 @@
         </script>
 
         <script id="recipe-template" type="text/x-handlebars-template">
-           <p id="recipe-name">Recipe Name: {{recipeName}}</p>
-           
-           <a href="#" onclick="displayEditForm();">Edit Recipe</a>
+          <p id="recipe-name">Recipe Name: {{recipeName}}</p>
+          <ul>
+          {{#each recipeIngredients}}
+            <li>{{displayIngredient}}</li>
+          {{/each}}
+          </ul>
+          <a href="#" onclick="displayEditForm();">Edit Recipe</a>
         </script>
 
+        <!-- create a partial that has the description and ingredients in it -->
+        <script id="recipe-details-partial" type="text/x-handlebars-template">
+          <p>Recipe Description: {{recipeDescription}}</p>
+          <p>Ingredients:</p>
+          <ul>
+          {{#each recipeIngredients}}
+            <li>{{displayIngredient}}</li>
+          {{/each}}
+          </ul>
+        </script>
 
 
 

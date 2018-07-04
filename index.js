@@ -4,16 +4,12 @@ function init() {
 
   var typeOfSubmit = {submitType: "createRecipe();return false;"};
 
+  //Add the form template to the DOM
   document.getElementsByTagName("main")[0].innerHTML += formTemplate(typeOfSubmit);
 
-    //Register the custom helper
-  Handlebars.registerHelper('displayIngredient', function(){
-    return new Handlebars.SafeString(this.ingredient)
-  });
-
-
-  //Register the recipe-details-partial
-  Handlebars.registerPartial('recipeDetailsPartial',document.getElementById("recipe-details-partial").innerHTML)
+  //get the recipe template and add it to the DOM
+  let recipeTemplate = Handlebars.compile(document.getElementById("recipe-template").innerHTML);
+  document.getElementsByTagName("main")[0].innerHTML += recipeTemplate();
 
 }
 
