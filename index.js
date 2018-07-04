@@ -47,6 +47,13 @@ function init() {
 
 
 
+//this is where the partial is going
+  function renderMain() {
+    var template = Handlebars.compile(document.getElementById("recipe-template").innerHTML);
+    var html = template({ingredient: 'test ingredient'});
+  }
+
+
 }
 
 
