@@ -7,7 +7,7 @@ function init() {
    Handlebars.registerHelper('displayIngredient', function(){
      return new Handlebars.SafeString(this.ingredient)
    });
-   
+
   var formTemplate = Handlebars.compile(document.getElementById("recipe-form-template").innerHTML);
 
   var typeOfSubmit = {submitType: "createRecipe();return false;"};
@@ -19,54 +19,73 @@ function init() {
   let recipeTemplate = Handlebars.compile(document.getElementById("recipe-template").innerHTML);
   document.getElementsByTagName("main")[0].innerHTML += recipeTemplate();
 
+  function catchFormValues() {
+      var name = document.getElementById("name").value;
+      var description = document.getElementById("description").value;
+      var ingredients = document.getElementsByName("ingredients");
+      // Using forEach
+      ingredientsArray = [];
+      ingredients.forEach(function(element){
+        var newObject = {ingredient: element.value}
+        ingredientsArray.push(newObject);
+      });
+
+      //Put description and ingredients in a variable hash
+      recipeDetails = {
+        recipeName: name,
+        recipeDescription: description,
+        recipeIngredients: ingredientsArray
+      }
+  }
+
+  function removeForm(){
+    //var parent = document.getElementsByTagName("main");
+    var recipeForm = document.getElementById("recipe-form");
+      recipeForm.remove();
+  }
+
+  function getRecipeTemplate() {
+    recipeTemplate = Handlebars.compile(document.getElementById("recipe-template").innerHTML);
+  }
+
+  function addRecipeTemplateToDom() {
+    document.getElementsByTagName("main")[0].innerHTML += recipeTemplate(recipeDetails);
+  }
+
+  function createRecipe() {
+      catchFormValues();  //gets the form values and assigns them to a global hash variable
+      removeForm(); //Remove form from DOM
+      // Get recipe Template
+      getRecipeTemplate();
+      // Add recipeTemplate to DOM and pass in recipeDetails
+      addRecipeTemplateToDom();
+    };
+
+    function displayEditForm() {
+      //get the form from the template
+      var formTemplate = Handlebars.compile(document.getElementById("recipe-form-template").innerHTML);
+      //add the submit type to the passed variables
+      recipeDetails.submitType = "updateRecipe();return false;"
+      //put the form on the page
+      document.getElementsByTagName("main")[0].innerHTML += formTemplate(recipeDetails);
+    };
+
+    function updateRecipe() {
+      //remove the recipe from the page
+      var recipeTemplate = document.getElementById("recipe-template");
+      recipeTemplate.remove();
+      catchFormValues();
+      removeForm(); //Remove form from DOM
+      // Get recipe Template
+      getRecipeTemplate();
+      // Add recipeTemplate to DOM and pass in recipeDetails
+      addRecipeTemplateToDom();
+
+    }
+
 }
 
 
 document.addEventListener("DOMContentLoaded", function(event) {
   init()
 })
-
-
-
-
-function catchFormValues() {
-    var name = document.getElementById("name").value;
-    var description = document.getElementById("description").value;
-    var ingredients = document.getElementsByName("ingredients");
-    // Using forEach
-    ingredientsArray = [];
-    ingredients.forEach(function(element){
-      var newObject = {ingredient: element.value}
-      ingredientsArray.push(newObject);
-    });
-
-    //Put description and ingredients in a variable hash
-    recipeDetails = {
-      recipeName: name,
-      recipeDescription: description,
-      recipeIngredients: ingredientsArray
-    }
-}
-
-function removeForm(){
-  //var parent = document.getElementsByTagName("main");
-  var recipeForm = document.getElementById("recipe-form");
-    recipeForm.remove();
-}
-
-function getRecipeTemplate() {
-  recipeTemplate = Handlebars.compile(document.getElementById("recipe-template").innerHTML);
-}
-
-function addRecipeTemplateToDom() {
-  document.getElementsByTagName("main")[0].innerHTML += recipeTemplate(recipeDetails);
-}
-
-function createRecipe() {
-    catchFormValues();  //gets the form values and assigns them to a global hash variable
-    removeForm(); //Remove form from DOM
-    // Get recipe Template
-    getRecipeTemplate();
-    // Add recipeTemplate to DOM and pass in recipeDetails
-    addRecipeTemplateToDom();
-  };
