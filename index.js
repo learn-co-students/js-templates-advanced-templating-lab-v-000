@@ -1,5 +1,13 @@
 function init() {
   //put any page initialization/handlebars initialization here
+  //Register the recipe-details-partial
+  Handlebars.registerPartial('recipeDetailsPartial',document.getElementById("recipe-details-partial").innerHTML)
+
+    //Register the custom helper
+   Handlebars.registerHelper('displayIngredient', function(){
+     return new Handlebars.SafeString(this.ingredient)
+   });
+   
   var formTemplate = Handlebars.compile(document.getElementById("recipe-form-template").innerHTML);
 
   var typeOfSubmit = {submitType: "createRecipe();return false;"};
@@ -17,6 +25,9 @@ function init() {
 document.addEventListener("DOMContentLoaded", function(event) {
   init()
 })
+
+
+
 
 function catchFormValues() {
     var name = document.getElementById("name").value;
@@ -50,7 +61,6 @@ function getRecipeTemplate() {
 function addRecipeTemplateToDom() {
   document.getElementsByTagName("main")[0].innerHTML += recipeTemplate(recipeDetails);
 }
-
 
 function createRecipe() {
     catchFormValues();  //gets the form values and assigns them to a global hash variable
