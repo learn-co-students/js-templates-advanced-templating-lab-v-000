@@ -1,5 +1,7 @@
 function init() {
   //put any page initialization/handlebars initialization here
+
+  let recipeDetails = {};
   //Register the recipe-details-partial
   Handlebars.registerPartial('recipeDetailsPartial',document.getElementById("recipe-details-partial").innerHTML)
 
@@ -38,7 +40,7 @@ function catchFormValues() {
     });
 
     //Put description and ingredients in a variable hash
-    let recipeDetails = {
+    recipeDetails = {
       name: name,
       description: description,
       ingredients: ingredientsArray
