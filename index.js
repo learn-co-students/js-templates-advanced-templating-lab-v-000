@@ -1,7 +1,6 @@
 function init() {
   //put any page initialization/handlebars initialization here
 
-  let recipeDetails = {};
   //Register the recipe-details-partial
   Handlebars.registerPartial('recipeDetailsPartial',document.getElementById("recipe-details-partial").innerHTML)
 
@@ -26,6 +25,7 @@ function init() {
 
 }
 
+let recipeDetails = {};
 
 function catchFormValues() {
     var name = document.getElementById("name").value;
