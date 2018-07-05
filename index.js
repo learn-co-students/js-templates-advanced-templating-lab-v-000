@@ -32,13 +32,13 @@ function catchFormValues() {
     // Using forEach
     var ingredientsArray = [];
     //ingredients.forEach(function(element){
-    document.getElementsByName("ingredients").forEach(function(element){
+    Array.from(ingredients).forEach(function(element){
       var newObject = {ingredient: element.value}
       ingredientsArray.push(newObject);
     });
 
     //Put description and ingredients in a variable hash
-    recipeDetails = {
+    let recipeDetails = {
       name: name,
       description: description,
       ingredients: ingredientsArray
