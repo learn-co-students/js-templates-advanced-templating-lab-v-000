@@ -31,8 +31,8 @@ function catchFormValues() {
     let ingredients = document.getElementsByName("ingredients");
     // Using forEach
     var ingredientsArray = [];
-    debugger;
-    ingredients.forEach(function(element){
+    //ingredients.forEach(function(element){
+    document.getElementsByName("ingredients").forEach(function(element){
       var newObject = {ingredient: element.value}
       ingredientsArray.push(newObject);
     });
