@@ -54,10 +54,11 @@ function removeForm(){
 }
 
 function getRecipeTemplate() {
-  recipeTemplate = Handlebars.compile(document.getElementById("recipe-template").innerHTML);
+  let recipeTemplate = Handlebars.compile(document.getElementById("recipe-template").innerHTML);
 }
 
 function addRecipeTemplateToDom() {
+  let recipeTemplate = Handlebars.compile(document.getElementById("recipe-template").innerHTML);
   document.getElementsByTagName("main")[0].innerHTML += recipeTemplate(recipeDetails);
 }
 
@@ -65,7 +66,7 @@ function createRecipe() {
     catchFormValues();  //gets the form values and assigns them to a global hash variable
     removeForm(); //Remove form from DOM
     // Get recipe Template
-    getRecipeTemplate();
+    //getRecipeTemplate();
     // Add recipeTemplate to DOM and pass in recipeDetails
     addRecipeTemplateToDom();
   };
@@ -81,12 +82,12 @@ function createRecipe() {
 
   function updateRecipe() {
     //remove the recipe from the page
-    var recipeTemplate = document.getElementById("recipe-template");
-    recipeTemplate.remove();
+    //var recipeTemplate = document.getElementById("recipe-template");
+    //recipeTemplate.remove();
     catchFormValues();
     removeForm(); //Remove form from DOM
     // Get recipe Template
-    getRecipeTemplate();
+    //getRecipeTemplate();
     // Add recipeTemplate to DOM and pass in recipeDetails
     addRecipeTemplateToDom();
 
