@@ -23,8 +23,8 @@
           <form id="recipe-form" onsubmit={{submitType}}>
             Name:<input type="text" id="name" value={{recipeName}}><br>
             Description: <input type="textarea" id="description" value={{recipeDescription}}><br>
-            {{#if recipeIngredients}}
-              {{#each recipeIngredients}}
+            {{#if ingredients}}
+              {{#each ingredients}}
                 Ingredient: <input type="textarea" id="ingredient-{{@index}}" name="ingredients" value={{displayIngredient}}><br>
               {{/each}}
             {{else}}
