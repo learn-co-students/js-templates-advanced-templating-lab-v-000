@@ -3,6 +3,8 @@ function init() {
   //Register the recipe-details-partial
   Handlebars.registerPartial('recipeDetailsPartial',document.getElementById("recipe-details-partial").innerHTML)
 
+  Handlebars.registerPartial('recipeFormPartial',document.getElementById("recipe-details-partial").innerHTML)
+
     //Register the custom helper
    Handlebars.registerHelper('displayIngredient', function(){
      return new Handlebars.SafeString(this.ingredient)
@@ -36,9 +38,9 @@ function catchFormValues() {
 
     //Put description and ingredients in a variable hash
     recipeDetails = {
-      recipeName: name,
-      recipeDescription: description,
-      recipeIngredients: ingredientsArray
+      name: name,
+      description: description,
+      ingredients: ingredientsArray
     }
 }
 
@@ -69,6 +71,7 @@ function createRecipe() {
     //get the form from the template
     var formTemplate = Handlebars.compile(document.getElementById("recipe-form-template").innerHTML);
     //add the submit type to the passed variables
+    debugger;
     recipeDetails.submitType = "updateRecipe();return false;"
     //put the form on the page
     document.getElementsByTagName("main")[0].innerHTML += formTemplate(recipeDetails);
