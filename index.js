@@ -12,21 +12,18 @@ function initForm() {
   var template = Handlebars.compile(formTemplate)
   document.getElementsByTagName("main")[0].innerHTML = template({'submitAction': 'createRecipe()'})
 }
-
 function createRecipe() {
   var recipe = getRecipeVals()
   var recipeTemplate = document.getElementById("recipe-template").innerHTML
   var template = Handlebars.compile(recipeTemplate)
   document.getElementById("main").innerHTML = template(recipe)
 }
-
 function updateRecipe() {
   var recipe = getRecipeVals()
   var recipeTemplate = document.getElementById("recipe-template").innerHTML
   var template = Handlebars.compile(recipeTemplate)
   document.getElementById("main").innerHTML = template(recipe)
 }
-
 function displayEditForm() {
   var name = document.getElementById("nameHeader").innerText
   var description = document.getElementById("recipeDescription").innerText
@@ -42,7 +39,6 @@ function displayEditForm() {
   var template = Handlebars.compile(recipeFormTemplate)
   document.getElementById("main").innerHTML = template(recipe)
 }
-
 function getRecipeVals() {
   var ingredientsNodes = document.getElementsByName("ingredients")
   var ingredients = []
@@ -58,7 +54,6 @@ function getRecipeVals() {
 }
 
 function handlebarsSetup() {
-  //put any handlebars registrations here.
   Handlebars.registerHelper('displayIngredient', function(ingredient) {
     return new Handlebars.SafeString('<li name="ingredientsList">' + ingredient + '</li>')
   })
