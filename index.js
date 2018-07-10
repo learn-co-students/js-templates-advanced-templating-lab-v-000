@@ -34,11 +34,30 @@ function createRecipe() {
 }
 
 function displayEditForm() {
+  let name = document.getElementById("recipeName").innerHTML
+  let description = document.getElementById("recipeDescription").innerHTML
+  let ingredients = []
+  let ingredientsValues = document.getElementsByClassName("recipeIngredients")
+  for(let i = 0; i < ingredientsValues.length; i++) {
+    ingredients.push(ingredientsValues[i].innerHTML)
+  }
+
   let recipeFormTemplate = Handlebars.compile(document.getElementById("recipe-form-template").innerHTML)
-  document.getElementsByTagName("main")[0].innerHTML += recipeFormTemplate()
+  document.getElementById("recipe-form-div").innerHTML = recipeFormTemplate({ 'onsubmit': 'updateRecipe();', 'name': name, 'description': description, 'ingredients': ingredients })
 }
 
 
 function updateRecipe() {
-  createRecipe()
+  let name = document.getElementById("name").value
+  let description = document.getElementById("description").value
+  let ingredients = []
+  let ingredientsValues = document.getElementsByName("ingredients")
+
+  for(let i = 0; i < ingredientsValues.length; i++) {
+    ingredients.push(ingredientsValues[i].value)
+  }
+
+  let recipeTemplate = Handlebars.compile(document.getElementById("recipe-template").innerHTML)
+
+  document.getElementById("recipe").innerHTML = recipeTemplate({'name': name, 'description': description, 'ingredients': ingredients})
 }
