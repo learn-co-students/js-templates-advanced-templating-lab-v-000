@@ -1,6 +1,5 @@
 function init() {
   //put any page initialization/handlebars initialization here
-
   let recipeFormTemplate = Handlebars.compile(document.getElementById("recipe-form-template").innerHTML)
   document.getElementsByTagName("main")[0].innerHTML += recipeFormTemplate({ 'onsubmit': 'createRecipe();' })
 
@@ -17,20 +16,23 @@ document.addEventListener("DOMContentLoaded", function(event) {
   init()
 })
 
-function createRecipe() {
+function formInput() {
   let name = document.getElementById("name").value
   let description = document.getElementById("description").value
   let ingredients = []
   let ingredientsValues = document.getElementsByName("ingredients")
-  // test won't let me pass with forEach even though it is a function...
-  // ingredientsValues.forEach(ingredient => ingredients.push(ingredient.value))
+
   for(let i = 0; i < ingredientsValues.length; i++) {
     ingredients.push(ingredientsValues[i].value)
   }
 
-  let recipeTemplate = Handlebars.compile(document.getElementById("recipe-template").innerHTML)
+  return { 'name': name, 'description': description, 'ingredients': ingredients }
+}
 
-  document.getElementsByTagName("main")[0].innerHTML += recipeTemplate({'name': name, 'description': description, 'ingredients': ingredients})
+function createRecipe() {
+  // not sure how to refactor these template queries. hmmm
+  let recipeTemplate = Handlebars.compile(document.getElementById("recipe-template").innerHTML)
+  document.getElementsByTagName("main")[0].innerHTML += recipeTemplate(formInput())
 }
 
 function displayEditForm() {
@@ -48,16 +50,6 @@ function displayEditForm() {
 
 
 function updateRecipe() {
-  let name = document.getElementById("name").value
-  let description = document.getElementById("description").value
-  let ingredients = []
-  let ingredientsValues = document.getElementsByName("ingredients")
-
-  for(let i = 0; i < ingredientsValues.length; i++) {
-    ingredients.push(ingredientsValues[i].value)
-  }
-
   let recipeTemplate = Handlebars.compile(document.getElementById("recipe-template").innerHTML)
-
-  document.getElementById("recipe").innerHTML = recipeTemplate({'name': name, 'description': description, 'ingredients': ingredients})
+  document.getElementById("recipe").innerHTML = recipeTemplate(formInput())
 }
