@@ -18,6 +18,7 @@
     <script id="recipe-form-partial" type="text/x-handlebars-template">
       Name: <input type="text" id="name" value="{{name}}"> <br>
       Description: <input type="text" id="description" value="{{description}}"> <br>
+      Ingredients: <br>
       {{#each ingredients}}
         <input type="text" name="ingredients" value="{{this}}"> <br>
       {{else}}
