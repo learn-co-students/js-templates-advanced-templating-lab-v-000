@@ -36,7 +36,7 @@ We can also use the `each` helper on a collection, in this case the `ingredients
 To render this template, our JavaScript code would look like this:
 
 ```js
-var recipe = {
+let recipe = {
   description: 'yummy chicken noodle soup',
   ingredients: [
     {quantity: "1 cup", name: 'chicken'},
@@ -45,8 +45,8 @@ var recipe = {
   ]
 }
 
-var template = Handlebars.compile(document.getElementById("my-template").innerHTML);
-var html = template(recipe);
+let template = Handlebars.compile(document.getElementById("my-template").innerHTML);
+let html = template(recipe);
 ```
 
 First we use `Handlebars.compile` to create the `template` function from the `innerHTML` of our template, then we execute the `template` function with a context object, `recipe`, to get rendered HTML.
@@ -71,8 +71,8 @@ Let's look at a quick example.
 ```js
 Handlebars.registerPartial('namePartial', document.getElementById("partial-template").innerHTML)
 function renderMain() {
-  var template = Handlebars.compile(document.getElementById("main-template").innerHTML);
-  var html = template({name: 'Gordon Ramsay'});
+  let template = Handlebars.compile(document.getElementById("main-template").innerHTML);
+  let html = template({name: 'Gordon Ramsay'});
 }
 ```
 
