@@ -9,6 +9,39 @@
   <body>
     <main id="main">
     </main>
+    <!-- supposed to work with both edit and create recipe forms -->
+    <!-- needs submit_function and a list of 5 blank ingredients for createRecipe() -->
+    <script id="recipe-form-template" type="text/x-handlebars-template">
+      <form onsubmit= {{ submitFunction }} id= {{ formId }}>
+        {{> recipeFormPartial }}
+        <input type="submit" name="Submit" />
+      </form>
+    </script>
+    <!-- displays recipe info -->
+    <script type="text/x-handlebars-template" id="recipe-form-partial" >
+        Name: <input type="text" id="name" value= "{{ name }}" ><br>
+        Description: <input type="text" id="description" value= "{{ description }}" ><br>
+        Ingredients:
+        {{#each ingredients}}
+          <input type="text" name="ingredients" value= "{{ name }}" >
+        {{/each}}
+    </script>
+
+    <!-- displays recipe info -->
+    <script id="recipe-template" type="text/x-handlebars-template">
+      <h3 id="recipe-name">{{name}}</h3>
+      <a onclick="displayEditForm();">Edit Recipe</a>
+      {{> recipeDetailsPartial }}
+
+    </script>
+
+    <!-- partial for description and ingredients -->
+    <script id="recipe-details-partial" type="text/x-handlebars-template">
+      <p id='recipe-description'>{{description}}</p>
+      <ul>
+        {{#each ingredients}}{{ displayIngredient this}}{{/each}}
+      </ul>
+    </script>
     <script src="node_modules/handlebars/dist/handlebars.min.js"></script>
     <script src="index.js"></script>
     <!-- Open this file and call `mocha.run()` in console to run tests -->
