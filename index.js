@@ -20,9 +20,11 @@ function init() {
 
   // Add recipe form to HTML view
   const formTemplate = Handlebars.compile(document.getElementById("recipe-form-template").innerHTML);
-  // const newForm = formTemplate();
-  document.getElementById("show-form").innerHTML += formTemplate();
+  const params = {"submit_value" : "createRecipe();return false;"};
+  const newForm = formTemplate(params);
+  document.getElementById("show-form").innerHTML += newForm;
 }
+
 
 function createRecipe() {
   console.log('Create Recipe');
@@ -35,9 +37,15 @@ function createRecipe() {
   newRecipe["name"] = recipeDescription;
   newRecipe["ingredients"] = [];
   
-  recipeIngredients.forEach(function(ingredient) {
-    newRecipe["ingredients"].push(ingredient.value);
-  });
+  // NOTE : forEach not working with Learn tests
+  // recipeIngredients.forEach(function(ingredient) {
+  //   newRecipe["ingredients"].push(ingredient.value);
+  // });
+  
+  for (let i=0; i<recipeIngredients.length; i++ ) {
+    newRecipe["ingredients"].push(recipeIngredients[i].innerHTML); 
+  }
+
     // console.log('new recipe = ', newRecipe);
   
   // Add recipe template to HTML view
@@ -62,9 +70,17 @@ function displayEditForm() {
   editRecipe["name"] = recipeName;
   editRecipe["description"] = recipeDescription;
   editRecipe["ingredients"] = [];
-  recipeIngredients.forEach(function(ingredient) {
-    editRecipe["ingredients"].push(ingredient.innerHTML); 
-  });
+
+  // NOTE : forEach not working with Learn tests
+  // recipeIngredients.forEach(function(ingredient) {
+  //   editRecipe["ingredients"].push(ingredient.innerHTML); 
+  // });
+  
+  for (let i=0; i<recipeIngredients.length; i++ ) {
+    editRecipe["ingredients"].push(recipeIngredients[i].innerHTML); 
+  }
+  
+  editRecipe["submit_value"] = "updateRecipe();return false;";
   // console.log('show recipe = ', editRecipe);
   
   // Add recipe form to HTML view
@@ -76,14 +92,33 @@ function displayEditForm() {
   document.getElementById("show-recipes").innerHTML = '';
   
   // Update form submission action
-  const form = document.getElementById('recipe-form').onsubmit = function() {updateRecipe()};
-
+  // const form = document.getElementById('recipe-form').onsubmit = function() {updateRecipe()};
 }
 
 function updateRecipe() {
   console.log('Update Recipe');
-  const form = document.getElementById('recipe-form').onsubmit = function() {createRecipe()};
-  createRecipe;
+
+  const recipeName = document.getElementById("name").value;
+  const recipeDescription = document.getElementById("description").value;
+  const recipeIngredients = document.getElementsByName("ingredients");
+
+  const newRecipe = {};
+  newRecipe["description"] = recipeName;
+  newRecipe["name"] = recipeDescription;
+  newRecipe["ingredients"] = [];
+  
+  for (let i=0; i<recipeIngredients.length; i++ ) {
+    newRecipe["ingredients"].push(recipeIngredients[i].innerHTML); 
+  }
+  
+  // Add recipe template to HTML view
+  const recipeTemplate = Handlebars.compile(document.getElementById("recipe-template").innerHTML);
+  const showRecipe = recipeTemplate(newRecipe);
+  document.getElementById("show-recipes").innerHTML += showRecipe;
+  
+  // Only allow single recipe creation for now
+  document.getElementById("show-form").innerHTML = '';
+
 }
 
 
