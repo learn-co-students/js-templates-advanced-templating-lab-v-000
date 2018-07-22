@@ -64,6 +64,8 @@ function displayEditForm() {
   document.getElementById('main').innerHTML = template(rec)
 }
 
+
+// copied from git hub but not sure why its needed
 function updateRecipe() {
   var recipe = getRecValEd()
   var recipeTemplate = document.getElementById("recipe-template").innerHTML
