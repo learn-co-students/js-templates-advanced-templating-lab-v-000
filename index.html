@@ -16,9 +16,13 @@
     </script>
 
     <script id="recipe-details-partial" type="text/x-handlebars-template">
-      <p id="recipeDescription"
-
-
+      <p id="recipeDescription">{{description}}</p>
+      <ul>
+        {{#each ingredients}}
+        {{ displayIngredient this}}
+        {{/each}}
+      </ul>
+    </script>
     <script src="node_modules/handlebars/dist/handlebars.min.js"></script>
     <script src="index.js"></script>
     <!-- Open this file and call `mocha.run()` in console to run tests -->
