@@ -7,9 +7,9 @@ function initForm() {
 function getRecipeVals() {
   let ingredientsNodes = document.getElementsByName("ingredients");
   let ingredients = [];
-  for (const ingredient in ingredientsNodes) {
-    if (ingredient.value !== "") {
-      ingredients.push(ingredient.value);
+  for(var i=0;i<ingredientsNodes.length;i++) {
+    if(ingredientsNodes[i].value !== "") {
+      ingredients.push(ingredientsNodes[i].value)
     }
   }
   let name = document.getElementById("name").value;
@@ -35,10 +35,10 @@ function updateRecipe() {
 function displayEditForm() {
   let name = document.getElementById("nameHeader").innerText;
   let description = document.getElementById("recipeDescription").innerText;
-  let ingredientsNodes = document.getElementsByName("ingredients");
+  let ingredientsNodes = document.getElementsByName("ingredientsList");
   var ingredients = [];
-  for (const ingredient in ingredientsNodes) {
-    ingredients.push(ingredient.innerText);
+  for(var i=0;i<ingredientsNodes.length;i++) {
+    ingredients.push(ingredientsNodes[i].innerText)
   }
 
   let recipe = {name, description, ingredients, submitAction: 'createRecipe()'};
