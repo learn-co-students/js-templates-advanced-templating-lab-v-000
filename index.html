@@ -7,10 +7,63 @@
     <link rel="stylesheet" href="node_modules/mocha/mocha.css" />
   </head>
   <body>
+    
+    
+    
+    
+    
+    
     <main id="main">
+      
+      
+      
     </main>
+    
+    
     <script src="node_modules/handlebars/dist/handlebars.min.js"></script>
     <script src="index.js"></script>
+    
+    
+    #templates 
+      id="recipe-form-template"
+      onSubmit= createRecipe() 
+      {{name}}, {{description}}
+      {{ each ingredients }}(min 5)
+      use getElementsByName()
+      
+      id="recipe-template"
+      {{name}}
+      "Edit Recipe" link
+      onSubmit render the recipeDetailsPartial
+    
+    
+      id="recipe-details-partial"
+      register recipeDetailsPartial
+      for description, each ingredients
+      
+      #helper 
+      displayIngredients 
+      display each ingredient
+    
+    
+      #editing
+      "Edit Recipe" link directs to...
+      displayEditForm()
+      that renders template recipe-form-template 
+      that allows edit of recipe 
+      onSubmit updateRecipe()
+      
+      
+      user same recipe-form-template for new and edit
+      
+      
+      
+      
+      
+      
+      
+    
+    
     <!-- Open this file and call `mocha.run()` in console to run tests -->
     <div id="mocha"></div>
     <script src="node_modules/mocha/mocha.js"></script>
