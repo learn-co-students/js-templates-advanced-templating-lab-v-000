@@ -18,6 +18,7 @@
     <script src="index.js"></script>
     
     
+    
     <script id="recipe-form-template" type="text/x-handlebars-template">
       <div id="new_recipe">
         <form id="recipe-form" onsubmit=createRecipe();return false;">
@@ -35,7 +36,7 @@
       
       
       
-    <script id="recipe-details-partial">
+    <script id="recipe-details-partial" type="text/x-handlebars-template">
       <p>{{description}}</p>
         <ul>
           {{ #each ingredients }};

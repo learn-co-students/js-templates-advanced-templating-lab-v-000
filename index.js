@@ -22,12 +22,6 @@ var partial = Handlebars.registerPartial('recipeDetailsPartial', document.getEle
 }  
 
 
-      
-function displayIngredients() {
-
-}
-
-
 
       
 function displayEditForm() {
@@ -38,7 +32,9 @@ function displayEditForm() {
 
       
     
-
+Handlebars.registerHelper('noop', function(options) {
+  return options.fn(this);
+});
 
 
 
