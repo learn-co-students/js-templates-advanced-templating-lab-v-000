@@ -30,32 +30,21 @@
     <script id="recipe-template" type="text/x-handlebars-template">
       Name: <h3 id="name">{{name}}</h3>
       {{>recipeDetailsPartial}}
-      
-        "Edit Recipe" link - displayEditForm()
-        <a onclick="jsfunction()" href="#">
+      <a onclick="displayEditForm()" href="index.js">Edit Recipe</a>
     </script>
       
       
       
     <script id="recipe-details-partial">
-      for {{description}}, {{#each ingredients}}{{/each}}
+      <p>{{description}}</p>
+        <ul>
+          {{ #each ingredients }};
+            <li>{{ingredient}}</li>
+          {{/each}}
+        </ul>
     </script>
     
-      
-      
 
-    
-      #editing
-      "Edit Recipe" link directs to...
-      displayEditForm()
-      that renders template recipe-form-template 
-      that allows edit of recipe 
-      onSubmit updateRecipe()
-      
-      
-      user same recipe-form-template for new and edit
-      
-      
       
       
       

@@ -24,11 +24,16 @@ var partial = Handlebars.registerPartial('recipeDetailsPartial', document.getEle
 
       
 function displayIngredients() {
-  <ul>
-    {{ #each ingredients }};
-      <li>{{ingredient}}</li>
-    {{/each}}
-  </ul>
+
+}
+
+
+
+      
+function displayEditForm() {
+      // that renders template recipe-form-template 
+      // that allows edit of recipe 
+      // onSubmit updateRecipe()
 }
 
       
