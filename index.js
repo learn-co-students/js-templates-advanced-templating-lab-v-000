@@ -9,7 +9,6 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
 
 var formTemplate = Handlebars.compile(document.getElementById("recipe-form-template").innerHTML);
-var formHtml = template(recipe);
 
 
 
@@ -23,8 +22,6 @@ var partial = Handlebars.registerPartial('recipeDetailsPartial', document.getEle
 
 function createRecipe(){
   var recipeTemplate = Handlebars.compile(document.getElementById("recipe-template").innerHTML);
-  var recipe = document.getElementsByTagName()
-  var recipeHtml = template(recipe);
 }
 
 function updateRecipe(){
@@ -32,11 +29,17 @@ function updateRecipe(){
   var name = document.getElementById("name")
   var description = document.getElementById("description")
   var ingredient = document.getElementsByName("ingredient")
-  // document.getElementById.
 }
 
       
 function displayEditForm() {
+  var name = document.getElementById("name").value
+  var description = document.getElementById("description").value
+  var ingredientItems = document.getElementsByName("ingredient").value
+  var ingredients = []
+  for (let i = 0; i < ingredientItems.length; i++) {
+    ingredients << ingredients[i].innerHTML
+  }
       // that renders template recipe-form-template 
       // that allows edit of recipe 
       // onSubmit updateRecipe()
