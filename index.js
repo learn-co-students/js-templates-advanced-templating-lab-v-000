@@ -8,13 +8,13 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
 
 
-var template = Handlebars.compile(document.getElementById("recipe-form-template").innerHTML);
-var html = template(recipe);
+var formTemplate = Handlebars.compile(document.getElementById("recipe-form-template").innerHTML);
+var formHtml = template(recipe);
 
 
-function getElementsByName() {
-  
-}
+
+// function getElementsByName() {
+// }
 
 
 function reg(){   
@@ -22,9 +22,17 @@ var partial = Handlebars.registerPartial('recipeDetailsPartial', document.getEle
 }  
 
 function createRecipe(){
+  var recipeTemplate = Handlebars.compile(document.getElementById("recipe-template").innerHTML);
+  var recipe = document.getElementsByTagName()
+  var recipeHtml = template(recipe);
 }
 
 function updateRecipe(){
+  var recipeTemplate = Handlebars.compile(document.getElementById("recipe-template").innerHTML);
+  var name = document.getElementById("name")
+  var description = document.getElementById("description")
+  var ingredient = document.getElementsByName("ingredient")
+  // document.getElementById.
 }
 
       

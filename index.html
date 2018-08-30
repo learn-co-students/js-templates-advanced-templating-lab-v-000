@@ -10,7 +10,15 @@
 
     
     <main id="main">
-      
+        <article>
+            <form id="recipe-form" onsubmit="createRecipe();return false;">
+              Name: <input type="text" id="name"><br>
+              Description: <input type="textarea" id="description"><br>
+              Ingredients: <input type="text" name="ingredient" id="ingredient"><br>
+              <input type="submit">
+            </form>
+            <div id="posts"></div>
+      </article>
     </main>
     
     
@@ -31,19 +39,21 @@
     
     
     <script id="recipe-template" type="text/x-handlebars-template">
-      Name: <h3 id="name">{{name}}</h3>
-      {{>recipeDetailsPartial}}
-      <a onclick="displayEditForm()" href="index.js">Edit Recipe</a>
+      <div id="recipe">
+        Name: <h3 id="name">{{name}}</h3>
+        {{>recipeDetailsPartial}}
+        <a onclick="displayEditForm()";return false; href="#">Edit Recipe</a>
+      </div>
     </script>
       
       
       
     <script id="recipe-details-partial" type="text/x-handlebars-template">
       displayIngredient()
-      <p>{{description}}</p>
+      <p id="description">{{description}}</p>
         <ul>
           {{ #each ingredients }};
-            <li>{{ingredient}}</li>
+            <li>{{displayIngredient this}}</li>
           {{/each}}
         </ul>
     </script>
