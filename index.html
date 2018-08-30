@@ -22,7 +22,9 @@
     <script id="recipe-form-template" type="text/x-handlebars-template">
       <div id="new_recipe">
         <form id="recipe-form" onsubmit=createRecipe();return false;">
-          {{>recipeDetailsPartial}}
+          <h2 id="name"</h2>
+          <h3 id="description"</h3>
+          <h3 id="ingredients"</h3>
       </div>
     </script>
     
@@ -37,6 +39,7 @@
       
       
     <script id="recipe-details-partial" type="text/x-handlebars-template">
+      displayIngredient()
       <p>{{description}}</p>
         <ul>
           {{ #each ingredients }};

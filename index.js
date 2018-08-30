@@ -21,7 +21,11 @@ function reg(){
 var partial = Handlebars.registerPartial('recipeDetailsPartial', document.getElementById("recipe-details-partial").innerHTML)
 }  
 
+function createRecipe(){
+}
 
+function updateRecipe(){
+}
 
       
 function displayEditForm() {
@@ -32,8 +36,8 @@ function displayEditForm() {
 
       
     
-Handlebars.registerHelper('noop', function(options) {
-  return options.fn(this);
+Handlebars.registerHelper('displayIngredient', function(ingredient) {
+  return ingredient.fn(this);
 });
 
 
