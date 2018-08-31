@@ -60,9 +60,9 @@ function displayEditForm(){
   }
   let recipe = {action: "updateRecipe()", name, description, ingredients}
 
-  let recipeForm = document.getElementById('recipe-form-template').innerHTML
-  let recipeFormComp = Handlebars.compile(recipeForm)
-  document.getElementsByTagName('main')[0].innerHTML = recipeFormComp(recipe)
+  let form = document.getElementById('recipe-form-template').innerHTML
+  let formTemplate = Handlebars.compile(form)
+  document.getElementsByTagName('main')[0].innerHTML = formTemplate(recipe)
 }
 
 
