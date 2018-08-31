@@ -27,7 +27,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
 
 function createRecipe(){
-  let recipe = document.querySelectorAll('[id=test]');
+  let recipe = document.querySelectorAll('[id=main]');
   let formTemplate = Handlebars.compile(document.getElementById("recipe-template").innerHTML);
   document.getElementsByTagName('main')[0].innerHTML += formTemplate(recipe)
 }
@@ -59,6 +59,7 @@ function displayEditForm(){
     }
   }
   let recipe = {action: "updateRecipe()", name, description, ingredients}
+
   let recipeForm = document.getElementById('recipe-form-template').innerHTML
   let recipeFormHandlebars = Handlebars.compile(recipeForm)
   document.getElementsByTagName('main')[0].innerHTML = recipeFormHandlebars(recipe)
