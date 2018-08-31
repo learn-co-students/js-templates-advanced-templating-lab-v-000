@@ -10,35 +10,46 @@
     <main id="main">
     </main>
 
+<!--FORM TEMPLATE-->
     <script id="recipe-form-template" type="text/x-handlebars-template">
-<!-- INSTEAD OF CREATErECIPE, IT'LL BE SOMETHING LIKE {{submitvaribale}}-->
-        <form id="recipe-form" onsubmit="createRecipe();return false;">
+        <form id="recipe-form" onsubmit="{{submitAction}};return false;">
+          {{> recipeFormPartial }}
+        </form>
+    </script>
+
+<!--PARTIAL-->
+    <script id="recipe-form-partial" type="text/x-handlebars-template">
           <h3>Recipe Form</h3>
-          Recipe Name: <input type="text" id="name"><br>
-          Description: <input type="text" id="description"><br>
+          Recipe Name: <input type="text" id="name" value="{{name}}"><br>
+          Description: <input type="text" id="description" value="{{description}}"><br>
+          <h4>Ingredients</h4>
+          {{#each ingredients}}
+          <input type="text" name="ingredients" value="{{this}}"> <br>
+          {{else}}
           Ingredient 1: <input type="textarea" name="ingredients"><br>
           Ingredient 2: <input type="textarea" name="ingredients"><br>
           Ingredient 3: <input type="textarea" name="ingredients"><br>
           Ingredient 4: <input type="textarea" name="ingredients"><br>
           Ingredient 5: <input type="textarea" name="ingredients"><br>
+          {{/each}}
           <input type="submit">
-        </form>
     </script>
 
     <script id="recipe-template" type="text/x-handlebars-template">
-      <div id="recipe">
-        <a href="#" onclick="displayEditForm();">Edit Recipe</a>
+      <article>
+        <header><h2 id="nameHeader">{{name}}</h2></header>
+        <div>{{> recipeDetailsPartial}}</div>
+        <footer><a href="#" onclick="displayEditForm();">Edit Recipe</a></footer>
+      </article>
+    </script>
 
-        recipeDetailsPartial
-
-        <p>{{description}}</p>
-        <ul>
-          {{#each ingredients}}
-          <li>{{name}}</li>
-          {{/each}}
-        </ul>
-
-      </div>
+    <script id="recipe-details-partial" type="text/x-handlebars-template">
+      <p id="recipeDescription">{{description}}</p>
+      <ul>
+        {{#each ingredients}}
+        {{displayIngredient this}}
+        {{/each}}
+      </ul>
     </script>
 
     <script src="node_modules/handlebars/dist/handlebars.min.js"></script>
