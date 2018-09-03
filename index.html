@@ -11,11 +11,17 @@
 
     <script src="node_modules/handlebars/dist/handlebars.min.js"></script>
     <script src="index.js"></script>
-    
+
     <script id="recipe-form-template" type="text/x-handlebars-template">
      <form id="recipe-form" onsubmit="{{submitAction}};return false;">
        {{> recipeFormPartial }}
      </form>
+   </script>
+
+   <script id="recipe-template" type="text/x-handlebars-template">
+     <h1>{{name}}</h1>
+     {{> recipeDetailsPartial }}
+     <footer><a href="#" onclick="displayEditForm();">Edit Recipe</a></footer>
    </script>
 
    <script id="recipe-form-partial" type="text/x-handlebars-template">
@@ -32,6 +38,15 @@
      <input name="ingredients" type="text"><br>
      {{/each}}
      <input type="submit">
+   </script>
+
+   <script id="recipe-details-partial" type="text/x-handlebars-template">
+     <p id="recipeDescription">{{description}}</p>
+      <ul>
+        {{#each ingredients}}
+        {{ displayIngredient this }}
+        {{/each}}
+      </ul>
    </script>
     <!-- Open this file and call `mocha.run()` in console to run tests -->
     <div id="mocha"></div>
