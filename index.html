@@ -17,6 +17,9 @@
     <script src="node_modules/handlebars/dist/handlebars.min.js"></script>
     <script src="index.js"></script>
     <script id="recipeTemplate" type="text/x-handlebars-template">
+      <div>{{name}}</div><br>
+      <a onclick="displayEditForm();">Edit Recipe</a>
+      {{>recipeDetailsPartial}}
     </script>
     <!-- Open this file and call `mocha.run()` in console to run tests -->
     <div id="mocha"></div>
