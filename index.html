@@ -10,13 +10,14 @@
     <main id="main">
       <form id="recipe-form" onsubmit="createRecipe();">
         Name: <input type="text" id="name">
+        Description: <input type="text" id="description">
         Ingredients: <input type="text" name="ingredients">
         <input type="submit">
       </form>
     </main>
     <script src="node_modules/handlebars/dist/handlebars.min.js"></script>
     <script src="index.js"></script>
-    <script id="recipeTemplate" type="text/x-handlebars-template">
+    <script id="recipe-template" type="text/x-handlebars-template">
       <div>{{name}}</div><br>
       <a onclick="displayEditForm();">Edit Recipe</a>
       {{>recipeDetailsPartial}}
@@ -28,7 +29,7 @@
       {{/each}}
     </script>
     <script id="recipe-form-template" type="text/x-handlebars-template">
-      <form onsubmit="createRecipe()">
+      <form onsubmit="updateRecipe()">
         {{> recipeFormPartial}}
       </form>
     </script>
