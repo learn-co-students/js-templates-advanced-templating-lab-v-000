@@ -18,19 +18,21 @@
     <script id="recipe-template" type="text/x-handlebars-template">
       <div>{{name}}</div><br>
       <a onclick="displayEditForm();">Edit Recipe</a>
-      {{>recipeDetailsPartial}}
+      {{> recipeDetailsPartial}}
     </script>
 
     <script id="recipe-details-partial" type="text/x-handlebars-template">
       <div>{{description}}</div><br>
-      {{#each ingredients}}
-        <div>{{displayIngredient this}}</div>
-      {{/each}}
+      <ul>
+        {{#each ingredients}}
+          {{displayIngredient this}}
+        {{/each}}
+      </ul>
     </script>
 
     <script id="recipe-form-template" type="text/x-handlebars-template">
-      <form onsubmit="updateRecipe()">
-        {{>recipeFormPartial}}
+      <form onsubmit="updateRecipe();">
+        {{> recipeFormPartial}}
       </form>
     </script>
 

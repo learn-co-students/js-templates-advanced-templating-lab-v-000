@@ -12,7 +12,7 @@ function createRecipe() {
 
 function displayEditForm() {
   var form = document.getElementById("recipe-form-template").innerHTML
-  document.getElementsByTagName("main")[0].innerHTML += form
+  document.getElementsByTagName("main")[0].innerHTML = form
 }
 
 function updateRecipe() {
@@ -30,14 +30,14 @@ function recipeValue () {
   let ingArray = document.getElementsByName("ingredients")
   recipe['ingredients'] = []
   for (let i = 0; i < ingArray.length; i++) {
-    recipe['ingredients'].push(ingArray[i])
+    recipe['ingredients'].push(ingArray[i].value)
   }
   return recipe
 }
 
 function handlebarsSetUp () {
   Handlebars.registerHelper('displayIngredient', function (ingredient) {
-    return Handlebars.SafeString('<li name="ingredientsList">' + ingredient + '</li>')
+    return new Handlebars.SafeString('<li name="ingredientsList">' + ingredient + '</li>')
   })
 
   Handlebars.registerPartial('recipeDetailsPartial', document.getElementById("recipe-details-partial").innerHTML)
