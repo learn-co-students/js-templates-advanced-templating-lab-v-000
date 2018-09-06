@@ -34,8 +34,8 @@ function init() {
   }
 
   function displayEditForm() {
-    var name = document.getElementById("name").innerText;
-    var description = document.getElementById("description").innerText;
+    var name = document.getElementById("name").value;
+    var description = document.getElementById("description").value;
     var ingredientsNodes = document.getElementsByName("ingredientsList");
     var ingredients = []
     for(var i=0; i<ingredientsNodes.length; i++) {
