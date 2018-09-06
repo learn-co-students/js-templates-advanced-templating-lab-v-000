@@ -4,7 +4,7 @@ function displayCreateForm() {
 }
 
 function createRecipe() {
-  var recipeTemplate = Handlebars.compile(document.getElementById("recipe-template"))
+  var recipeTemplate = Handlebars.compile(document.getElementById("recipe-template").innerHTML)
   var recipe = recipeValue()
   var result = recipeTemplate(recipe)
   document.getElementsByTagName("main")[0].innerHTML = result
@@ -16,7 +16,7 @@ function displayEditForm() {
 }
 
 function updateRecipe() {
-  var recipeTemplate = Handlebars.compile(document.getElementById("recipe-template"))
+  var recipeTemplate = Handlebars.compile(document.getElementById("recipe-template").innerHTML)
   var recipe = recipeValue()
   var result = recipeTemplate(recipe)
   document.getElementsByTagName("main")[0].innerHTML = result
@@ -28,9 +28,11 @@ function recipeValue () {
     description: document.getElementById("description").value
   }
   let ingArray = document.getElementsByName("ingredients")
-  recipe['ingredients'] = ingArray.map(function(ing) {
-    return ing.value
-  })
+  recipe['ingredients'] = []
+  for (let i = 0; i < ingArray.length; i++) {
+    recipe['ingredients'].push(ingArray[i])
+  }
+  return recipe
 }
 
 function handlebarsSetUp () {
