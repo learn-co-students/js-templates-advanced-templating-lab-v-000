@@ -1,13 +1,13 @@
 function displayCreateForm() {
-  var form = document.getElementById("recipe-form-partial").innerHTML
-  document.getElementById("recipe-form").innerHTML += form
+  var form = Handlebars.compile(document.getElementById("recipe-form-partial").innerHTML)
+  document.getElementById("recipe-form").innerHTML += form('')
 }
 
 function createRecipe() {
   var recipeTemplate = Handlebars.compile(document.getElementById("recipe-template"))
   var recipe = recipeValue()
   var result = recipeTemplate(recipe)
-  document.getElementsByTagName("main")[0].innerHTML += result
+  document.getElementsByTagName("main")[0].innerHTML = result
 }
 
 function displayEditForm() {
@@ -16,20 +16,24 @@ function displayEditForm() {
 }
 
 function updateRecipe() {
-
+  var recipeTemplate = Handlebars.compile(document.getElementById("recipe-template"))
+  var recipe = recipeValue()
+  var result = recipeTemplate(recipe)
+  document.getElementsByTagName("main")[0].innerHTML = result
 }
 
 function recipeValue () {
   var recipe = {
-    name: document.getElementById("name").value
+    name: document.getElementById("name").value,
     description: document.getElementById("description").value
   }
-  recipeArray = document.getElementsByName("ingredients")
+  let ingArray = document.getElementsByName("ingredients")
+  recipe['ingredients'] = ingArray.map(function(ing) {
+    return ing.value
+  })
 }
 
-function init() {
-  //put any page initialization/handlebars initialization here
-  //display ingredients helper
+function handlebarsSetUp () {
   Handlebars.registerHelper('displayIngredient', function (ingredient) {
     return Handlebars.SafeString('<li name="ingredientsList">' + ingredient + '</li>')
   })
@@ -38,7 +42,15 @@ function init() {
   Handlebars.registerPartial('recipeFormPartial', document.getElementById("recipe-form-partial").innerHTML)
 }
 
+function init() {
+  //put any page initialization/handlebars initialization here
+  //display ingredients helper
+  handlebarsSetUp();
+  displayCreateForm();
+}
+
+
+
 document.addEventListener("DOMContentLoaded", function(event) {
-  displayCreateForm()
   init()
 })
