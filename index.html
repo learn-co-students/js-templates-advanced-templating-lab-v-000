@@ -9,9 +9,7 @@
   <body>
     <main id="main">
       <form id="recipe-form" onsubmit="createRecipe();">
-        Ingredients: <input type="textarea" name="ingredients">
-        Name: <input type="text" id="name">
-        <input type="submit">
+        {{> recipeFormPartial}}
       </form>
     </main>
     <script src="node_modules/handlebars/dist/handlebars.min.js"></script>
@@ -20,6 +18,17 @@
       <div>{{name}}</div><br>
       <a onclick="displayEditForm();">Edit Recipe</a>
       {{>recipeDetailsPartial}}
+    </script>
+    <script id="recipe-details-partial" type="text/x-handlebars-template">
+      <div>{{description}}</div><br>
+      {{#each ingredients}}
+        <div>{{displayIngredient this}}</div>
+      {{/each}}
+    </script>
+    <script id="recipe-form-template" type="text/x-handlebars-template">
+      <form onsubmit="createRecipe()">
+        {{> recipeFormPartial}}
+      </form>
     </script>
     <!-- Open this file and call `mocha.run()` in console to run tests -->
     <div id="mocha"></div>
