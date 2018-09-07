@@ -7,12 +7,12 @@ function createRecipe() {
   var recipeTemplate = Handlebars.compile(document.getElementById("recipe-template").innerHTML)
   var recipe = recipeValueCreate()
   var result = recipeTemplate(recipe)
-  document.getElementsByTagName("main")[0].innerHTML = result
+  document.getElementById("main").innerHTML = result
 }
 
 function displayEditForm() {
   var editFormTemplate = Handlebars.compile(document.getElementById("recipe-form-template").innerHTML)
-  document.getElementsByTagName("main")[0].innerHTML = editFormTemplate(recipeValue())
+  document.getElementsByTagName("main")[0].innerHTML = editFormTemplate(recipeValueUpdate())
 }
 
 function updateRecipe() {
