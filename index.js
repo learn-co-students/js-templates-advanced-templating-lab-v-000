@@ -11,8 +11,8 @@ function createRecipe() {
 }
 
 function displayEditForm() {
-  var form = document.getElementById("recipe-form-template").innerHTML
-  document.getElementsByTagName("main")[0].innerHTML = form
+  var editFormTemplate = Handlebars.compile(document.getElementById("recipe-form-template").innerHTML)
+  document.getElementsByTagName("main")[0].innerHTML = editFormTemplate(recipeValue())
 }
 
 function updateRecipe() {
@@ -37,7 +37,7 @@ function recipeValue () {
 
 function handlebarsSetUp () {
   Handlebars.registerHelper('displayIngredient', function (ingredient) {
-    return new Handlebars.SafeString('<li name="ingredientsList">' + ingredient + '</li>')
+    return new Handlebars.SafeString('<li name="ingredients">' + ingredient + '</li>')
   })
 
   Handlebars.registerPartial('recipeDetailsPartial', document.getElementById("recipe-details-partial").innerHTML)

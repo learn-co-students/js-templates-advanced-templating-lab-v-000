@@ -16,13 +16,13 @@
     <script src="index.js"></script>
 
     <script id="recipe-template" type="text/x-handlebars-template">
-      <div>{{name}}</div><br>
+      <div id="name">{{name}}</div><br>
       <a onclick="displayEditForm();">Edit Recipe</a>
       {{> recipeDetailsPartial}}
     </script>
 
     <script id="recipe-details-partial" type="text/x-handlebars-template">
-      <div>{{description}}</div><br>
+      <div id="description">{{description}}</div><br>
       <ul>
         {{#each ingredients}}
           {{displayIngredient this}}
