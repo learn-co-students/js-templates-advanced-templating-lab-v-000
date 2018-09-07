@@ -5,7 +5,7 @@ function displayCreateForm() {
 
 function createRecipe() {
   var recipeTemplate = Handlebars.compile(document.getElementById("recipe-template").innerHTML)
-  var recipe = recipeValue()
+  var recipe = recipeValueCreate()
   var result = recipeTemplate(recipe)
   document.getElementsByTagName("main")[0].innerHTML = result
 }
@@ -17,12 +17,12 @@ function displayEditForm() {
 
 function updateRecipe() {
   var recipeTemplate = Handlebars.compile(document.getElementById("recipe-template").innerHTML)
-  var recipe = recipeValue()
+  var recipe = recipeValueUpdate()
   var result = recipeTemplate(recipe)
   document.getElementsByTagName("main")[0].innerHTML = result
 }
 
-function recipeValue () {
+function recipeValueCreate () {
   var recipe = {
     name: document.getElementById("name").value,
     description: document.getElementById("description").value
@@ -31,6 +31,19 @@ function recipeValue () {
   recipe['ingredients'] = []
   for (let i = 0; i < ingArray.length; i++) {
     recipe['ingredients'].push(ingArray[i].value)
+  }
+  return recipe
+}
+
+function recipeValueUpdate () {
+  var recipe = {
+    name: document.getElementById("name").value,
+    description: document.getElementById("description").value
+  }
+  let ingArray = document.getElementsByName("ingredients")
+  recipe['ingredients'] = []
+  for (let i = 0; i < ingArray.length; i++) {
+    recipe['ingredients'].push(ingArray[i].innerHTML)
   }
   return recipe
 }
