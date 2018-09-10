@@ -10,8 +10,7 @@
     <main id="main">
 
     </main>
-    <form id="recipe-form" onsubmit="createRecipe();">
-    </form>
+
     <script src="node_modules/handlebars/dist/handlebars.min.js"></script>
     <script src="index.js"></script>
 
@@ -31,7 +30,7 @@
     </script>
 
     <script id="recipe-form-template" type="text/x-handlebars-template">
-      <form onsubmit="updateRecipe();">
+      <form onsubmit="{{submitFunction}}">
         {{> recipeFormPartial}}
       </form>
     </script>

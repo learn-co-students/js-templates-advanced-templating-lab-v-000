@@ -1,10 +1,11 @@
 function displayCreateForm() {
-  var form = Handlebars.compile(document.getElementById("recipe-form-partial").innerHTML)
-  document.getElementById("recipe-form").innerHTML += form('')
+  var form = Handlebars.compile(document.getElementById("recipe-form-template").innerHTML)
+  var submitFunction = {submitFunction: "createRecipe();"}
+  document.getElementById("main").innerHTML = form(submitFunction)
 }
 
 function createRecipe() {
-  var recipeTemplate = Handlebars.compile(document.getElementById("recipe-template").innerHTML)
+  var recipeTemplate = Handlebars.compile(document.getElementById("recipe-form-template").innerHTML)
   var recipe = recipeValueCreate()
   var result = recipeTemplate(recipe)
   document.getElementById("main").innerHTML = result
@@ -24,6 +25,7 @@ function updateRecipe() {
 
 function recipeValueCreate () {
   var recipe = {
+    submitFunction: "createRecipe();"
     name: document.getElementById("name").value,
     description: document.getElementById("description").value
   }
@@ -37,6 +39,7 @@ function recipeValueCreate () {
 
 function recipeValueUpdate () {
   var recipe = {
+    submitFunction: "updateRecipe();"
     name: document.getElementById("name").value,
     description: document.getElementById("description").value
   }
