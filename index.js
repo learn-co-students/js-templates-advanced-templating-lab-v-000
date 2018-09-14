@@ -9,7 +9,7 @@ function createRecipe(){
   const ingredientsNodes = document.getElementsByName("ingredients")
   let ingredientsList = []
   for (let i = 0; i < ingredientsNodes.length; i++) {
-    ingredientsList.push(ingredientsNodes[i])
+    ingredientsList.push(ingredientsNodes[i].value)
   }
   const recipe = {"name": name, "description": description, "ingredients": ingredientsList}
 
@@ -18,16 +18,19 @@ function createRecipe(){
   document.getElementsByTagName("main")[0].innerHTML += template(recipe)
 }
 
-// function displayEditForm(){
-// }
-//
-// function updateRecipe(){}
-//
+function displayEditForm(){
+  const template = Handlebars.compile(document.getElementById("recipe-form-template").innerHTML)
+}
+
+function updateRecipe(){
+  createRecipe()
+}
+
 function handlebarsRegistration(){
   Handlebars.registerPartial("recipeDetailsPartial", document.getElementById("recipe-details-partial").innerHTML)
 
-//   Handlebars.registerPartial("recipeFormPartial", document.getElementById("recipe-form-partial").innerHTML)
-//
+  Handlebars.registerPartial("recipeFormPartial", document.getElementById("recipe-form-partial").innerHTML)
+
   Handlebars.registerHelper("displayIngredient", function(ingredient) {
     return new Handlebars.SafeString("<li name='ingredientsList'>" + ingredient + "</li>")
     })
