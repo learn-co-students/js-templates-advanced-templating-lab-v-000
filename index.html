@@ -21,16 +21,7 @@
     <script src="index.js"></script>
 
     <script id="recipe-form-template" type="text/x-handlebars-template">
-      <form id="recipe-form" onsubmit="createRecipe()">
-        Name: <input type="text" id="name"><br></br>
-        Description: <input type="text" id="description"><br></br>
-        Ingredient: <input type="text" name="ingredients"><br></br>
-        Ingredient: <input type="text" name="ingredients"><br></br>
-        Ingredient: <input type="text" name="ingredients"><br></br>
-        Ingredient: <input type="text" name="ingredients"><br></br>
-        Ingredient: <input type="text" name="ingredients"><br></br>
-        <input type="submit">
-      </form>
+      {{> recipeFormPartial }}
     </script>
 
     <script id="recipe-template" type="text/x-handlebars-template">
@@ -51,6 +42,16 @@
     </script>
 
     <script id="recipe-form-partial" type="text/x-handlebars-template">
+      <form id="recipe-form" onsubmit="createRecipe()">
+        Name: <input type="text" id="name"><br></br>
+        Description: <input type="text" id="description"><br></br>
+        Ingredient: <input type="text" name="ingredients"><br></br>
+        Ingredient: <input type="text" name="ingredients"><br></br>
+        Ingredient: <input type="text" name="ingredients"><br></br>
+        Ingredient: <input type="text" name="ingredients"><br></br>
+        Ingredient: <input type="text" name="ingredients"><br></br>
+        <input type="submit">
+      </form>
     </script>
 
 
