@@ -20,13 +20,23 @@
     <script id="recipe-form-partial" type=text/x-handlebars-template>
         Name: <input id="name" type="text" value="{{name}}"><br>
         Description: <input id="description" type="text" value="{{description}}"><br>
-        Ingredients:<br>
+        <h4>Ingredients</h4>
+        {{#each ingredients}}
+        <input name="ingredients" type="text" value="{{this}}"><br>
+        {{else}}
+        <input name="ingredients" type="text"><br>
+        <input name="ingredients" type="text"><br>
+        <input name="ingredients" type="text"><br>
+        <input name="ingredients" type="text"><br>
+        <input name="ingredients" type="text"><br>
+        {{/each}}
+        <!-- Ingredients:<br>
 
         <input name="ingredients" type="text"><br>
         <input name="ingredients" type="text"><br>
         <input name="ingredients" type="text"><br>
         <input name="ingredients" type="text"><br>
-        <input name="ingredients" type="text"><br>
+        <input name="ingredients" type="text"><br> -->
         <input type="submit">
     </script>
     <script id="recipe-template" type="text/x-handlebars-template">
@@ -38,7 +48,7 @@
       <p id="recipeDescription">{{description}}</p>
       <ul>
         {{#each ingredients}}
-        <li>{{displayIngredient this}}</li>
+          {{displayIngredient this}}
         {{/each}}
       </ul>
     </script>
