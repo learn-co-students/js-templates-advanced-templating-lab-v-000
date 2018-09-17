@@ -45,11 +45,12 @@ var recipe = {
   ]
 }
 
-var template = Handlebars.compile(document.getElementById("my-template").innerHTML);
-var html = template(recipe);
+var template = document.getElementById("my-template").innerHTML;
+var templateFn = Handlebars.compile(template);
+var html = templateFn(recipe);
 ```
 
-First we use `Handlebars.compile` to create the `template` function from the `innerHTML` of our template, then we execute the `template` function with a context object, `recipe`, to get rendered HTML.
+First we use `Handlebars.compile` to create the `templateFn` function using the `innerHTML` of our template, then we execute the `template` function with a context object, `recipe`, to get rendered HTML.
 
 ## Handlebars Partials
 
