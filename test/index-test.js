@@ -11,7 +11,9 @@ describe('Handlebars Templates Lab', function() {
       var ingredients = document.getElementsByName("ingredients")
       expect(ingredients.length).toBeGreaterThanOrEqualTo(5)
       var nameField = document.getElementById("name")
+      var descriptionField = document.getElementById("description")
       expect(nameField).toExist()
+      expect(descriptionField).toExist()
     })
   })
 
