@@ -27,7 +27,7 @@ function createRecipe() {
  }
  
  function updateRecipe() {
-   
+   return createRecipe()
  }
 
 function init() {
