@@ -32,5 +32,12 @@ function displayEditForm() {
 }
 
 function updateRecipe() {
-  
+  let name = document.getElementById("edit-name").value
+  let description = document.getElementById("edit-description").value
+  let ingredients = document.getElementsByName("edit-ingredients")
+
+  let info = {name: name, description: description, ingredients: ingredients}
+  let recipeTemplate = Handlebars.compile(document.getElementById("recipe-template").innerHTML);
+  let result = recipeTemplate(info);
+  document.getElementById("display-recipe").innerHTML = result;
 }

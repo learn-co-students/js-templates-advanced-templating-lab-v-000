@@ -9,18 +9,21 @@
   <body>
     <main id="main">
       <h2>New Recipe</h2>
-      <script id="recipe-form-template" type="text/x-handlebars-template" onsubmit="updateRecipe();return false;">
-        <br>
-        Name: <input id="name" type="text" name="edit-name" value=""><br>
-        Description: <input id="description" type="text" name="edit-description" value=""><br>
-        Ingredients: <br>
-        <input type="text" name="edit-ingredients" value=""><br>
-        <input type="text" name="edit-ingredients" value=""><br>
-        <input type="text" name="edit-ingredients" value=""><br>
-        <input type="text" name="edit-ingredients" value=""><br>
-        <input type="text" name="edit-ingredients" value=""><br>
-        <input type="text" name="edit-ingredients" value=""><br>
-        <input type="submit" name="" value="Submit">
+      
+      <script id="recipe-form-template" type="text/x-handlebars-template">
+        <form onsubmit="updateRecipe();return false;">
+          <br>
+          Name: <input id="edit-name" type="text" name="name" value=""><br>
+          Description: <input id="edit-description" type="text" name="description" value=""><br>
+          Ingredients: <br>
+          <input type="text" name="edit-ingredients" value=""><br>
+          <input type="text" name="edit-ingredients" value=""><br>
+          <input type="text" name="edit-ingredients" value=""><br>
+          <input type="text" name="edit-ingredients" value=""><br>
+          <input type="text" name="edit-ingredients" value=""><br>
+          <input type="text" name="edit-ingredients" value=""><br>
+          <input type="submit" name="" value="Submit">
+        </form>
       </script>
 
       <form id="recipe-form" onsubmit="createRecipe();return false;">
