@@ -11,17 +11,25 @@ describe('Handlebars Templates Lab', function() {
       var ingredients = document.getElementsByName("ingredients")
       expect(ingredients.length).toBeGreaterThanOrEqualTo(5)
       var nameField = document.getElementById("name")
+      var descriptionField = document.getElementById("description")
       expect(nameField).toExist()
+      expect(descriptionField).toExist()
     })
   })
 
   describe('templates', function() {
+    it('has a recipe form template', function() {
+      var recipeFormTemplate = document.getElementById("recipe-form-template")
+      expect(recipeFormTemplate).toExist("Must provide a template with an id of 'recipe-form-template'")
+      expect(recipeFormTemplate.type).toBe("text/x-handlebars-template", "Template must be of type text/x-handlebars-template");
+    })
+
     it('has a recipe template', function() {
       var recipeTemplate = document.getElementById("recipe-template")
       expect(recipeTemplate).toExist("Must provide a template with an id of 'recipe-template'")
       expect(recipeTemplate.type).toBe("text/x-handlebars-template", "Template must be of type text/x-handlebars-template")
       expect(recipeTemplate.innerHTML).toMatch(/{{\s?name\s?}}/)
-      expect(recipeTemplate.innerHTML).toMatch(/<a.*displayEditForm().*>Edit Recipe<\/a>/, "Template must have an 'Edit Recipe' link that calls 'displayEditForm()'")
+      expect(recipeTemplate.innerHTML).toMatch(/<a.*displayEditForm().*>Edit Recipe<\/a>/, "Template must have an 'Edit Recipe' link that calls 'displayEditForm()' on click")
       expect(recipeTemplate.innerHTML).toMatch(/{{>\s?recipeDetailsPartial\s?}}/, "Template must render the recipeDetailsPartial")
     })
     it('has a recipe details partial template', function() {
@@ -32,11 +40,7 @@ describe('Handlebars Templates Lab', function() {
       expect(recipeDetailsPartial.innerHTML).toMatch(/{{\s?#each ingredients\s?}}/)
       expect(recipeDetailsPartial.innerHTML).toMatch(/{{\s?displayIngredient this\s?}}/, "Template must make use of displayIngredient custom helper inside the #each block helper")
     })
-    it('has a recipe form template', function() {
-      var recipeFormTemplate = document.getElementById("recipe-form-template")
-      expect(recipeFormTemplate).toExist("Must provide a template with an id of 'recipe-form-template'")
-      expect(recipeFormTemplate.type).toBe("text/x-handlebars-template", "Template must be of type text/x-handlebars-template");
-    })
+    
   })
 
   describe('helpers and partials', function() {
@@ -61,6 +65,16 @@ describe('Handlebars Templates Lab', function() {
     before(function() {
     })
 
+    describe('createRecipe', function() {
+      it('renders the recipe template', function() {
+        init()
+        var spy = expect.spyOn(window.Handlebars, "compile").andCallThrough()
+        createRecipe()
+        expect(spy).toHaveBeenCalledWith(document.getElementById("recipe-template").innerHTML)
+        spy.reset()
+      })
+    })
+
     describe('displayEditForm', function() {
       it('renders the edit form template', function() {
         init()
@@ -72,19 +86,11 @@ describe('Handlebars Templates Lab', function() {
       })
     })
 
-    describe('createRecipe', function() {
-      it('renders the recipe template', function() {
-        init()
-        var spy = expect.spyOn(window.Handlebars, "compile").andCallThrough()
-        createRecipe()
-        expect(spy).toHaveBeenCalledWith(document.getElementById("recipe-template").innerHTML)
-        spy.reset()
-      })
-    })
-
     describe('updateRecipe', function() {
       it('renders the recipe template', function() {
         init()
+        createRecipe()
+        displayEditForm()
         var spy = expect.spyOn(window.Handlebars, "compile").andCallThrough()
         updateRecipe()
         expect(spy).toHaveBeenCalledWith(document.getElementById("recipe-template").innerHTML)
