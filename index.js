@@ -24,3 +24,13 @@ function createRecipe() {
   let result = recipeTemplate(info);
   document.getElementById("display-recipe").innerHTML += result;
 }
+
+function displayEditForm() {
+  let editRecipeTemplate = Handlebars.compile(document.getElementById("recipe-form-template").innerHTML);
+  let result = editRecipeTemplate();
+  document.getElementById("display-recipe").innerHTML += result;
+}
+
+function updateRecipe() {
+  
+}
