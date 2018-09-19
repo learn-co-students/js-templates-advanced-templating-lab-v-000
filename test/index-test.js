@@ -18,12 +18,18 @@ describe('Handlebars Templates Lab', function() {
   })
 
   describe('templates', function() {
+    it('has a recipe form template', function() {
+      var recipeFormTemplate = document.getElementById("recipe-form-template")
+      expect(recipeFormTemplate).toExist("Must provide a template with an id of 'recipe-form-template'")
+      expect(recipeFormTemplate.type).toBe("text/x-handlebars-template", "Template must be of type text/x-handlebars-template");
+    })
+
     it('has a recipe template', function() {
       var recipeTemplate = document.getElementById("recipe-template")
       expect(recipeTemplate).toExist("Must provide a template with an id of 'recipe-template'")
       expect(recipeTemplate.type).toBe("text/x-handlebars-template", "Template must be of type text/x-handlebars-template")
       expect(recipeTemplate.innerHTML).toMatch(/{{\s?name\s?}}/)
-      expect(recipeTemplate.innerHTML).toMatch(/<a.*displayEditForm().*>Edit Recipe<\/a>/, "Template must have an 'Edit Recipe' link that calls 'displayEditForm()'")
+      expect(recipeTemplate.innerHTML).toMatch(/<a.*displayEditForm().*>Edit Recipe<\/a>/, "Template must have an 'Edit Recipe' link that calls 'displayEditForm()' on click")
       expect(recipeTemplate.innerHTML).toMatch(/{{>\s?recipeDetailsPartial\s?}}/, "Template must render the recipeDetailsPartial")
     })
     it('has a recipe details partial template', function() {
@@ -34,11 +40,7 @@ describe('Handlebars Templates Lab', function() {
       expect(recipeDetailsPartial.innerHTML).toMatch(/{{\s?#each ingredients\s?}}/)
       expect(recipeDetailsPartial.innerHTML).toMatch(/{{\s?displayIngredient this\s?}}/, "Template must make use of displayIngredient custom helper inside the #each block helper")
     })
-    it('has a recipe form template', function() {
-      var recipeFormTemplate = document.getElementById("recipe-form-template")
-      expect(recipeFormTemplate).toExist("Must provide a template with an id of 'recipe-form-template'")
-      expect(recipeFormTemplate.type).toBe("text/x-handlebars-template", "Template must be of type text/x-handlebars-template");
-    })
+    
   })
 
   describe('helpers and partials', function() {
@@ -54,7 +56,7 @@ describe('Handlebars Templates Lab', function() {
       expect(window.Handlebars.partials).toContainKey("recipeDetailsPartial")
     })
 
-    it('registers a recipe form partial', function() {
+    it('registers a recipe form partial (come back to this at the end)', function() {
       expect(window.Handlebars.partials).toContainKey("recipeFormPartial")
     })
   })
