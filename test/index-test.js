@@ -65,6 +65,16 @@ describe('Handlebars Templates Lab', function() {
     before(function() {
     })
 
+    describe('createRecipe', function() {
+      it('renders the recipe template', function() {
+        init()
+        var spy = expect.spyOn(window.Handlebars, "compile").andCallThrough()
+        createRecipe()
+        expect(spy).toHaveBeenCalledWith(document.getElementById("recipe-template").innerHTML)
+        spy.reset()
+      })
+    })
+
     describe('displayEditForm', function() {
       it('renders the edit form template', function() {
         init()
@@ -76,19 +86,11 @@ describe('Handlebars Templates Lab', function() {
       })
     })
 
-    describe('createRecipe', function() {
-      it('renders the recipe template', function() {
-        init()
-        var spy = expect.spyOn(window.Handlebars, "compile").andCallThrough()
-        createRecipe()
-        expect(spy).toHaveBeenCalledWith(document.getElementById("recipe-template").innerHTML)
-        spy.reset()
-      })
-    })
-
     describe('updateRecipe', function() {
       it('renders the recipe template', function() {
         init()
+        createRecipe()
+        displayEditForm()
         var spy = expect.spyOn(window.Handlebars, "compile").andCallThrough()
         updateRecipe()
         expect(spy).toHaveBeenCalledWith(document.getElementById("recipe-template").innerHTML)
