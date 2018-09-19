@@ -8,6 +8,62 @@
   </head>
   <body>
     <main id="main">
+      <h2>New Recipe</h2>
+      
+      <script id="recipe-form-template" type="text/x-handlebars-template">
+        <form onsubmit="updateRecipe();return false;">
+          <br>
+          Name: <input id="edit-name" type="text" name="name" value=""><br>
+          Description: <input id="edit-description" type="text" name="description" value=""><br>
+          Ingredients: <br>
+          <input type="text" name="edit-ingredients" value=""><br>
+          <input type="text" name="edit-ingredients" value=""><br>
+          <input type="text" name="edit-ingredients" value=""><br>
+          <input type="text" name="edit-ingredients" value=""><br>
+          <input type="text" name="edit-ingredients" value=""><br>
+          <input type="text" name="edit-ingredients" value=""><br>
+          <input type="submit" name="" value="Submit">
+        </form>
+      </script>
+
+      <form id="recipe-form" onsubmit="createRecipe();return false;">
+        Name: <input id="name" type="text" name="name" value=""><br>
+        Description: <input id="description" type="text" name="description" value=""><br>
+        Ingredients: <br>
+        <input type="text" name="ingredients" value=""><br>
+        <input type="text" name="ingredients" value=""><br>
+        <input type="text" name="ingredients" value=""><br>
+        <input type="text" name="ingredients" value=""><br>
+        <input type="text" name="ingredients" value=""><br>
+        <input type="text" name="ingredients" value=""><br>
+        <input type="submit" name="" value="Submit">
+      </form>
+
+      <br>
+      <h2>All Recipes: </h2>
+
+      <script id="recipe-template" type="text/x-handlebars-template">
+        <br>
+        <div>
+          <div>Name: {{name}}</div>
+          {{> recipeDetailsPartial}}
+          <a href="#" onclick="displayEditForm()">Edit Recipe</a>
+        </div>
+      </script>
+
+      <script id="recipe-details-partial" type="text/x-handlebars-template">
+        <div>Description: {{description}}</div>
+        <div>Ingredients:</div>
+        {{#each ingredients}}
+        <div>{{displayIngredient this}}</div>
+        {{/each}}
+      </script>
+
+      <div id="display-recipe">
+
+      </div>
+
+
     </main>
     <script src="node_modules/handlebars/dist/handlebars.min.js"></script>
     <script src="index.js"></script>
