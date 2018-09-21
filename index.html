@@ -34,7 +34,7 @@
             <p>{{name}}</p>
             <ul>
                 {{#each ingredients}}
-                    <li>{{ingredient}}</li>
+                    {{displayIngredient this}}
                 {{/each}}
             </ul>
             <a onclick="displayEditForm();">Edit Recipe</a>
