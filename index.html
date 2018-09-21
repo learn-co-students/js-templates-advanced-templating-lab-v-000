@@ -12,19 +12,18 @@
         <form id="recipe-form" onsubmit="createRecipe(); return false;">
             Description :<input type="text" id="description">
             <br>
-            <fieldset id="ingredients[]">
-                Quantity: <input type="text"  name="[0][quantity]">
-                Name: <input type="text"  name="[0][name]">
-                <br>
-                Quantity: <input type="text"  name="[1][quantity]">
-                Name: <input type="text"  name="[1][name]">
-                <br>
-                Quantity: <input type="text"  name="[2][quantity]">
-                Name: <input type="text"  name="[2][name]">
-                <br>
-                <!-- Quantity: <input type="text"  name="[quantity]">
-                Name: <input type="text"  name="[name]"> -->
-            </fieldset>
+            Name: <input type="text" id="name">
+            <br>
+            <input type="text"  name="ingredients">
+            <br>
+            <input type="text"  name="ingredients">
+            <br>
+            <input type="text"  name="ingredients">
+            <br>
+            <input type="text"  name="ingredients">
+            <br>
+            <input type="text"  name="ingredients">
+            <br>
             <button type="submit">Submit</button>
 
     </main>
@@ -32,13 +31,18 @@
     <script id="recipe-template" type="text/x-handlebars-template">
         <div id="recipe">
             <p>{{description}}</p>
+            <p>{{name}}</p>
             <ul>
                 {{#each ingredients}}
-                    <li>{{name}}</li>
+                    <li>{{ingredient}}</li>
                 {{/each}}
             </ul>
             <a onclick="displayEditForm();">Edit Recipe</a>
         </div>
+
+    </script>
+
+    <script id="recipe-details-partial" type="text/x-handlebars-template">
 
     </script>
 
