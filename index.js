@@ -2,6 +2,12 @@ function init() {
   //put any page initialization/handlebars initialization here
 
   Handlebars.registerPartial('recipeDetailsPartial', document.getElementById('recipe-template').innerHTML);
+
+  handlebars.registerHelper('displayIngredient', function() {
+        return new Handlebars.SafeString("<strong>" + this.body + "</strong>")
+  });
+
+
 }
 document.addEventListener("DOMContentLoaded", function(event) {
   init()
@@ -22,14 +28,11 @@ function createRecipe() {
         ingredients: recipeDetails
     }
 
-    debugger;
     let recipeTemplate = Handlebars.compile(document.getElementById('recipe-template').innerHTML);
 
     let result = recipeTemplate(recipe);
 
      document.getElementsByTagName("main")[0].innerHTML += result;
-
-
 }
 
 function recipeValues() {
