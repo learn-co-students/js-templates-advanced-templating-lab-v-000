@@ -1,21 +1,30 @@
 
 
 function createRecipe(){
+  let ing = document.getElementsByName('ingredients');
+
+  let ingArray = []
+  for(let i=0; i < ing.length; i++){
+    ingArray.push(ing[i].value)
+  }
+
   let recipe = {
     name: document.getElementById('name').value,
     description: document.getElementById('description').value,
+    ingredients: ingArray
   }
-  let template = Handlebars.complile(document.getElementById('recipe-template').innerHTML);
+
+  let template = Handlebars.compile(document.getElementById('recipe-template').innerHTML);
 
   let result = template(recipe);
 }
 
 function displayEditForm(){
-  Handlebars.complile(document.getElementById('recipe-form-template').innerHTML)
+  Handlebars.compile(document.getElementById('recipe-form-template').innerHTML)
 }
 
 function updateRecipe(){
-
+  Handlebars.compile(document.getElementById('recipe-template').innerHTML)
 }
 
 function init() {
