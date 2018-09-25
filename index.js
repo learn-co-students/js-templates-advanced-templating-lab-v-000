@@ -1,11 +1,17 @@
 
 
 function createRecipe(){
-  let recipe = {}
+  let recipe = {
+    name: document.getElementById('name').value,
+    description: document.getElementById('description').value,
+  }
+  let template = Handlebars.complile(document.getElementById('recipe-template').innerHTML);
+
+  let result = template(recipe);
 }
 
 function displayEditForm(){
-
+  Handlebars.complile(document.getElementById('recipe-form-template').innerHTML)
 }
 
 function updateRecipe(){
@@ -15,13 +21,14 @@ function updateRecipe(){
 function init() {
   Handlebars.registerPartial('recipeDetailsPartial', document.getElementById("recipe-details-partial").innerHTML)
 
-  function renderMain() {
-    let template = Handlebars.compile(document.getElementById("recipe-template").innerHTML);
-    let html = template({name: 'Gordon Ramsay'});
-  }
+  Handlebars.registerPartial('recipeFormPartial', document.getElementById("recipe-form").innerHTML)
+  // function renderMain() {
+  //   let template = Handlebars.compile(document.getElementById("recipe-template").innerHTML);
+  //   let html = template({name: 'Gordon Ramsay'});
+  // }
 
   Handlebars.registerHelper('displayIngredient', function(){
-
+    Handlebars.SafeString(this.ingredients)
   })
 }
 
