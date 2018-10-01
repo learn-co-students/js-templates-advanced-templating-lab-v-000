@@ -9,15 +9,24 @@
   <body>
     <main id="main">
       <form id="recipe-form" onsubmit="createRecipe();">
-        <input type="text" id="description"></input>
-        <!-- <input type="text" id="ingredients"></input> -->
+        Name:<input type="text" id="name"></input><br>
+        Description:<input type="text" id="description"></input><br>
+        Ingredients<br><input type="text" name="ingredients"></input>
+        <input type="text" name="ingredients"></input>
+        <input type="text" name="ingredients"></input>
+        <input type="text" name="ingredients"></input>
+        <input type="text" name="ingredients"></input>
         <input type="submit">
       </form>
     </main>
 
     <script id="recipe-form-template" type="text/x-handlebars-template">
-      <input type="text" id="quantity">{{quantity}}</input>
-      <input type="text" id="name">{{name}}</input>
+
+      <!-- <input type="text" id="quantity">{{quantity}}</input> -->
+      <!-- <input type="text" id="name">{{name}}</input> -->
+    </script>
+
+    <script id="recipe-form-partial" type="text/x-handlebars-template">
     </script>
 
     <script id="recipe-template" type="text/x-handlebars-template">

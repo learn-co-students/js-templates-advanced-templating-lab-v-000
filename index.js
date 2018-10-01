@@ -1,5 +1,11 @@
 function init() {
   //put any page initialization/handlebars initialization here
+  Handlebars.registerHelper('displayIngredient', function(){
+    return Handlebars.SafeString(this.ingredients);
+  });
+  Handlebars.registerPartial("recipeDetailsPartial",document.getElementById('recipe-details-partial').innerHTML);
+  Handlebars.registerPartial("recipeFormPartial",document.getElementById('recipe-details-partial').innerHTML);
+
 }
 document.addEventListener("DOMContentLoaded", function(event) {
   init()
@@ -13,21 +19,25 @@ document.addEventListener("DOMContentLoaded", function(event) {
 //   }
 // })
 
-Handlebars.registerPartial(recipeDetailsPartial,document.getElementById('recipe-details-partial').innerHTML);
+
 // Handlebars.registerPartial(displayIngredient,document.getElementById('recipe-details-partial').innerHTML);
-// 
+//
 //
 // function displayIngredient(){
 //
 // }
 
 function createRecipe(){
- var template = Handlebars.compile(document.getElementById('recipe-template').innerHTML);
- let ingredients = document.getElementById('ingredients').value;
+ var template = Handlebars.compile(document.getElementById('recipe-form-template').innerHTML);
+ let ing = [];
+ document.getElementsByName('ingredients').map(x => ing.push(x.value));
  let description = document.getElementById('description').value;
- var data = {description: description, ingredients: ingredients}
+ let name = document.getElementById('name').value;
+ var data = {name: name, description: description, ingredients: ing}
  var result = template(data);
-
+ let templateFn = Handlebars.compile(document.getElementById('recipe-template').innerHTML);
+ 
+ recipes.innerHTML[0] += result;
 }
 
 function updateRecipe(){
