@@ -30,14 +30,18 @@ document.addEventListener("DOMContentLoaded", function(event) {
 function createRecipe(){
  var template = Handlebars.compile(document.getElementById('recipe-form-template').innerHTML);
  let ing = [];
- document.getElementsByName('ingredients').forEach(function(el){ing.push(el.value)});
+ let all = document.getElementsByName('ingredients')
+ for(let i = 0; i < all.length; i++){
+   ing.push(all[i].value);
+ }
+
  // document.getElementsByName('ingredients').map(x => ing.push(x.value));
  let description = document.getElementById('description').value;
  let name = document.getElementById('name').value;
  var data = {name: name, description: description, ingredients: ing}
  var result = template(data);
  let templateFn = Handlebars.compile(document.getElementById('recipe-template').innerHTML);
- templateFn(data);
+ let recipes = templateFn(data);
  recipes.innerHTML[0] += result;
 }
 
