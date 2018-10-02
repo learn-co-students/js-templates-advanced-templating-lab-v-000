@@ -42,7 +42,7 @@ function createRecipe(){
  var result = template(data);
  let templateFn = Handlebars.compile(document.getElementById('recipe-template').innerHTML);
  let recipes = templateFn(data);
- recipes.innerHTML[0] += result;
+ recipes += result;
 }
 
 function updateRecipe(){
@@ -55,5 +55,5 @@ function updateRecipe(){
 // }
 
 function displayEditForm(){
-
+  var template = Handlebars.compile(document.getElementById('recipe-form-template').innerHTML);
 }
