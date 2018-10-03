@@ -8,12 +8,12 @@ describe('Handlebars Templates Lab', function() {
       var recipeForm = document.getElementById("recipe-form")
       expect(recipeForm).toExist("Must provide a form with an id of 'recipe-form'")
       expect(recipeForm).toMatch(/onsubmit="handleSubmit()"/)
-      var ingredients = document.getElementsByName("ingredients")
-      expect(ingredients.length).toBeGreaterThanOrEqualTo(5)
       var nameField = document.getElementById("name")
       var descriptionField = document.getElementById("description")
       expect(nameField).toExist()
       expect(descriptionField).toExist()
+      var ingredients = document.getElementsByName("ingredients")
+      expect(ingredients.length).toBeGreaterThanOrEqualTo(5)
     })
   })
 
@@ -35,9 +35,10 @@ describe('Handlebars Templates Lab', function() {
       var recipeDetailsPartial = document.getElementById("recipe-details-partial")
       expect(recipeDetailsPartial).toExist("Must provide a template with an id of 'recipe-details-partial'")
       expect(recipeDetailsPartial.type).toBe("text/x-handlebars-template", "Template must be of type text/x-handlebars-template")
-      expect(recipeDetailsPartial.innerHTML).toMatch(/id="description">{{\s?description\s?}}/, "Template must have the name inside of a container with an id of 'description'")
-      expect(recipeDetailsPartial.innerHTML).toMatch(/{{\s?#each ingredients\s?}}/)
+      expect(recipeDetailsPartial.innerHTML).toMatch(/id="description">{{\s?description\s?}}/, "Template must have the recipe's description inside of a container with an id of 'description'")
+      expect(recipeDetailsPartial.innerHTML).toMatch(/{{#\s?each ingredients\s?}}/)
       expect(recipeDetailsPartial.innerHTML).toMatch(/{{\s?displayIngredient this\s?}}/, "Template must make use of displayIngredient custom helper inside the #each block helper")
+      expect(recipeDetailsPartial.innerHTML).toMatch(/{{\/\s?each\s?}}/)
     })
   })
 
@@ -95,7 +96,7 @@ describe('Handlebars Templates Lab', function() {
     })
 
     describe('displayEditForm', function() {
-      it('renders the edit form template', function() {
+      it('renders the form template with values pre-filled', function() {
         // load the new form and fill it out
         init() 
         var ingredients = document.getElementsByName("ingredients")
@@ -118,10 +119,10 @@ describe('Handlebars Templates Lab', function() {
         ingredients = document.getElementsByName("ingredients")
         nameField = document.getElementById("name")
         descriptionField = document.getElementById("description")
-        expect(nameField.value).toEqual("Fruit Salad")
-        expect(descriptionField.value).toEqual("Yummy fruit salad")
+        expect(nameField.value).toEqual("Fruit Salad", "Got: '" + nameField.value + "' Expected 'Fruit Salad' Make sure that the name field is pre-filled in the edit form")
+        expect(descriptionField.value).toEqual("Yummy fruit salad", "Got: '" + descriptionField.value + "' Expected: 'Yummy fruit salad' Make sure that the description field is pre-filled in the edit form")
         ingredientsValues.forEach(function(ing, index){
-          expect(ingredients[index].value).toEqual(ing);
+          expect(ingredients[index].value).toEqual(ing, "Got: '" + ingredients[index].value + "' Expected: '" + ing + "' Make sure that the ingredients fields are pre-filled in the edit form");
         })
         // fill in form with new values and submit
         nameField.value = "Fruity Fruit Salad"
