@@ -16,11 +16,11 @@
     <!--Make recipe-template-->
     <script id="recipe-template" type="text/x-handlebars-template">
       <article>
-        <header><h4 id="recipeName">{{name}}</h2></header>
-          <a href="#" onclick="displayEditForm();">Edit Recipe</a>
-          {{> recipeDetailsPartial}}
-        </article>
-      </script>
+        <header><h4 id="recipeName">{{name}}</h4></header>
+        <div>{{> recipeDetailsPartial}}</div>
+        <footer><a href="#" onclick="displayEditForm();">Edit Recipe</a></footer>
+      </article>
+    </script>
 
       <!--Make recipe details partial-->
       <script id="recipe-details-partial" type="text/x-handlebars-template">
@@ -30,12 +30,11 @@
           <li>{{displayIngredient this}}</li>
           {{/each}}
         </ul>
-
       </script>
 
       <!--Make recipe-form-template-->
-    <script id="recipe-form-template" type="text/x-handlebars-template">
-      <form id="recipe-form" onsubmit="{{action}};return false;">
+      <script id="recipe-form-template" type="text/x-handlebars-template">
+      <form id="recipe-form" onsubmit="{{submitAction}};return false;">
         {{> recipeFormPartial}}
       </form>
     </script>
