@@ -18,19 +18,23 @@ function createRecipe() {
 
     var recipe = 
     {
-    description: document.getElementById("description").value,
-    ingredients: [
-      {name: document.getElementsByName("ingredients")[0].value},
-      {name: document.getElementsByName("ingredients")[1].value},
-      {name: document.getElementsByName("ingredients")[2].value},
-      {name: document.getElementsByName("ingredients")[3].value},
-      {name: document.getElementsByName("ingredients")[4].value},
+      description: document.getElementById("description").value,
+      ingredients: [
+        {name: document.getElementsByName("ingredients")[0].value},
+        {name: document.getElementsByName("ingredients")[1].value},
+        {name: document.getElementsByName("ingredients")[2].value},
+        {name: document.getElementsByName("ingredients")[3].value},
+        {name: document.getElementsByName("ingredients")[4].value},
       ]
       
     }
   
-   var template = Handlebars.compile(document.getElementById("recipe-template").innerHTML);
-  var html = template(recipe);
+    Handlebars.registerPartial('recipeDetailsPartial', document.getElementById("recipe-details-partial").innerHTML)
+    function renderMain() {
+      var template = Handlebars.compile(document.getElementById("recipe-template").innerHTML);
+      var html = template(recipe);
+    }
+
   document.getElementsByTagName("main")[0].innerHTML += html
 }
 
@@ -40,11 +44,6 @@ document.addEventListener("DOMContentLoaded", function(event) {
 })
 
 
-Handlebars.registerPartial('recipeDetailsPartial', document.getElementById("recipe-details-partial").innerHTML)
-function renderMain() {
-  var template = Handlebars.compile(document.getElementById("recipe-template").innerHTML);
-  var html = template({name: 'Gordon Ramsay'});
-}
 
 function displayEditForm() {
   
