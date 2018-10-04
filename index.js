@@ -8,7 +8,10 @@ function init() {
     {quantity: "12", name: 'noodles'}
   ]
 }
- 
+
+ document.addEventListener("DOMContentLoaded", function(event) {
+  init()
+})
   var template = Handlebars.compile(document.getElementById("recipe-template").innerHTML);
   var html = template(recipe);
   document.getElementsByTagName("main")[0].innerHTML += html;
@@ -29,19 +32,22 @@ function createRecipe() {
       
     }
   
+      var template = Handlebars.compile(document.getElementById("recipe-details-partial").innerHTML);
+      var html = template(recipe);
+      
+      document.getElementsByTagName("main")[0].innerHTML += html
+}
+
+ 
+
+
+  
     Handlebars.registerPartial('recipeDetailsPartial', document.getElementById("recipe-details-partial").innerHTML)
     function renderMain() {
       var template = Handlebars.compile(document.getElementById("recipe-template").innerHTML);
       var html = template(recipe);
-    }
+    } 
 
-  document.getElementsByTagName("main")[0].innerHTML += html
-}
-
-
-document.addEventListener("DOMContentLoaded", function(event) {
-  init()
-})
 
 
 
