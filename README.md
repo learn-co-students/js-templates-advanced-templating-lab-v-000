@@ -50,7 +50,7 @@ var templateFn = Handlebars.compile(template);
 var html = templateFn(recipe);
 ```
 
-First we use `Handlebars.compile` to create the `templateFn` function using the `innerHTML` of our template, then we execute the `template` function with a context object, `recipe`, to get rendered HTML.
+First we grab the `innerHTML` of our template. Next, we use `Handlebars.compile` to create the `templateFn` function using the `innerHTML` of our template. Finally, we execute the `templateFn` function with a context object, `recipe`, to get rendered HTML.
 
 ## Handlebars Partials
 
