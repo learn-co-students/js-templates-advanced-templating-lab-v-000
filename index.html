@@ -8,26 +8,27 @@
   </head>
   <body>
     <main id="main">
-      {{> recipeFormPartial}}
     </main>
     <script src="node_modules/handlebars/dist/handlebars.min.js"></script>
     <script src="index.js"></script>
     <!-- Open this file and call `mocha.run()` in console to run tests -->
     <script id = "recipe-template" type="text/x-handlebars-template">
       <div id="recipe">
-        <h2>Recipe for {{name}}</h2>
-        {{> recipeDetailsPartial}}
-        <p><a href="#" onclick="displayEditForm()">Edit Recipe</a></p>
+        <header><h2 id="nameHeader">Recipe for {{name}}</h2></header>
+        <div>{{> recipeDetailsPartial}}</div>
+        <footer><a href="#" onclick="displayEditForm()">Edit Recipe</a></footer>
       </div>
     </script>
     <!--PARTIAL-->
     <script id = "recipe-details-partial" type="text/x-handlebars-template">
-      <h3><strong>Description:</strong></h3>
+      <h3 id="recipeDescription"><strong>Description:</strong></h3>
         <p>{{description}}</p>
       <h3>Ingredients:</h3>
+        <ul>
           {{#each ingredients}}
             {{displayIngredient this}}
           {{/each}}
+        </ul>
     </script>
     <!--RECIPE-FORM-TEMPLATE-->
     <script id="recipe-form-template" type="text/x-handlebars-template">
@@ -37,20 +38,20 @@
     </script>
 
     <script id="recipe-form-partial" type="text/x-handlebars-template">
-        <h4>Recipe name: <input type="text" id='name' value = {{name}}></h4>
-        <h4>Description:<input type="text area" id='description' value = {{description}}></h4>
-        {{#if this.ingredients}}
-          <h4>Ingredients</h4>
-            {{#each ingredients}}
-              <input type="text" name="ingredients" value="{{this}}">
-            {{/each}}
+      <h4>Recipe name: <input type="text" id='name' value = {{name}}></h4>
+      <h4>Description:<input type="text area" id='description' value = {{description}}></h4>
+        <h4>Ingredients</h4>
+        {{#each ingredients}}
+        <input type="text" name="ingredients" value="{{this}}">
         {{else}}
-          <h4>Ingredients</h4>
-            <p><input type="text" name="ingredients"> <input type="text" name="ingredients"></p>
-            <p><input type="text" name="ingredients"> <input type="text" name="ingredients"></p>
-            <p><input type="text" name="ingredients"> </p>
-        {{/if}}
-          <input type="submit">
+        <h4>Ingredients</h4>
+        <input type="text" name="ingredients"><br>
+        <input type="text" name="ingredients"><br>
+        <input type="text" name="ingredients"><br>
+        <input type="text" name="ingredients"><br>
+        <input type="text" name="ingredients"><br>
+        {{/each}}
+        <input type="submit">
     </script>
 
     <div id="mocha"></div>
