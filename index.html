@@ -11,6 +11,56 @@
     </main>
     <script src="node_modules/handlebars/dist/handlebars.min.js"></script>
     <script src="index.js"></script>
+
+    <!-- Recipe Form Template (form to create/edit recipe) -->
+    <script id="recipe-form-template" type="text/x-handlebars-template">
+      <form id="recipe-form" onsubmit="{{submitAction}}; return false;">
+        {{> recipeFormPartial }}
+      </form>
+    </script>
+
+    <!-- Recipe Form Partial -->
+    <script id="recipe-form-partial"  type="text/x-handlebars-template">
+      Name: <input id="name" type="text" value="{{name}}"><br>
+      Description: <input id="description" type="text" value="{{description}}"><br>
+      Ingredients: <br>
+      <!--
+        You can iterate over a list using the built-in each helper.
+        Inside the block, you can use this to reference the element being iterated over.
+        You can optionally provide an else section which will display only when the list is empty.
+      -->
+      {{#each ingredients}}
+        <input name="ingredients" type="text" value="{{this}}"><br>
+      {{else}}
+        <input name="ingredients" type="text"><br>
+        <input name="ingredients" type="text"><br>
+        <input name="ingredients" type="text"><br>
+        <input name="ingredients" type="text"><br>
+        <input name="ingredients" type="text"><br>
+      {{/each}}
+      <input type="submit">
+    </script>
+
+    <!-- Recipe Template (to create actual recipe)-->
+    <script id="recipe-template" type="text/x-handlebars-template">
+      <article>
+        <header><h2 id="name">{{name}}</h2></header>
+        {{> recipeDetailsPartial }}
+        <footer><a href='#' onclick="displayEditForm();">Edit Recipe</a></footer>
+      </article>
+    </script>
+
+    <!-- Recipe Template Partial -->
+    <script id="recipe-details-partial" type="text/x-handlebars-template">
+      <p id="description">{{ description }}</p>
+      <ul>
+        {{#each ingredients}}
+          {{ displayIngredient this }}
+        {{/each}}
+      </ul>
+    </script>
+
+
     <!-- Open this file and call `mocha.run()` in console to run tests -->
     <div id="mocha"></div>
     <script src="node_modules/mocha/mocha.js"></script>
