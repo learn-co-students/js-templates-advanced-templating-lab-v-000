@@ -18,36 +18,41 @@
     <script>mocha.setup('bdd');</script>
     <script src="test/index-test.js"></script>
 
-    <script id="recipe-form-partial" type="text/x-handlebars-template">
-      Name: <input type='text' id="name"><br>
-      Description: <input type="text"  id="description"><br>
+    <script id="recipe-form-template" type="text/x-handlebars-template">
+      <form id="recipe-form" onsubmit="{{submitAction}};return false;">
+      {{>recipeFormPartial}}
+    </form>
+    </script>
+
+    <script id="recipe-form-partial" type="text/x-handlebars-template" onsubmit="creatRecipe()">
+      Name: <input type='text' id="name" value="{{name}}"><br>
+      Description: <input type="text"  id="description" value="{{description}}"><br>
+      Ingredients:<br>
       {{#each ingredients}}
-      <p value="{{this}}" name="ingredients">
-        {{else}}
-      Ingredient: <input type='text' name="ingredients"><br>
-      Ingredient: <input type='text' name="ingredients"><br>
-      Ingredient: <input type='text' name="ingredients"><br>
-      Ingredient: <input type='text' name="ingredients"><br>
-      Ingredient: <input type='text' name="ingredients"><br>
+        <input type='text' name="ingredients" value="{{this}}"><br>
+      {{else}}
+        <input type='text' name="ingredients"><br>
+        <input type='text' name="ingredients"><br>
+        <input type='text' name="ingredients"><br>
+        <input type='text' name="ingredients"><br>
+        <input type='text' name="ingredients"><br>
       {{/each}}
       <input type="submit">
     </script>
 
-    <script id="recipe-form-template" type="text/x-handlebars-template" onsubmit="createRecipe();return false">
-      <form id="recipe-form" onsubmit="createRecipe();return false">
-      {{>recipeFormPartial}}
-    </form>
-    </script>
     <script id="recipe-template" type = "text/x-handlebars-template">
-      {{name}}
-      <a href="displayEditForm()">Edit Recipe</a>
+      <header><h2 id="nameHeader">{{name}}</h2></header>
       {{> recipeDetailsPartial}}
+      <a href='#' onclick="displayEditForm();">Edit Recipe</a>
     </script>
+
     <script id="recipe-details-partial" type="text/x-handlebars-template">
-      {{description}}
-      {{#each ingredients}}
-      {{displayIngredient this}}
-      {{/each}}
+      <p id="recipeDescription">{{description}}</p>
+      <ul>
+        {{#each ingredients}}
+          {{displayIngredient this}}
+        {{/each}}
+      </ul>
     </script>
 
   </body>
