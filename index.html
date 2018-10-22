@@ -10,6 +10,7 @@
     <main id="main">
       <form id="recipe-form" onsubmit="createRecipe();">
         Name: <input type="text" id="name">
+        Description: <input type="text" id="description">
         Ingredient: <input type="text" name="ingredients">
         Ingredient: <input type="text" name="ingredients">
         Ingredient: <input type="text" name="ingredients">
@@ -29,7 +30,7 @@
       
     </script>
     <script id="recipe-details-partial" type="text/x-handlebars-template">
-      <p id="recipeDescription">Description: {{ description }}</p>
+      <p id="rdescription">Description: {{ description }}</p>
       <ul>
         {{ #each ingredients }}
           <li>{{ displayIngredient this }}</li>

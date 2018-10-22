@@ -13,18 +13,18 @@ document.addEventListener("DOMContentLoaded", function(event) {
 });
 
 function createRecipe() {
-  let template = Handlebars.compile(document.getElementById("recipe-template").innerHTML);
-  let recipe = recipeHash();
-  // console.log(recipe)
-  document.getElementById("main").innerHTML = template(recipe);
+  let recipe = recipeContext();
+  let recipeTemplate = document.getElementById("recipe-template").innerHTML;
+  let template = Handlebars.compile(recipeTemplate);
+  debugger;
+  document.getElementById("main").innerHTML = template(recipeTemplate);
 }
 
-function recipeHash() {
+function recipeContext() {
   const ingredientsNodes = document.getElementsByName("ingredients")
-  debugger;
+
   let ingredients = [];
   for (let i = 0; i < ingredientsNodes.length; i++) {
-    // console.log('HI', ingredientsNodes[i])
     let ingredient = ingredientsNodes[i].value;
     if (ingredient !== "") {
       ingredients.push(ingredient);
@@ -32,6 +32,6 @@ function recipeHash() {
   }
     const name = document.getElementById("name").value
     const description = document.getElementById("description").value;
-
-    return ({name: name, description: description, ingredients: ingredients});
+    const recipe = {name, ingredients, description};
+    return(recipe);
 }
