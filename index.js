@@ -3,9 +3,13 @@ function init() {
     return new Handlebars.SafeString('<li name="ingredientsList">' + ingredient + '</li>');
   });
 
-  Handlebars.registerPartial('recipeDetailsPartial', document.getElementById('recipe-details-partial'));
+  Handlebars.registerPartial('recipeDetailsPartial', document.getElementById('recipe-details-partial').innerHTML);
 
-  Handlebars.registerPartial('recipeFormPartial', document.getElementById('recipe-form-partial'));
+  Handlebars.registerPartial('recipeFormPartial', document.getElementById('recipe-form-partial').innerHTML);
+
+  let formTemplate = document.getElementById('recipe-form-template').innerHTML;
+  let template = Handlebars.compile(formTemplate);
+  document.getElementsByTagName("main")[0].innerHTML = template({ 'submitaction': 'createRecipe()'});
 }
 
 document.addEventListener("DOMContentLoaded", function(event) {
@@ -16,8 +20,14 @@ function createRecipe() {
   let recipe = recipeContext();
   let recipeTemplate = document.getElementById("recipe-template").innerHTML;
   let template = Handlebars.compile(recipeTemplate);
-  debugger;
-  document.getElementById("main").innerHTML = template(recipeTemplate);
+  document.getElementById("main").innerHTML = template(recipe);
+}
+
+function updateRecipe() {
+  let recipe = recipeContext();
+  let recipeTemplate = document.getElementById("recipe-template").innerHTML;
+  let template = Handlebars.compile(recipeTemplate);
+  document.getElementById("main").innerHTML = template(recipe);
 }
 
 function recipeContext() {
@@ -34,4 +44,19 @@ function recipeContext() {
     const description = document.getElementById("description").value;
     const recipe = {name, ingredients, description};
     return(recipe);
+}
+
+function displayEditForm() {
+  let name = document.getElementById('nameHeader').innerText;
+  let description = document.getElementById('description').innerText;
+  let ingredientsNodes = document.getElementsByName('ingredientsList');
+  let ingredients = [];
+  for (let i = 0; i < ingredientsNodes.length; i++) {
+    ingredients.push(ingredientsNodes[i]);
+  }
+  let recipe = {name, description, ingredients, submitAction: 'createRecipe()'}
+
+  let recipeFormTemplate = document.getElementById("recipe-form-template").innerHTML;
+  let template = Handlebars.compile(recipeFormTemplate);
+  document.getElementById("main").innerHTML = template(recipe);
 }
