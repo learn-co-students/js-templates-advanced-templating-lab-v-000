@@ -36,7 +36,7 @@ We can also use the `each` helper on a collection, in this case the `ingredients
 To render this template, our JavaScript code would look like this:
 
 ```js
-var recipe = {
+let recipe = {
   description: 'yummy chicken noodle soup',
   ingredients: [
     {quantity: "1 cup", name: 'chicken'},
@@ -45,9 +45,9 @@ var recipe = {
   ]
 }
 
-var template = document.getElementById("my-template").innerHTML;
-var templateFn = Handlebars.compile(template);
-var html = templateFn(recipe);
+let template = document.getElementById("my-template").innerHTML;
+let templateFn = Handlebars.compile(template);
+let html = templateFn(recipe);
 ```
 
 First we grab the `innerHTML` of our template. Next, we use `Handlebars.compile` to create the `templateFn` function using the `innerHTML` of our template. Finally, we execute the `templateFn` function with a context object, `recipe`, to get rendered HTML.
@@ -72,9 +72,9 @@ Let's look at a quick example.
 ```js
 Handlebars.registerPartial('namePartial', document.getElementById("partial-template").innerHTML)
 function renderMain() {
-  var template = document.getElementById("main-template").innerHTML;
-  var templateFunction = Handlebars.compile(template);
-  var html = templateFunction({name: 'Gordon Ramsay'});
+  let template = document.getElementById("main-template").innerHTML;
+  let templateFunction = Handlebars.compile(template);
+  let html = templateFunction({name: 'Gordon Ramsay'});
 }
 ```
 
@@ -86,8 +86,8 @@ You'll be building out 3 screens: New Recipe, Show Recipe, Edit Recipe. When you
 1. Visit the page and see a form to create a new recipe, fill it out and submit it (New Recipe)
 2. See the recipe details and a link to edit the recipe (Show Recipe)
 3. Click the link to Edit the recipe and see the form rendered with pre-filled values (Edit Recipe)
-3. Update the values in the edit form and submit it to change the recipe (Edit Recipe)
-4. View the updated recipe details (Show Recipe)
+4. Update the values in the edit form and submit it to change the recipe (Edit Recipe)
+5. View the updated recipe details (Show Recipe)
 
 For simplicity's sake, only render one of these screens at a time. If we wanted to send AJAX requests to different endpoints depending on whether we were editing or creating a new recipe, we could pass a submitFunction as part of our context for the templateFunction and pass a different function for each screen. But, since we don't have a back end here, we can use the same form template and the same function to handle the submission. 
 
