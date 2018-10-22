@@ -50,7 +50,7 @@ let templateFn = Handlebars.compile(template);
 let html = templateFn(recipe);
 ```
 
-First we grab the `innerHTML` of our template. Next, we use `Handlebars.compile` to create the `templateFn` function using the `innerHTML` of our template. Finally, we execute the `templateFn` function with a context object, `recipe`, to get rendered HTML.
+First we grab the `innerHTML` of our template. You can think of this as a `String`. Next, we use `Handlebars.compile` to create the `templateFn` function using the `innerHTML` of our template. It's important to note that Handlebars returns a _function_ whose inputs are the "blanks" that will get filled in by the data passed into the function. Finally, we execute the `templateFn` function with a context object, `recipe`, to get rendered HTML. The "keys" in the context object will be filled in with the corresponding value for each call to the "key" inside the template string.
 
 ## Handlebars Partials
 
