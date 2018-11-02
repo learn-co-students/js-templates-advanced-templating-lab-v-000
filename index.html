@@ -8,7 +8,44 @@
   </head>
   <body>
     <main id="main">
+      <script id="recipe-form-template" type="text/x-handlebars-template">
+      </script>
+
+      <form id="recipe-form" onsubmit="handleSubmit()">
+        Name: <input type="text" id="name"><br>
+        Description: <input type="textarea" id="desctiption"><br>
+        Ingredient: <input type="text" name="ingredients"><br>
+        Ingredient: <input type="text" name="ingredients"><br> 
+        Ingredient: <input type="text" name="ingredients"><br> 
+        Ingredient: <input type="text" name="ingredients"><br> 
+        Ingredient: <input type="text" name="ingredients"><br> 
+        <input type="submit">
+      </form>
+
+      <script id="recipe-template" type="text/x-handlebars-template">
+        <header id="name">
+          {{name}}
+        </header>
+        <body>
+          {{>recipeDetailsPartial}}
+        </body>
+        <a href="#" onclick="displayEditForm()">Edit Recipe</a>
+      </script>
+
+      <script id="recipe-details-partial" type="text/x-handlebars-template">
+        <div id="description">
+          {{description}}
+        </div>
+        <ul>
+          {{#each ingredients}}
+          <li>{{name}}</li>
+          {{/each}}
+        </ul>
+      </script>
     </main>
+
+    
+
     <script src="node_modules/handlebars/dist/handlebars.min.js"></script>
     <script src="index.js"></script>
     <!-- Open this file and call `mocha.run()` in console to run tests -->
