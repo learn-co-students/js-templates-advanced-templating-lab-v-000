@@ -13,7 +13,7 @@
 
       <form id="recipe-form" onsubmit="handleSubmit()">
         Name: <input type="text" id="name"><br>
-        Description: <input type="textarea" id="desctiption"><br>
+        Description: <input type="textarea" id="description"><br>
         Ingredient: <input type="text" name="ingredients"><br>
         Ingredient: <input type="text" name="ingredients"><br> 
         Ingredient: <input type="text" name="ingredients"><br> 
@@ -38,9 +38,10 @@
         </div>
         <ul>
           {{#each ingredients}}
-          <li>{{name}}</li>
+          {{displayIngredient this}}
           {{/each}}
         </ul>
+        <div>{{>recipeFormPartial}}</div>
       </script>
     </main>
 
