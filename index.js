@@ -5,8 +5,7 @@
 //
 // function recipeFormPartialHtml() {
 //   let recipeForm = document.getElementById('recipe-form-template').innerHTML;
-//   // ingredients = document.getElementById('ingredients').value()
-//   // console.log(ingredients);
+//   console.log(recipeForm)
 //   let formTemplateFn = Handlebars.compile(recipeForm);
 //   document.getElementsByTagName("main")[0].innerHTML += formTemplateFn({"handleSubmit": null})
 // }
@@ -43,10 +42,6 @@
 //   let template = document.getElementById("main-template").innerHTML;
 //   let templateFunction = Handlebars.compile(template);
 //   let html = templateFunction({name: 'Gordon Ramsay'});
-// }
-
-
-
 function initForm() {
   var formTemplate = document.getElementById("recipe-form-template").innerHTML
   var template = Handlebars.compile(formTemplate)
