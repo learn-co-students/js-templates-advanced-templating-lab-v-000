@@ -8,6 +8,38 @@
   </head>
   <body>
     <main id="main">
+      <form id="recipe-form" onsubmit="createRecipe(); return false">
+        Name: <input type="text" id="name"><br></br>
+        Ingredients:<br></br>
+        <div name="ingredients">
+          <ul>
+            <li><input type="textarea" name="ingredients"></li>
+            <li><input type="textarea" name="ingredients"></li>
+            <li><input type="textarea" name="ingredients"></li>
+            <li><input type="textarea" name="ingredients"></li>
+            <li><input type="textarea" name="ingredients"></li>
+          </ul>
+        </div>
+        <button submit="submit">Submit</button>
+      </form>
+
+      <script id="recipe-form-template" type="text/x-handlebars-template">
+      </script>
+
+      <script id="recipe-template" type="text/x-handlebars-template">
+        <p>{{name}}</p>
+        <a href="#" onclick="displayEditForm(); return false">Edit Recipe</a>
+        {{> recipeDetailsPartial }}
+      </script>
+      <script id="recipe-details-partial" type="text/x-handlebars-template">
+        <p>{{description}}</p>
+        <ul>
+          {{#each ingredients}}
+          <li>{{displayIngredient this}}</li>
+          {{/each}}
+        </ul>
+        <p>{{recipeFormPartial}}</p>
+      </script>
     </main>
     <script src="node_modules/handlebars/dist/handlebars.min.js"></script>
     <script src="index.js"></script>
