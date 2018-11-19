@@ -7,9 +7,11 @@ const path = require('path');
 
 
 before(function(done) {
-  const babelResult = babel.transformFileSync(path.resolve(__dirname, '..', 'index.js'), {
-    presets: ['es2015']
-  });
+  const babelResult = babel.transformFileSync(
+    path.resolve(__dirname, '..', 'index.js'), {
+      presets: ['es2015']
+    }
+  );
 
   const html = fs.readFileSync(
     path.resolve(__dirname, '..', 'index.html'),
