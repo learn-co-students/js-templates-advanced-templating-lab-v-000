@@ -10,18 +10,16 @@ function init() {
 document.addEventListener("DOMContentLoaded", function(event) {
   init()
 })
-//
-
 
 // display new recipe FORM
 function renderInitialForm() {
-  let html  = document.getElementById("recipe-form-template").innerHTML
-  document.getElementById("main").innerHTML = html
+  let formTemplate  = document.getElementById("recipe-form-template").innerHTML
+  let template = Handlebars.compile(formTemplate)
+  document.getElementById("main").innerHTML = template({'submitAction': 'handleSubmit()'})
 }
 
 // CREATE recipe and SHOW
 function handleSubmit() {
-  // event.preventDefault()
   let recipe = createRecipeObject()
   let template = document.getElementById('recipe-template').innerHTML
   let templateFx = Handlebars.compile(template)
@@ -41,7 +39,6 @@ function createRecipeObject() {
   })
   let recipe = {name, description, ingredients}
   return recipe
-  // {name: "Fruit Salad", description: "Yummy fruit salad", ingredients: Array(5)}
 }
 
 // display new recipe FORM + existing HTML text
@@ -53,9 +50,9 @@ function displayEditForm() {
   ingredientCollection.forEach(function(ingredient) {
     ingredients.push(ingredient.innerText)
   })
-  let recipe = {name, description, ingredients}
+  let recipe = {name, description, ingredients, submitAction: 'handleSubmit()'}
 
-  let template = document.getElementById("edit-form-template").innerHTML
+  let template = document.getElementById("recipe-form-template").innerHTML
   let templateFx = Handlebars.compile(template)
   document.getElementById("main").innerHTML = templateFx(recipe)
 }

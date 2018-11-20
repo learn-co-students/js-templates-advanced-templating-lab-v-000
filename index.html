@@ -8,27 +8,10 @@
   </head>
   <body>
     <main id="main"></main>
-    <!-- // -->
 
-    <!-- holds the initial recipe form -->
+    <!-- holds the recipe form and the variable placeholders -->
     <script id="recipe-form-template" type="text/x-handlebars-template">
-      <form id="recipe-form" onsubmit="handleSubmit()">
-        Recipe Name: <br><br>
-        <input type="text" id="name"><br><br><br>
-        Description: <br><br>
-        <input type="text" id="description"><br><br><br>
-        Ingredients: <br><br>
-        <input type="text" name="ingredients"><br><br>
-        <input type="text" name="ingredients"><br><br>
-        <input type="text" name="ingredients"><br><br>
-        <input type="text" name="ingredients"><br><br>
-        <input type="text" name="ingredients"><br><br>
-        <input type="submit">
-      </form>
-    </script>
-
-    <script id="edit-form-template" type="text/x-handlebars-template">
-      <form id="edit-form" onsubmit="handleSubmit()">
+      <form id="recipe-form" onsubmit="{{submitAction}};return false;">
         Recipe Name: <br><br>
         <input type="text" id="name" value="{{name}}"><br><br><br>
         Description: <br><br>
@@ -47,7 +30,7 @@
       </form>
     </script>
 
-    <!-- holds the recipe#show html -->
+    <!-- holds the recipe show html -->
     <script id="recipe-template" type="text/x-handlebars-template">
 
       <h3>Recipe: <header id="name">{{name}}</header></h3>
@@ -67,8 +50,6 @@
       </ul>
     </script>
 
-
-    <!-- // -->
     <script src="node_modules/handlebars/dist/handlebars.min.js"></script>
     <script src="index.js"></script>
     <!-- Open this file and call `mocha.run()` in console to run tests -->
