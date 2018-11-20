@@ -9,6 +9,7 @@
   <body>
     <main id="main"></main>
     <!-- // -->
+
     <!-- holds the initial recipe form -->
     <script id="recipe-form-template" type="text/x-handlebars-template">
       <form id="recipe-form" onsubmit="handleSubmit()">
@@ -26,10 +27,44 @@
       </form>
     </script>
 
+    <script id="edit-form-template" type="text/x-handlebars-template">
+      <form id="edit-form" onsubmit="handleSubmit()">
+        Recipe Name: <br><br>
+        <input type="text" id="name" value="{{name}}"><br><br><br>
+        Description: <br><br>
+        <input type="text" id="description" value="{{description}}"><br><br><br>
+        Ingredients: <br><br>
+        {{#each ingredients}}
+        <input type="text" name="ingredients" value="{{this}}"><br><br>
+        {{else}}
+        <input type="text" name="ingredients"><br><br>
+        <input type="text" name="ingredients"><br><br>
+        <input type="text" name="ingredients"><br><br>
+        <input type="text" name="ingredients"><br><br>
+        <input type="text" name="ingredients"><br><br>
+        {{/each}}
+        <input type="submit">
+      </form>
+    </script>
+
     <!-- holds the recipe#show html -->
     <script id="recipe-template" type="text/x-handlebars-template">
-      <header id="recipeName">{{name}}</header>
-      <footer id="editRecipe"><a href"#" ondblclick="displayEditForm()"Edit Recipe<a></footer>
+
+      <h3>Recipe: <header id="name">{{name}}</header></h3>
+      {{> recipeDetailsPartial }}
+      <br><footer><a href="#" onclick="displayEditForm();">Edit Recipe</a></footer>
+    </script>
+
+    <!-- holds the recipe description and ingredients details -->
+    <script id="recipe-details-partial" type="text/x-handlebars-template">
+      <h3>Description:</h3>
+      <p id="description">{{description}}</p>
+      <h4>Ingredients:</h4>
+      <ul>
+        {{#each ingredients}}
+          {{displayIngredient this}}
+        {{/each}}
+      </ul>
     </script>
 
 
