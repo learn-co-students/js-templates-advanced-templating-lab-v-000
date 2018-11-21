@@ -11,7 +11,7 @@ function init() {
 
   // custom helper to help display description and ingredients
   Handlebars.registerHelper('displayIngredient', function(ingredient) {
-    return new Handlebars.SafeString('<li name="ingredientsList">' + ingredient + '</li>')
+    return new Handlebars.SafeString('<li name="ingredients">' + ingredient + '</li>')
   })
 }
 
@@ -31,18 +31,38 @@ function getInputValues() {
   let name = document.getElementById('name').value
   let description = document.getElementById('description').value
 
-  let ingredients = document.getElementsByName('ingredients')
-  let ingredientsArr = []
-  for(i = 0; i < ingredients.length; i++) {
-    if(ingredients[i].value != "") {
-      ingredientsArr.push(ingredients[i].value)
+  let ingredientsNodes = document.getElementsByName('ingredients')
+  let ingredients = []
+  for(i = 0; i < ingredientsNodes.length; i++) {
+    if(ingredientsNodes[i].value != "") {
+      ingredients.push(ingredientsNodes[i].value)
     }
   }
 
-  let recipe = {name, description, ingredientsArr}
+  let recipe = {name, description, ingredients}
   return recipe
 }
 
+function displayEditForm() {
+  let name = document.getElementById('name').innerText
+  let description = document.getElementById('description').innerText
+
+  let ingredientsNodes = document.getElementsByName('ingredients')
+  let ingredients = []
+  for(i = 0; i < ingredientsNodes.length; i++) {
+    if(ingredientsNodes[i].innerText != "") {
+      ingredients.push(ingredientsNodes[i].innerText)
+    }
+  }
+
+  let recipe = {name, description, ingredients}
+
+  let formTemplate = document.getElementById("recipe-form-template").innerHTML
+  let template = Handlebars.compile(formTemplate)
+  document.getElementsByTagName("main")[0].innerHTML = template(recipe)
+
+
+}
 
 document.addEventListener("DOMContentLoaded", function(event) {
   init()

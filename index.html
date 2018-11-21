@@ -33,15 +33,15 @@
     </script>
 
     <script id="recipe-template" type="text/x-handlebars-template">
-      <h3 id="nameHeader">{{name}}</h3>
+      <h3 id="name">{{name}}</h3>
       <a href="#" onclick="displayEditForm();">Edit Recipe</a>
       <div>{{> recipeDetailsPartial }}</div>
     </script>
 
     <script id="recipe-details-partial" type="text/x-handlebars-template">
-      <div id="recipeDescription">{{description}}</div>
+      <div id="description">{{description}}</div>
       <ul>
-        {{#each ingredientsArr}}
+        {{#each ingredients}}
         {{displayIngredient this}}
         {{/each}}
       </ul>
