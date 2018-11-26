@@ -36,8 +36,8 @@ function handleSubmit(){
 function displayEditForm(){
   let template = document.getElementById("recipe-form-template").innerHTML
   let templateFn = Handlebars.compile(template)
-  let name = document.getElementById("name").innerText
-  let description = document.getElementById("description").innerText
+  let name = document.getElementById('name').innerHTML
+  let description = document.getElementById("description").innerHTML
   let allIngredients = document.getElementsByName('ingredients')
   let ingredients = []
   for(let i = 0; i<allIngredients.length; i++){
