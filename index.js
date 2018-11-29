@@ -12,7 +12,7 @@ function init() {
   document.getElementById("recipe-details-partial").innerHTML);
 
   Handlebars.registerHelper('displayIngredient', function() {
-    return new Handlebars.SafeString("<li class='currentIngredient'>" + this + "</li>")
+    return new Handlebars.SafeString('<li name="ingredients">' + this + "</li>")
   })
 }
 
@@ -42,8 +42,8 @@ function handleSubmit() {
 
 function displayEditForm() {
   let name = document.getElementById('name').innerHTML;
-  let description = document.getElementById('currentDescription').innerHTML;
-  let ingredientNodes = document.getElementsByClassName('currentIngredient');
+  let description = document.getElementById('description').innerHTML;
+  let ingredientNodes = document.getElementsByName('ingredients');
   let ingredients = [];
   for(var i=0; i<ingredientNodes.length; i++) {
     ingredients.push(ingredientNodes[i].innerHTML);
