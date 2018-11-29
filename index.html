@@ -24,7 +24,7 @@
         Description: <input type="textarea" id="description" value="{{description}}"><br>
         Ingredients: <ul>
           {{#each ingredients}}
-          <li><input type="text" name="ingredient" value="{{this}}"></li><br>
+          <li><input type="text" name="ingredients" value="{{this}}"></li><br>
           {{/each}}
         </ul>
         <input type="submit">
@@ -44,7 +44,7 @@
         <p id="description">{{description}}</p>
         <ul>
           {{#each ingredients}}
-            {{displayIngredient}}
+            {{displayIngredient this}}
           {{/each}}
         </ul>
       </div>

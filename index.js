@@ -11,8 +11,8 @@ function init() {
   Handlebars.registerPartial('recipeDetailsPartial',
   document.getElementById("recipe-details-partial").innerHTML);
 
-  Handlebars.registerHelper('displayIngredient', function() {
-    return new Handlebars.SafeString('<li name="ingredients">' + this + "</li>")
+  Handlebars.registerHelper('displayIngredient', function(ingredient) {
+    return new Handlebars.SafeString('<li name="ingredients">' + ingredient + "</li>")
   })
 }
 
@@ -23,7 +23,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 function handleSubmit() {
   let name = document.getElementById('name').value;
   let description = document.getElementById('description').value;
-  let ingredientNodes = document.getElementsByName('ingredient');
+  let ingredientNodes = document.getElementsByName('ingredients');
   let ingredients = [];
   for(var i=0; i<ingredientNodes.length; i++) {
     if(!!ingredientNodes[i].value) {
