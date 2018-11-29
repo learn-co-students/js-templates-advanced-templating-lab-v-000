@@ -41,7 +41,7 @@ function handleSubmit() {
 }
 
 function displayEditForm() {
-  let name = document.getElementById('currentName').innerHTML;
+  let name = document.getElementById('name').innerHTML;
   let description = document.getElementById('currentDescription').innerHTML;
   let ingredientNodes = document.getElementsByClassName('currentIngredient');
   let ingredients = [];
