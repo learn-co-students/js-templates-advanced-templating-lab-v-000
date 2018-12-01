@@ -12,6 +12,17 @@
     <script src="node_modules/handlebars/dist/handlebars.min.js"></script>
     <script src="index.js"></script>
     <!-- Open this file and call `mocha.run()` in console to run tests -->
+    <script id="my-template" type="text/x-handlebars-template">
+      <div id="recipe">
+        <p>{{description}}</p>
+        <ul>
+          {{#each ingredients}}
+          <li>{{name}}</li>
+          {{/each}}
+        </ul>
+      </div>
+    </script>
+    
     <div id="mocha"></div>
     <script src="node_modules/mocha/mocha.js"></script>
     <script src="node_modules/expect/umd/expect.min.js"></script>
