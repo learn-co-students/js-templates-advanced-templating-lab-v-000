@@ -14,44 +14,26 @@ function setupHandlebars(){
   }
 
 
-  // function recipeValues() {
-  //   let template = document.getElementById("recipe-template").innerHTML
-  //   let templateFn = Handlebars.compile(template)
-  //
-  //   let name = document.getElementById("name").value
-  //   let description = document.getElementById("description").value
-  //   let allIngredients = document.getElementsByName("ingredients")
-  //
-  //   let ingredients = []
-  //   for(let i=0; i<allIngredients.length; i++){
-  //     ingredients.push(allIngredients[i].value)
-  //   }
-  // }
-
-
-
 function init() {
   //put any page initialization/handlebars initialization here
   setupHandlebars()
   createForm()
-
 }
+
 document.addEventListener("DOMContentLoaded", function(event) {
   init()
 })
 
 
-
-
 function handleSubmit(){
-  // recipeValues()
+  // recipeValues
   let template = document.getElementById("recipe-template").innerHTML
   let templateFn = Handlebars.compile(template)
 
   let name = document.getElementById("name").value
   let description = document.getElementById("description").value
-  let allIngredients = document.getElementsByName("ingredients")
 
+  let allIngredients = document.getElementsByName("ingredients")
   let ingredients = []
   for(let i=0; i<allIngredients.length; i++){
     ingredients.push(allIngredients[i].value)
@@ -62,20 +44,19 @@ function handleSubmit(){
 }
 
 
-
 function displayEditForm(){
   let template = document.getElementById("recipe-form-template").innerHTML
   let templateFn = Handlebars.compile(template)
 
-  let name = document.getElementById("name").value
-  let description = document.getElementById("description").value
-  let allIngredients = document.getElementsByName("ingredients")
+  let name = document.getElementById("name").innerHTML
+  let description = document.getElementById("description").innerHTML
 
+  let allIngredients = document.getElementsByName("ingredients")
   let ingredients = []
   for(let i=0; i<allIngredients.length; i++){
-    ingredients.push(allIngredients[i].value)
+    ingredients.push(allIngredients[i].innerHTML)
   }
 
-  
-
+  let recipe = {name, description, ingredients, onsubmit: 'handleSubmit()'}
+  document.getElementById('main').innerHTML = templateFn(recipe);
 }

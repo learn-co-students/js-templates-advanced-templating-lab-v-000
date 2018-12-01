@@ -7,13 +7,11 @@
     <link rel="stylesheet" href="node_modules/mocha/mocha.css" />
   </head>
   <body>
-
     <main id="main"> </main>
 
       <script id="recipe-form-template" type="text/x-handlebars-template">
-
         <form id="recipe-form" onsubmit="handleSubmit();return false;"><br>
-          Recipe Name: <input id="name" type="text"  value= "{{name}}"><br><br>
+          Recipe Name: <input id="name" type="text" value="{{name}}"><br><br>
           Description: <input id="description" type="text" value="{{description}}"><br><br>
           <h3> Ingredients </h3>
           {{#each ingredients}}
@@ -24,23 +22,18 @@
           Ingredient 3: <input type="text"  name="ingredients"><br><br>
           Ingredient 4: <input type="text"  name="ingredients"><br><br>
           Ingredient 5: <input type="text"  name="ingredients"><br><br>
-
+          {{/each}}
           <input type="submit" value="Submit">
         </form>
-        {{/each}}
       </script>
 
-
-
     <script id="recipe-template" type="text/x-handlebars-template">
-
-     <header <h2 Recipe: id="name">{{name}}</h2></header>
+      <article>
+        <header><h2>Recipe:</h2><h3 id="name">{{name}}</h3></header>
         <div> {{>recipeDetailsPartial}} </div>
-      <footer> <a href="#" onclick="displayEditForm();">Edit Recipe</a></footer>
-
+      <footer> <a href="#" onclick="displayEditForm();return false;">Edit Recipe</a></footer>
+      </article>
     </script>
-
-
 
     <script id="recipe-details-partial" type="text/x-handlebars-template">
       <h3>Descripton:</h3>
@@ -52,9 +45,6 @@
       {{/each}}
       </ul>
     </script>
-
-
-
 
     <script src="node_modules/handlebars/dist/handlebars.min.js"></script>
     <script src="index.js"></script>
