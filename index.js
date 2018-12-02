@@ -52,9 +52,8 @@ function displayEditForm() {
     };
   let template = Handlebars.compile(document.getElementById("recipe-form-template").innerHTML);
 
-  let html = template();
+  let html = template({name:name, description:description, ingredients});
   document.getElementsByTagName("main")[0].innerHTML = html;
-  document.getElementById("name").innerHTML = name;
   //debugger
 }
 

@@ -15,13 +15,17 @@
 
         <script id="recipe-form-template" type="text/x-handlebars-template">
           <form id="recipe-form" onsubmit="handleSubmit();return false;">
-            Name: <input type="text" id="name"><br>
-            Description: <input type="text" id="description"><br>
-            Ingredients: <input type="textarea" name="ingredients" id="ingredients"><br>
-            Ingredients: <input type="textarea" name="ingredients" id="ingredients"><br>
-            Ingredients: <input type="textarea" name="ingredients" id="ingredients"><br>
-            Ingredients: <input type="textarea" name="ingredients" id="ingredients"><br>
-            Ingredients: <input type="textarea" name="ingredients" id="ingredients"><br>
+            Name: <input type="text" id="name" value="{{ name }}"><br>
+            Description: <input type="text" id="description" value="{{ description }}"><br>
+             {{#each ingredients}}
+             Ingredients: <input type="text" name="ingredients" id="ingredients" value="{{ this }}"><br>
+             {{else}}
+            Ingredients: <input type="text" name="ingredients" id="ingredients"><br>
+            Ingredients: <input type="text" name="ingredients" id="ingredients"><br>
+            Ingredients: <input type="text" name="ingredients" id="ingredients"><br>
+            Ingredients: <input type="text" name="ingredients" id="ingredients"><br>
+            Ingredients: <input type="text" name="ingredients" id="ingredients"><br>
+             {{/each}}
             <input type="submit">
           </form>
         </script>
@@ -43,6 +47,7 @@
 
 
     <div id="mocha"></div>
+
     <script src="node_modules/mocha/mocha.js"></script>
     <script src="node_modules/expect/umd/expect.min.js"></script>
     <script>mocha.setup('bdd');</script>
