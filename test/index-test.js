@@ -103,6 +103,7 @@ describe('Handlebars Templates Lab', function() {
         var nameField = document.getElementById("name")
         var descriptionField = document.getElementById("description")
         var ingredientsValues = ["Apple", "Pear", "Orange", "Banana", "Almond Milk"]
+        //debugger
         ingredientsValues.forEach(function(ing, index){
           //debugger
           ingredients[index].value = ing;
