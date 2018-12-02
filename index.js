@@ -1,27 +1,63 @@
-//Handlebars.registerPartial('recipeDetailsPartial', );
+// Handlebars.registerPartial('recipeDetailsPartial', function() {
+//   return document.getElementById("recipe-details-partial").innerHTML
+// });
 
-Handlebars.registerHelper('displayIngredient', function(ingr) {
-  //debugger
-  let ingredient = ingr;
-  if(ingredient != "") {
-   return new Handlebars.SafeString(
-    "<li name=\"ingredients\"" + ">" + ingredient + "</li>"
-  );
- }
-});
+Handlebars.registerPartial('recipeDetailsPartial',document.getElementById("recipe-details-partial").innerHTML);
+
+
+Handlebars.registerHelper('displayIngredient', function(ingredient) {
+    return new Handlebars.SafeString('<li name="ingredients">' + ingredient + '</li>')
+  })
+
 
 
 function init() {
   //put any page initialization/handlebars initialization here
     let template = Handlebars.compile(document.getElementById("recipe-form-template").innerHTML);
-    let html = template({});
+    let html = template();
+    //debugger
     document.getElementsByTagName("main")[0].innerHTML += html;
 
-    //let templatep = document.getElementById("recipe-template").innerHTML;
-    // let templatep = Handlebars.compile(document.getElementById("recipe-template").innerHTML);
-    // let htmlp = templatep({});
-    // document.getElementsByTagName("main")[0].innerHTML += htmlp;
 }
+
+function handleSubmit() {
+  //debugger
+  var name = document.getElementById("name").value;
+  var description = document.getElementById("description").value;
+  var ingrs = document.getElementsByName("ingredients")
+  var ingredients=[]
+  for(var i=0;i<ingrs.length;i++) {
+      if(ingrs[i].value != "") {
+      ingredients.push(ingrs[i].value)
+      }
+    };
+  var template = Handlebars.compile(document.getElementById("recipe-template").innerHTML);
+  //debugger
+  var result = template({name:name, description:description, ingredients:ingredients});
+  //debugger
+  document.getElementsByTagName("main")[0].innerHTML = result;
+
+}
+
+function displayEditForm() {
+  //debugger
+  var name = document.getElementById("name").innerHTML;
+  var description = document.getElementById("description").innerHTML;
+  var ingrs = document.getElementsByName("ingredients")
+  var ingredients=[]
+  for(var i=0;i<ingrs.length;i++) {
+      if(ingrs[i].innerText != "") {
+      ingredients.push(ingrs[i].innerText)
+      }
+    };
+  let template = Handlebars.compile(document.getElementById("recipe-form-template").innerHTML);
+
+  let html = template();
+  document.getElementsByTagName("main")[0].innerHTML = html;
+  document.getElementById("name").innerHTML = name;
+  //debugger
+}
+
 
 document.addEventListener("DOMContentLoaded", function(event) {
   init()

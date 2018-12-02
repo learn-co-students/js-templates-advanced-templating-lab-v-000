@@ -98,7 +98,7 @@ describe('Handlebars Templates Lab', function() {
     describe('displayEditForm', function() {
       it('renders the form template with values pre-filled', function() {
         // load the new form and fill it out
-        init() 
+        init()
         var ingredients = document.getElementsByName("ingredients")
         var nameField = document.getElementById("name")
         var descriptionField = document.getElementById("description")
@@ -112,7 +112,7 @@ describe('Handlebars Templates Lab', function() {
         handleSubmit()
         var spy = expect.spyOn(window.Handlebars, "compile").andCallThrough()
         // simulate clicking the link to edit
-        displayEditForm() 
+        displayEditForm()
         expect(spy).toHaveBeenCalledWith(document.getElementById("recipe-form-template").innerHTML)
         spy.reset()
         // the form should be pre-filled with previous values
