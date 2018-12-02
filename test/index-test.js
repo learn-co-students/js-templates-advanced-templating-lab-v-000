@@ -104,6 +104,7 @@ describe('Handlebars Templates Lab', function() {
         var descriptionField = document.getElementById("description")
         var ingredientsValues = ["Apple", "Pear", "Orange", "Banana", "Almond Milk"]
         ingredientsValues.forEach(function(ing, index){
+          //debugger
           ingredients[index].value = ing;
         })
         nameField.value = "Fruit Salad"
@@ -112,6 +113,7 @@ describe('Handlebars Templates Lab', function() {
         handleSubmit()
         var spy = expect.spyOn(window.Handlebars, "compile").andCallThrough()
         // simulate clicking the link to edit
+
         displayEditForm()
         expect(spy).toHaveBeenCalledWith(document.getElementById("recipe-form-template").innerHTML)
         spy.reset()
