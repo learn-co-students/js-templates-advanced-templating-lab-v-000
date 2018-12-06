@@ -35,7 +35,7 @@ describe('Handlebars Templates Lab', function() {
       var recipeDetailsPartial = document.getElementById("recipe-details-partial")
       expect(recipeDetailsPartial).toExist("Must provide a template with an id of 'recipe-details-partial'")
       expect(recipeDetailsPartial.type).toBe("text/x-handlebars-template", "Template must be of type text/x-handlebars-template")
-      expect(recipeDetailsPartial.innerHTML).toMatch(/id="recipeDescription">{{\s?description\s?}}/, "Template must have the recipe's description inside of a container with an id of 'description'")
+      expect(recipeDetailsPartial.innerHTML).toMatch(/id="recipeDescription">{{\s?description\s?}}/, "Template must have the recipe's description inside of a container with an id of 'recipeDescription'")
       expect(recipeDetailsPartial.innerHTML).toMatch(/{{#\s?each ingredients\s?}}/)
       expect(recipeDetailsPartial.innerHTML).toMatch(/{{\s?displayIngredient this\s?}}/, "Template must make use of displayIngredient custom helper inside the #each block helper")
       expect(recipeDetailsPartial.innerHTML).toMatch(/{{\/\s?each\s?}}/)
