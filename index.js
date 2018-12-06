@@ -1,7 +1,7 @@
 function initForm() {
   var formTemplate = document.getElementById("recipe-form-template").innerHTML
   var template = Handlebars.compile(formTemplate)
-  document.getElementsByTagName("main")[0].innerHTML = template({'submitAction': 'createRecipe()'})
+  document.getElementsByTagName("main")[0].innerHTML = template({'handleSubmit': 'createRecipe()'})
 }
 
 function createRecipe() {
@@ -27,7 +27,7 @@ function displayEditForm() {
     ingredients.push(ingredientsNodes[i].innerText)
   }
 
-  var recipe = {name, description, ingredients, submitAction: 'createRecipe()'}
+  var recipe = {name, description, ingredients, handleSubmit: 'createRecipe()'}
 
   var recipeFormTemplate = document.getElementById("recipe-form-template").innerHTML
   var template = Handlebars.compile(recipeFormTemplate)
