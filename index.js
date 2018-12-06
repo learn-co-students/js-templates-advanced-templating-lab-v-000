@@ -1,3 +1,6 @@
+///////////////////////
+// THE RECIPE OBJECT //
+///////////////////////
 let recipe = {
   name: '',
   description: '',
@@ -80,8 +83,13 @@ function runCustomHandlebars() {
   Handlebars.registerPartial('recipeDetailsPartial', document.getElementById("recipe-details-partial").innerHTML)
 }
 
+
+///////////////////////////
+// INITIALIZING FUNCTION //
+///////////////////////////
 function init() {
-  //put any page initialization/handlebars initialization here
+  //put any page initialization functions
+  //and functions with custom handlebar helpers/partials in here
   displayRecipeForm();
   runCustomHandlebars();
 }
