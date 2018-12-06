@@ -27,7 +27,7 @@ describe('Handlebars Templates Lab', function() {
       var recipeTemplate = document.getElementById("recipe-template")
       expect(recipeTemplate).toExist("Must provide a template with an id of 'recipe-template'")
       expect(recipeTemplate.type).toBe("text/x-handlebars-template", "Template must be of type text/x-handlebars-template")
-      expect(recipeTemplate.innerHTML).toMatch(/id="name">{{\s?name\s?}}/, "Template must have the name inside of a container with an id of 'name'")
+      expect(recipeTemplate.innerHTML).toMatch(/id="recipeName">{{\s?name\s?}}/, "Template must have the name inside of a container with an id of 'recipeName'")
       expect(recipeTemplate.innerHTML).toMatch(/<a.*displayEditForm().*>Edit Recipe<\/a>/, "Template must have an 'Edit Recipe' link that calls 'displayEditForm()' on click")
       expect(recipeTemplate.innerHTML).toMatch(/{{>\s?recipeDetailsPartial\s?}}/, "Template must render the recipeDetailsPartial")
     })
@@ -35,7 +35,7 @@ describe('Handlebars Templates Lab', function() {
       var recipeDetailsPartial = document.getElementById("recipe-details-partial")
       expect(recipeDetailsPartial).toExist("Must provide a template with an id of 'recipe-details-partial'")
       expect(recipeDetailsPartial.type).toBe("text/x-handlebars-template", "Template must be of type text/x-handlebars-template")
-      expect(recipeDetailsPartial.innerHTML).toMatch(/id="description">{{\s?description\s?}}/, "Template must have the recipe's description inside of a container with an id of 'description'")
+      expect(recipeDetailsPartial.innerHTML).toMatch(/id="recipeDescription">{{\s?description\s?}}/, "Template must have the recipe's description inside of a container with an id of 'recipeDescription'")
       expect(recipeDetailsPartial.innerHTML).toMatch(/{{#\s?each ingredients\s?}}/)
       expect(recipeDetailsPartial.innerHTML).toMatch(/{{\s?displayIngredient this\s?}}/, "Template must make use of displayIngredient custom helper inside the #each block helper")
       expect(recipeDetailsPartial.innerHTML).toMatch(/{{\/\s?each\s?}}/)
@@ -84,10 +84,10 @@ describe('Handlebars Templates Lab', function() {
         expect(spy).toHaveBeenCalledWith(document.getElementById("recipe-template").innerHTML)
         spy.reset()
         // expect show page to properly display recipe details from form
-        expect(document.getElementById('name')).toExist
-        expect(document.getElementById('name').innerHTML).toMatch("Fruit Salad")
-        expect(document.getElementById('description')).toExist
-        expect(document.getElementById('description').innerHTML).toMatch("Yummy fruit salad")
+        expect(document.getElementById('recipeName')).toExist
+        expect(document.getElementById('recipeName').innerHTML).toMatch("Fruit Salad")
+        expect(document.getElementById('recipeDescription')).toExist
+        expect(document.getElementById('recipeDescription').innerHTML).toMatch("Yummy fruit salad")
         ingredients = document.getElementsByName("ingredients")
         ingredientsValues.forEach(function(ing, index){
           expect(ingredients[index].innerHTML).toEqual(ing)
@@ -98,7 +98,7 @@ describe('Handlebars Templates Lab', function() {
     describe('displayEditForm', function() {
       it('renders the form template with values pre-filled', function() {
         // load the new form and fill it out
-        init() 
+        init()
         var ingredients = document.getElementsByName("ingredients")
         var nameField = document.getElementById("name")
         var descriptionField = document.getElementById("description")
@@ -112,7 +112,7 @@ describe('Handlebars Templates Lab', function() {
         handleSubmit()
         var spy = expect.spyOn(window.Handlebars, "compile").andCallThrough()
         // simulate clicking the link to edit
-        displayEditForm() 
+        displayEditForm()
         expect(spy).toHaveBeenCalledWith(document.getElementById("recipe-form-template").innerHTML)
         spy.reset()
         // the form should be pre-filled with previous values
@@ -133,10 +133,10 @@ describe('Handlebars Templates Lab', function() {
         // simulate submitting the edit form
         handleSubmit()
         // show page should contain new values for recipe
-        expect(document.getElementById('name')).toExist
-        expect(document.getElementById('name').innerHTML).toMatch("Fruity Fruit Salad")
-        expect(document.getElementById('description')).toExist
-        expect(document.getElementById('description').innerHTML).toMatch("Yummiest fruit salad")
+        expect(document.getElementById('recipeName')).toExist
+        expect(document.getElementById('recipeName').innerHTML).toMatch("Fruity Fruit Salad")
+        expect(document.getElementById('recipeDescription')).toExist
+        expect(document.getElementById('recipeDescription').innerHTML).toMatch("Yummiest fruit salad")
         ingredients = document.getElementsByName("ingredients")
         ingredientsValues.forEach(function(ing, index){
           expect(ingredients[index].innerHTML).toEqual(ing)
