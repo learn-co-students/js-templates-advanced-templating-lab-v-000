@@ -27,8 +27,8 @@ function handleSubmit() {
 
 function displayEditForm() {
   var recipe = {}
-  var nameNode = document.getElementById('name');
-  var descriptionNode = document.getElementById('description');
+  var nameNode = document.getElementById('recipeName');
+  var descriptionNode = document.getElementById('recipeDescription');
   var ingredientNodes = document.getElementsByName('ingredients');
   recipe.name = nameNode.innerHTML;
   recipe.description = descriptionNode.innerHTML;
