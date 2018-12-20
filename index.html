@@ -8,25 +8,35 @@
   </head>
   <body>
     <main id="main">
+    </main>
+       
        <script id="recipe-form-template" type="text/x-handlebars-template">
           <form id="recipe-form" onsubmit="handleSubmit();return false;">
-          name: <input type="text" id="name"><br>
-          description: <input type="textarea" id="description"><br>
+          name: <input type="text" id="name" name="name" value="{{name}}"><br>
+          description: <input type="textarea" id="description" name="description" value="{{description}}"><br>
           ingredients:<br>
-          <input type="textarea" id="ingredients"><br>
-          <input type="textarea" id="ingredients"><br>
-          <input type="textarea" id="ingredients"><br>
-          <input type="textarea" id="ingredients"><br>
-          <input type="textarea" id="ingredients"><br>
+           {{#each ingredients}}
+            <input type="textarea" id="ingredients" name="ingredients" value="{{this}}">
+           {{/each}}
           <input type="submit">
-        </form>
-
+          </form>
        </script>
        
       <script id="recipe-template" type="text/x-handlebars-template">
         <header id="recipeName">{{name}}</header>
+        {{>recipeDetailsPartial}}
+        <a href="#" onclick="displayEditForm()">Edit Recipe</a>
       </script>
-    </main>
+
+      <script id="recipe-details-partial" type="text/x-handlebars-template">
+      <p id="recipeDescription">{{description}}</p>
+          <ul>
+          {{#each ingredients}}
+            {{displayIngredient this}}
+          {{/each}}
+          </ul>
+      </script>
+    
     <script src="node_modules/handlebars/dist/handlebars.min.js"></script>
     <script src="index.js"></script>
 
