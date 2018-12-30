@@ -8,89 +8,58 @@
   </head>
   <body>
     <main id="main">
-  <!--        it('has a recipe form', function() {-->
-  <!--    var recipeForm = document.getElementById("recipe-form")-->
-  <!--    expect(recipeForm).toExist("Must provide a form with an id of 'recipe-form'")-->
-  <!--    expect(recipeForm).toMatch(/onsubmit="handleSubmit()"/)-->
-  <!--    var nameField = document.getElementById("name")-->
-  <!--    var descriptionField = document.getElementById("description")-->
-  <!--    expect(nameField).toExist()-->
-  <!--    expect(descriptionField).toExist()-->
-  <!--    var ingredients = document.getElementsByName("ingredients")-->
-  <!--    expect(ingredients.length).toBeGreaterThanOrEqualTo(5)-->
-  <!--  })-->
-  <!--})-->
-    <form id="recipe-form" onsubmit="return handleSubmit();" style="margin: 20px 0px 0px 20px">
+    <form id="recipe-form" name="recipe-form" onsubmit="handleSubmit(); return false" style="margin: 20px 0px 0px 20px">
       <label>
         Recipe Name: 
       </label>
       <br/>
-      <input id="display-name">
+      <input id="name" name="recipe-name">
       <br/>
       <br/>
       <label>
         Descriptions:
       </label>
       <br/>
-      <textarea id="description" rows="8" cols="20" style="resize:none;overflow:hidden" maxchars="200"></textarea>
-      <ul>
-        <li>None</li>
-        <li>None</li>
-        <li>None</li>
-        <li>None</li></li>
-        <li>None</li>
-      </ul>
+      <input id="description" style="resize:none;overflow:hidden"  name="recipe-description"></textarea>
+      <br/><br/>
+        <input name="ingredients" value="None" placeholder="Ingredient"><br/>
+        <input name="ingredients" value="None" placeholder="Ingredient"><br/>
+        <input name="ingredients" value="None" placeholder="Ingredient"><br/>
+        <input name="ingredients" value="None" placeholder="Ingredient"><br/>
+        <input name="ingredients" value="None" placeholder="Ingredient"><br/>
+        <input name="ingredients" value="None" placeholder="Ingredient"><br/>
+         <br/>
       <input type="submit" value="Save Recipe"/>
     </form>
     </main>
     <script src="node_modules/handlebars/dist/handlebars.min.js"></script>
-    <script src="index.js"></script>
+ 
     <!-- Open this file and call `mocha.run()` in console to run tests -->
     <div id="mocha"></div>
     <script src="node_modules/mocha/mocha.js"></script>
     <script src="node_modules/expect/umd/expect.min.js"></script>
     <script>mocha.setup('bdd');</script>
-   <!--it('has a recipe form template', function() {-->
-   <!--   var recipeFormTemplate = document.getElementById("recipe-form-template")-->
-   <!--   expect(recipeFormTemplate).toExist("Must provide a template with an id of 'recipe-form-template'")-->
-   <!--   expect(recipeFormTemplate.type).toBe("text/x-handlebars-template", "Template must be of type text/x-handlebars-template");-->
-   <!-- })-->
-   
-    <!-- it('has a recipe template', function() {-->
-    <!--  var recipeTemplate = document.getElementById("recipe-template")-->
-    <!--  expect(recipeTemplate).toExist("Must provide a template with an id of 'recipe-template'")-->
-    <!--  expect(recipeTemplate.type).toBe("text/x-handlebars-template", "Template must be of type text/x-handlebars-template")-->
-    <!--  expect(recipeTemplate.innerHTML).toMatch(/id="name">{{\s?name\s?}}/, "Template must have the name inside of a container with an id of 'name'")-->
-    <!--  expect(recipeTemplate.innerHTML).toMatch(/<a.*displayEditForm().*>Edit Recipe<\/a>/, "Template must have an 'Edit Recipe' link that calls 'displayEditForm()' on click")-->
-    <!--  expect(recipeTemplate.innerHTML).toMatch(/{{>\s?recipeDetailsPartial\s?}}/, "Template must render the recipeDetailsPartial")-->
-    <!--})-->
    <script id="recipe-form-template" type="text/x-handlebars-template">
-     <form >
-        <label>
-          Recipe Name: 
-        </label>
-        <br/>
-        <input id="name">{{name}}
-        <br/><br/>
-        <a onclick="displayEditForm()">Edit Recipe</a>
-     </form>
-     <p>{{ recipeDetailsPartial }}</p>
    </script>
-    <!--it('has a recipe details partial template', function() {-->
-    <!--  var recipeDetailsPartial = document.getElementById("recipe-details-partial")-->
-    <!--  expect(recipeDetailsPartial).toExist("Must provide a template with an id of 'recipe-details-partial'")-->
-    <!--  expect(recipeDetailsPartial.type).toBe("text/x-handlebars-template", "Template must be of type text/x-handlebars-template")-->
-    <!--  expect(recipeDetailsPartial.innerHTML).toMatch(/id="description">{{\s?description\s?}}/, "Template must have the recipe's description inside of a container with an id of 'description'")-->
-    <!--  expect(recipeDetailsPartial.innerHTML).toMatch(/{{#\s?each ingredients\s?}}/)-->
-    <!--  expect(recipeDetailsPartial.innerHTML).toMatch(/{{\s?displayIngredient this\s?}}/, "Template must make use of displayIngredient custom helper inside the #each block helper")-->
-    <!--  expect(recipeDetailsPartial.innerHTML).toMatch(/{{\/\s?each\s?}}/)-->
-    <!--})-->
-    <script id="recipe-details-partial" type="text/x-handlebars-template">
-      <p id="description">{{description}}</p>
-      
+    <script id="recipe-template" type="text/x-handlebars-template">
+    <div id="show-page">
+      <h2 id="name">{{name}}</h2>
+      <a onclick="displayEditForm()">Edit Recipe</a>
+      <br/>
+      <br/>
+      {{> recipeDetailsPartial }}
+      </div>
     </script>
+    <script id="recipe-details-partial" type="text/x-handlebars-template">
+      <p id="description">{{description}}</p> 
+      <br/>
+      <ul>
+      {{#each ingredients}}
+          {{ displayIngredient this }}
+      {{/each}}
+      </ul>
+    </script>
+      <script src="index.js"></script>
     <script src="test/index-test.js"></script>
-    
-    
   </body>
 </html>
