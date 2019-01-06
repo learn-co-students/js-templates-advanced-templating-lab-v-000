@@ -21,7 +21,7 @@
     <!-- Templates -->
     <script id="recipe-form-template" type="text/x-handlebars-template">
       <div>
-        <form id="recipe-form" onsubmit="handleSubmit();">
+        <form id="recipe-form" onsubmit="handleSubmit(); return false;">
         <p>Name:</p>
         <input type="text" name="name" value="" id="name">
         <p>Description:</p>
@@ -42,7 +42,7 @@
       <header id="recipeName">{{name}}
       </header>
       {{>recipeDetailsPartial}}
-      <a href="#" onclick="displayEditForm()">Edit Recipe</a>
+      <a href="#" onclick="displayEditForm(); return false;">Edit Recipe</a>
     </script>
 
     <script type="text/x-handlebars-template" id="recipe-details-partial">
@@ -55,7 +55,7 @@
       </ul>
     </script>
 
-    <script id="recipe-template" type="text/x-handlebars-template">
+    <!-- <script id="recipe-template" type="text/x-handlebars-template">
       <div id="recipe">
         <p>{{description}}</p>
         <ul>
@@ -64,6 +64,6 @@
           {{/each}}
         </ul>
       </div>
-    </script>
+    </script> -->
   </body>
 </html>

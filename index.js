@@ -14,3 +14,17 @@ function init() {
 document.addEventListener("DOMContentLoaded", function(event) {
   init()
 })
+
+function handleSubmit() {
+  var name = document.getElementById('recipe-form').elements.namedItem("name").value
+  var description = document.getElementById('recipe-form').elements.namedItem("description").value
+  var ingredientList = Array.from(document.getElementsByName("ingredients")).map(function(ingredient) {
+    return ingredient.value
+  })
+
+
+  var recipeTemplate = Handlebars.compile(document.getElementById('recipe-template').innerHTML)
+  var recipe = recipeTemplate({name: name, description: description, ingredients: ingredientList})
+  // debugger;
+  document.getElementsByTagName('main')[0].innerHTML += recipe
+}
