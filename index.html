@@ -8,6 +8,9 @@
   </head>
   <body>
     <main id="main">
+
+
+
     </main>
     <script src="node_modules/handlebars/dist/handlebars.min.js"></script>
     <script src="index.js"></script>
@@ -18,4 +21,36 @@
     <script>mocha.setup('bdd');</script>
     <script src="test/index-test.js"></script>
   </body>
+
+  <script id="recipe-form-template" type="text/x-handlebars-template">
+       <form id="recipe-form" onsubmit="handleSubmit();return false;">
+        Name: <input type="text" id="name" value="{{name}}"><br>
+        Description: <input type="text" id="description" value="{{description}}"><br>
+        Ingredients: 
+          {{#each ingredients}}
+          <input type="text" name="ingredients" value="{{this}}"><br>
+          {{/each}}
+        <input type="submit">
+      </form>
+  </script>
+
+  <script id="recipe-template" type="text/x-handlebars-template">
+    <h2 id="recipeName">{{name}}</h2>
+    {{> recipeDetailsPartial }}
+    <a href="#" onclick="displayEditForm()">Edit Recipe</a>
+  </script>
+
+  <script id="recipe-details-partial" type="text/x-handlebars-template">
+    <div id="recipeDescription">{{description}}</div>
+    <ul>
+      {{#each ingredients}}
+      {{displayIngredient this}}
+      {{/each}}
+    </ul>  
+  </script>
+
+  
+
+ 
+
 </html>
