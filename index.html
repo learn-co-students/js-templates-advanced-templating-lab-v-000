@@ -25,25 +25,19 @@
         {{#each ingredients}}
         <input type="text" name="ingredients" value="{{this}}"/>
         {{/each}}
-        <!-- <input type="text" name="ingredients" value="{{ingredient1}}">
-        <input type="text" name="ingredients" value="{{ingredient2}}">
-        <input type="text" name="ingredients" value="{{ingredient3}}">
-        <input type="text" name="ingredients" value="{{ingredient4}}">
-        <input type="text" name="ingredients" value="{{ingredient5}}"> -->
         <input type="submit"/>
-
         </form>
       </div>
     </script>
 
     <script type="text/x-handlebars-template" id="recipe-template">
       <h2 id="recipeName">{{name}}</h2>
+      <a href="#" onclick="displayEditForm()">Edit Recipe</a>
       {{>recipeDetailsPartial}}
-      <a href="#" onclick="displayEditForm();">Edit Recipe</a>
     </script>
 
     <script type="text/x-handlebars-template" id="recipe-details-partial">
-      <div id="recipeDescription">{{description}}</div>
+      <p id="recipeDescription">{{description}}</p>
       <ul>
         {{#each ingredients}}
         {{displayIngredient this}}
