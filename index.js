@@ -8,10 +8,13 @@ function init() {
   })
 
    Handlebars.registerPartial('recipeDetailsPartial', document.getElementById("recipe-details-partial").innerHTML)
-   Handlebars.registerHelper('displayIngredient', function() {
-     if(this !== undefined || this !== "") {
-      return Handlebars.SafeString(`<li class="recipeIngredients">` + this + `</li>`)
-      }
+   Handlebars.registerHelper('displayIngredient', function(ingredientString) {
+     ingredientString = Handlebars.Utils.escapeExpression(ingredientString)
+     if (ingredientString !== undefined && ingredientString !== "") {
+      return new Handlebars.SafeString(`<li name="ingredients">` + ingredientString + `</li>`)
+    } else {
+      return new Handlebars.SafeString("")
+    }
    })
 
   const recipeTemplateString = document.getElementById('recipe-template').innerHTML
