@@ -11,10 +11,10 @@
     </main>
     <script id="recipe-form-template" type="text/x-handlebars-template" >
       <form id="recipe-form" onSubmit="handleSubmit(); return false">
-        Name: <input type="text" id="name">
-        Description: <input type="text" id="description"><br>
-        {{#each repeat_array}}
-          Ingredient: <input name="ingredients"><br>
+        Name: <input type="text" id="name" value="{{nameInput}}">
+        Description: <input type="text" id="description" value="{{descriptionInput}}"><br>
+        {{#each ingredientsInputs}}
+          Ingredient: <input name="ingredients" value="{{this}}"><br>
         {{/each}}
         <input type="submit">
       </form>
