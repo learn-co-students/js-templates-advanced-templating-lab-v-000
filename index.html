@@ -8,7 +8,19 @@
   </head>
   <body>
     <main id="main">
+      <a href="#" onclick="init();">Load Recipe</a>
     </main>
+    <script id="recipe-form-template" type="text/x-handlebars-template">
+      <form id="recipe-form" onsubmit="handleSubmit();return false;">
+        <header><h2>Recipes</h2></header>
+        <div id="recipeName"><h3>{{recipeName}}<h3></div>
+        <div id="recipeDescription"><p>{{recipeDescription}}</p></div>
+          <ul>{{#each recipeIngredients}}
+            <div id="ingredient"><li>{{this}}</li></div>
+          {{/each}}</ul>
+        <input type="submit">
+      </form>
+    </script>
     <script src="node_modules/handlebars/dist/handlebars.min.js"></script>
     <script src="index.js"></script>
     <!-- Open this file and call `mocha.run()` in console to run tests -->
