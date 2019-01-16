@@ -1,13 +1,14 @@
 function init() {
   //put any page initialization/handlebars initialization here
-  let recipeTemplate = document.getElementById("recipe-form-template").innerHTML
-  let recipeTemplateFn = Handlebars.compile(recipeTemplate);
-  let html = recipeTemplateFn({ingredients: ['','','','','']});
   Handlebars.registerPartial('recipeDetailsPartial', document.getElementById("recipe-details-partial").innerHTML)
   Handlebars.registerHelper('displayIngredient', function(ingredient){
     return new Handlebars.SafeString('<li name="ingredients">'+ ingredient + '</li>');
   })
-  document.getElementById("main").innerHTML += html
+  let recipeTemplate = document.getElementById("recipe-form-template").innerHTML
+  let recipeTemplateFn = Handlebars.compile(recipeTemplate);
+  let html = recipeTemplateFn({ingredients: ['','','','','']});
+  
+  document.getElementById("main").innerHTML = html
 }
 document.addEventListener("DOMContentLoaded", function(event) {
   init()
@@ -55,9 +56,19 @@ function handleSubmit() {
 }
 
 function displayEditForm() {
-
+  let recipe = {}
+  let nameNode = document.getElementById('recipeName');
+  let descriptionNode = document.getElementById('recipeDescription');
+  let ingredientNodes = document.getElementsByName('ingredients');
+  recipe.name = nameNode.innerHTML;
+  recipe.description = descriptionNode.innerHTML;
+  recipe.ingredients = [];
+  for(var i = 0 ; i < ingredientNodes.length ; i++) {
+    recipe.ingredients.push(ingredientNodes[i].innerHTML);
+  }
+  let recipeFormTemplate = document.getElementById("recipe-form-template").innerHTML;
+  let recipeFormTemplateFn = Handlebars.compile(recipeFormTemplate);
+  document.getElementById('main').innerHTML = recipeFormTemplateFn(recipe);
 }
-// document.addEventListener("handleSubmit", function(event) {
-// 	let name = document.getElementById('name')
-// 	})
+
 
