@@ -25,7 +25,7 @@ function handleSubmit(){
   let recipeFn =  Handlebars.compile(document.getElementById("recipe-template").innerHTML)
   let recipeHTML = recipeFn({name:recipeName, description:recipeDesc, ingredients:recipeIngs})
   let main = document.querySelector('main')
-  main.innerHTML += recipeHTML
+  main.innerHTML = recipeHTML
 }
 
 function displayEditForm(){
