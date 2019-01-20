@@ -36,6 +36,23 @@ function handleSubmit() {
   document.getElementById("main").innerHTML = recipeTemplate(recipe);
 }
 
+function displayEditForm() {
+  let recipe = {};
+  let nameNode = document.getElementById("recipeName");
+  let descriptionNode = document.getElementById("recipeDescription");
+  let ingredientNodes = document.getElementsByName("ingredients");
+  recipe.name = nameNode.innerHTML;
+  recipe.description = descriptionNode.innerHTML;
+  recipe.ingredients = [];
+  for (let i = 0; i < ingredientNodes.length; i++) {
+    recipe.ingredients.push(ingredientNodes[i].innerHTML);
+  }
+  let recipeTemplate = Handlebars.compile(
+    document.getElementById("recipe-form-template").innerHTML
+  );
+  document.getElementById("main").innerHTML = recipeTemplate(recipe);
+}
+
 document.addEventListener("DOMContentLoaded", function(event) {
   init();
 });
