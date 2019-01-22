@@ -16,12 +16,12 @@
     <script id="recipe-form-template" type="text/x-handlebars-template">
       <form id="recipe-form" onsubmit="handleSubmit()">
         <label for = "name">Name:</label>
-        <input type="text" id="name" name="name" value={{name}}><br>
+        <input type="text" id="name" name="name" value="{{name}}"><br>
         <label for = "description">Description:</label>
-        <input type="text" id="description" name="description" value={{description}}><br>
+        <input type="text" id="description" name="description" value="{{description}}"><br>
         {{#each ingredients}}
           <label for = "ingredients">Ingredient:</label>
-          <input type="text" id="ingredients" name="ingredients" value={{this}}><br>
+          <input type="text" id="ingredients" name="ingredients" value="{{this}}"><br>
         {{/each}}
         <input type="submit"/>
       </form>
