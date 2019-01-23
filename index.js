@@ -40,5 +40,16 @@ document.getElementsByTagName("main")[0].innerHTML += result
 }
 
 function displayEditForm(){
-let template = Handlebars.compile(document.getElementById("recipe-form-template"))
+let template = Handlebars.compile(document.getElementById("recipe-form-template").innerHTML)
+let name = document.getElementById("name").value
+let description = document.getElementById("description").value
+let ingredients1 = document.getElementById("ingredients1").value
+let ingredients2 = document.getElementById("ingredients2").value
+let ingredients3 = document.getElementById("ingredients3").value
+let ingredients4 = document.getElementById("ingredients4").value
+let ingredients5 = document.getElementById("ingredients5").value
+
+document.getElementsByTagName("main")[0].innerHTML += template
+
+
 }
