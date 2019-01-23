@@ -90,7 +90,7 @@ describe('Handlebars Templates Lab', function() {
         expect(document.getElementById('recipeDescription').innerHTML).toMatch("Yummy fruit salad")
         ingredients = document.getElementsByName("ingredients")
         ingredientsValues.forEach(function(ing, index){
-          expect(ingredients[index].innerHTML).toEqual(ing)
+          expect(ingredients[index + 5].innerHTML).toEqual(ing)
         })
       })
     })

@@ -32,11 +32,11 @@
      <form id="recipe-form" onsubmit="handleSubmit()">
        Name: <input type="text" id="name"><br>
        Description: <input type="text" id="description"><br>
-       Ingredient 1 <input type="text" id="ingredient1" class="ingredients" name="ingredients"><br>
-       Ingredient 2 <input type="text" id="ingredient2" class="ingredients" name="ingredients"><br>
-       Ingredient 3 <input type="text" id="ingredient3" class="ingredients" name="ingredients"><br>
-       Ingredient 4 <input type="text" id="ingredient4" class="ingredients" name="ingredients"><br>
-       Ingredient 5 <input type="text" id="ingredient5" class="ingredients" name="ingredients"><br>
+       Ingredient 1 <input type="text" id="ingredient1"  name="ingredients"><br>
+       Ingredient 2 <input type="text" id="ingredient2"  name="ingredients"><br>
+       Ingredient 3 <input type="text" id="ingredient3" name="ingredients"><br>
+       Ingredient 4 <input type="text" id="ingredient4" name="ingredients"><br>
+       Ingredient 5 <input type="text" id="ingredient5" name="ingredients"><br>
        <input type="submit">
      </form>
     </script>
@@ -52,9 +52,24 @@
 <div id="recipeDescription">{{description}}</div>
 <div id="ingredients">
 {{#each ingredients}}
-<div class="ingredients>">{{displayIngredient this}}</div>
+<div class="ingredients">{{displayIngredient this}}</div>
 {{/each}}
 </div>
     </script>
   </body>
+</html>
+
+<script id="recipe-form-template" type="text/x-handlebars-template">
+  <form id="recipe-form-edit" onsubmit="handleSubmit()">
+    Name: <input type="text" id="name"><br>
+    Description: <input type="text" id="description"><br>
+    Ingredient 1 <input type="text" id="ingredient1"  name="ingredients"><br>
+    Ingredient 2 <input type="text" id="ingredient2"  name="ingredients"><br>
+    Ingredient 3 <input type="text" id="ingredient3" name="ingredients"><br>
+    Ingredient 4 <input type="text" id="ingredient4" name="ingredients"><br>
+    Ingredient 5 <input type="text" id="ingredient5" name="ingredients"><br>
+    <input type="submit">
+  </form>
+</script>
+</body>
 </html>

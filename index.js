@@ -10,7 +10,7 @@ document.getElementsByTagName("main")[0].innerHTML += result
 Handlebars.registerPartial("recipeDetailsPartial",document.getElementById("recipe-details-partial").innerHTML)
 
 function displayEditForm(){
-
+let template = Handlebars.compile(document.getElementById("recipe-form-template"))
 }
 
 Handlebars.registerHelper("displayIngredient", function(ingredient){
@@ -33,8 +33,12 @@ function handleSubmit(){
   for (let i = 0; i < ingredientsArray.length; i++){
     recipeObject.ingredients.push(ingredientsArray[i].value)
   }
-debugger
+
   let result = template(recipeObject)
 document.getElementsByTagName("main")[0].innerHTML += result
 
+}
+
+function displayEditForm(){
+let template = Handlebars.compile(document.getElementById("recipe-form-template"))
 }
