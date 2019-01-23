@@ -32,11 +32,11 @@
      <form id="recipe-form" onsubmit="handleSubmit()">
        Name: <input type="text" id="name"><br>
        Description: <input type="text" id="description"><br>
-       Ingredient 1 <input type="text" id="ingredient1"><br>
-       Ingredient 2 <input type="text" id="ingredient2"><br>
-       Ingredient 3 <input type="text" id="ingredient3"><br>
-       Ingredient 4 <input type="text" id="ingredient4"><br>
-       Ingredient 5 <input type="text" id="ingredient5"><br>
+       Ingredient 1 <input type="text" id="ingredient1" class="ingredients" name="ingredients"><br>
+       Ingredient 2 <input type="text" id="ingredient2" class="ingredients" name="ingredients"><br>
+       Ingredient 3 <input type="text" id="ingredient3" class="ingredients" name="ingredients"><br>
+       Ingredient 4 <input type="text" id="ingredient4" class="ingredients" name="ingredients"><br>
+       Ingredient 5 <input type="text" id="ingredient5" class="ingredients" name="ingredients"><br>
        <input type="submit">
      </form>
     </script>
@@ -46,12 +46,15 @@
 {{>recipeDetailsPartial}}
     </script>
 
+
     <script id="recipe-details-partial" type="text/x-handlebars-template">
+      <div id="name">{{name}}</div>
 <div id="recipeDescription">{{description}}</div>
-<div id="ingredients">{{ingredients}}</div>
-{{#each this}}
-{{ingredient}}
+<div id="ingredients">
+{{#each ingredients}}
+{{displayIngredient this}}
 {{/each}}
+</div>
     </script>
   </body>
 </html>
