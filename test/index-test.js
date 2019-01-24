@@ -122,7 +122,7 @@ describe('Handlebars Templates Lab', function() {
         expect(nameField.value).toEqual("Fruit Salad", "Got: '" + nameField.value + "' Expected 'Fruit Salad' Make sure that the name field is pre-filled in the edit form")
         expect(descriptionField.value).toEqual("Yummy fruit salad", "Got: '" + descriptionField.value + "' Expected: 'Yummy fruit salad' Make sure that the description field is pre-filled in the edit form")
         ingredientsValues.forEach(function(ing, index){
-          expect(ingredients[index].value).toEqual(ing, "Got: '" + ingredients[index].value + "' Expected: '" + ing + "' Make sure that the ingredients fields are pre-filled in the edit form");
+          expect(ingredients[index].value).toEqual(ing, "Got: '" + ingredients[index + 2].value + "' Expected: '" + ing + "' Make sure that the ingredients fields are pre-filled in the edit form");
         })
         // fill in form with new values and submit
         nameField.value = "Fruity Fruit Salad"

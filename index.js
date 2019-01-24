@@ -36,31 +36,25 @@ document.getElementsByTagName("main")[0].innerHTML += result
 }
 
 function displayEditForm(){
-let template = document.getElementById("recipe-form-template").innerHTML
-// let name = document.getElementById("name").value
-// let description = document.getElementById("description").value
-// let ingredients = []
-// let ingredientsArray = document.getElementsByName("ingredients")
-// for (let i = 5; i < ingredientsArray.length; i++){
-//   ingredients.push(ingredientsArray[i].value)
-// }
-document.getElementsByTagName("main")[0].innerHTML += template
+let template = Handlebars.compile(document.getElementById("recipe-form-template").innerHTML)
+let editObject = {}
+editObject.name = document.getElementById("nameOnSite").innerText
+editObject.description = document.getElementById("recipeDescription").innerText
+let tempArray = Array.from(document.getElementsByName("ingredients"))
 
+let ingredientsArray = tempArray.slice(3)
 
-}
+editObject.ingredient1 = ingredientsArray[2].innerText
+editObject.ingredient2 = ingredientsArray[3].innerText
 
-function postAgain(){
-  let template = Handlebars.compile(document.getElementById("recipe-template").innerHTML)
-  let recipeObject = {}
-  recipeObject.name = document.getElementById("name").value
-  recipeObject.description = document.getElementById("description").value
-    recipeObject.ingredients = []
+editObject.ingredient3 = ingredientsArray[4].innerText
 
-  let ingredientsArray = document.getElementsByName("ingredients")
-  for (let i = 0; i < ingredientsArray.length; i++){
-    recipeObject.ingredients.push(ingredientsArray[i].value)
-  }
+editObject.ingredient4 = ingredientsArray[5].innerText
 
-  let result = template(recipeObject)
-document.getElementsByTagName("main")[0].innerHTML += result
+editObject.ingredient5 = ingredientsArray[6].innerText
+let nameField = document.getElementById("name").value
+let result = template(editObject)
+document.getElementsByTagName("main")[0].innerHTML = result
+debugger
+
 }
