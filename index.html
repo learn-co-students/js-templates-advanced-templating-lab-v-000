@@ -7,6 +7,34 @@
     <link rel="stylesheet" href="node_modules/mocha/mocha.css" />
   </head>
   <body>
+        <script id="recipe-form-template" type="text/x-handlebars-template">
+          <form id="recipe-form" onsubmit="handleSubmit(); return false;">
+              Name: <input type="text" id="name" value="{{name}}" /><br>
+              Description: <input type="textarea" id="description" value="{{description}}"><br>
+              {{#each ingredients}}
+              <p>
+                <label for="ingredients">Ingredient: </label>
+                <input name="ingredients" type="text" value="{{this}}" />
+              </p>
+            {{/each}}
+            <input type="submit">
+          </form>
+        </script>
+
+        <script id="recipe-template" type="text/x-handlebars-template">
+          <header id="recipeName">{{name}}</header>
+          {{> recipeDetailsPartial }}
+          <a href="#" onclick="displayEditForm();">Edit Recipe</a>
+        </script>
+
+        <script id="recipe-details-partial" type="text/x-handlebars-template">
+          <p id="recipeDescription">{{description}}</p>
+          <ul id="ingredients-list">
+            {{#each ingredients}}
+              {{displayIngredient this}}
+            {{/each}}
+          </ul>
+        </script>
     <main id="main">
     </main>
     <script src="node_modules/handlebars/dist/handlebars.min.js"></script>
