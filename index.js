@@ -7,6 +7,9 @@ function init() {
   
   document.getElementsByTagName("main")[0].innerHTML += result; 
 
+  Handlebars.registerPartial("recipeDetailsPartial", document.getElementById("recipe-details-partial").innerHTML); 
+    
+
 }
 
 

@@ -28,5 +28,17 @@
       Ingredient 5: <input type="text" name="ingredients" id="ingredient5"><br />
       </form>
     </script>
+    <script id="recipe-template" type="text/x-handlebars-template">
+      <header id="name">{{name}}</header>
+      {{> recipeDetailsPartial }}
+      <a onclick="displayEditForm();">Edit Recipe</a>
+    </script>
+    <script id="recipe-details-partial" type="text/x-handlebars-template">
+      <div id="description">
+      {{description}}
+      </div>
+      
+
+    </script>
   </body>
 </html>
