@@ -34,8 +34,8 @@
       <a onclick="displayEditForm();">Edit Recipe</a>
     </script>
     <script id="recipe-details-partial" type="text/x-handlebars-template">
-      <div id="description">
-      {{description}}
+      <div id="description">{{description}}
+      {{#each ingredients}}{{displayIngredient this}}{{/each}}
       </div>
       
 
