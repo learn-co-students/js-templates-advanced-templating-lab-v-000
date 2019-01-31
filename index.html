@@ -19,13 +19,12 @@
     <script src="test/index-test.js"></script>
     <script id="recipe-form-template" type="text/x-handlebars-template">
       <form id="recipe-form" onsubmit="handleSubmit();">
-      Name: <input type="text" id="name"><br />
-      Description: <input type="text" id="description"><br />
-      Ingredient 1: <input type="text" name="ingredients" id="ingredient1"><br />
-      Ingredient 2: <input type="text" name="ingredients" id="ingredient2"><br />
-      Ingredient 3: <input type="text" name="ingredients" id="ingredient3"><br />
-      Ingredient 4: <input type="text" name="ingredients" id="ingredient4"><br />
-      Ingredient 5: <input type="text" name="ingredients" id="ingredient5"><br />
+      Name: <input type="text" id="name"><br /><br />
+      Description: <input type="text" id="description"><br /><br />
+      {{#each ingredients}}
+      Ingredient: <input type="text" name="ingredients" ><br /><br />
+      {{/each}}
+      <input type='submit'>
       </form>
     </script>
     <script id="recipe-template" type="text/x-handlebars-template">
