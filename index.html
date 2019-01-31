@@ -18,11 +18,14 @@
     <script>mocha.setup('bdd');</script>
     <script src="test/index-test.js"></script>
     <script id="recipe-form-template" type="text/x-handlebars-template">
-      <form id="recipe-form" onsubmit="handleSubmit();">
-      Name: <input type="text" id="name"><br /><br />
-      Description: <input type="text" id="description"><br /><br />
+      <form id="recipe-form" onsubmit="handleSubmit(); return false;" >
+      <label for='name'>Name: </lable>
+      <input type="text" id="name" name="name" value="{{name}}"><br /><br />
+      <label for="description">Description: </label>
+      <input type="text" id="description" name="description" value="{{description}}"><br /><br />
       {{#each ingredients}}
-      Ingredient: <input type="text" name="ingredients" ><br /><br />
+      <label for="ingredients">Ingredient: </label>
+      <input type="text" name="ingredients" value="{{this}}"><br /><br />
       {{/each}}
       <input type='submit'>
       </form>
@@ -30,12 +33,11 @@
     <script id="recipe-template" type="text/x-handlebars-template">
       <header id="name">{{name}}</header>
       {{> recipeDetailsPartial }}
-      <a onclick="displayEditForm();">Edit Recipe</a>
+      <a href="#" onclick="displayEditForm();">Edit Recipe</a>
     </script>
     <script id="recipe-details-partial" type="text/x-handlebars-template">
-      <div id="description">{{description}}
+      <div id="description">{{description}}</div>
       {{#each ingredients}}{{displayIngredient this}}{{/each}}
-      </div>
       
 
     </script>
