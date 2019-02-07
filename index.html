@@ -26,8 +26,8 @@
       {{> recipeDetailsPartial}}
     </script>
     <script id="recipe-details-partial" type="text/x-handlebars-template">
-      <h6>Description</h6><br>
       <p id="recipeDescription">{{description}}</p>
+      <h6>Ingredients</h6>
       {{#each ingredients}}
         {{displayIngredient this}}
       {{/each}}
