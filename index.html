@@ -11,10 +11,10 @@
      <script id="recipe-form-template" type="text/x-handlebars-template">
       <form id="recipe-form" onsubmit="handleSubmit(); return false;">
         <h2>Recipe</h2>
-        Description: <input type="text" id="description">
-        Name: <input type="text" id="name">
+        Name: <input type="text" id="name" value="{{name}}">
+        Description: <input type="text" id="description" value="{{description}}"><br>
         {{#each ingredients}}
-        Ingredients: <input type="text" name="ingredients" value="{{description}}">
+        Ingredients: <input type="text" name="ingredients" value="{{this}}">
         {{/each}}
         <input type="submit">
       </form>
@@ -22,16 +22,16 @@
     <script id="recipe-template" type="text/x-handlebars-template">
       <div id="recipe">
         <header id="recipeName">{{name}}</header>
-        <a href="#" onclick="displayEditForm(); return false;">
+        <a href="#" onclick="displayEditForm(); return false;">Edit Recipe</a>
           <h2>Edit Recipe</h2>
-          {{>recipeDetailPartial}}
+          {{>recipeDetailsPartial}}
       </div>
     </script>
     <script id="recipe-details-partial" type="text/x-handlebars-template">
-      <div id="recipe-description">{{description}}</div>
-      {{#each ingredients}}
-      {{displayIngredient this}}
-      {{/each }}
+      <div id="recipeDescription">{{description}}</div>
+         {{#each ingredients}}
+          {{displayIngredient this}}
+         {{/each}}
     </script>
     </main>
     <script src="node_modules/handlebars/dist/handlebars.min.js"></script>
