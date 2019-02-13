@@ -7,33 +7,30 @@
     <link rel="stylesheet" href="node_modules/mocha/mocha.css" />
   </head>
   <body>
-    <main id="main">
-     <script id="recipe-form-template" type="text/x-handlebars-template">
-      <form id="recipe-form" onsubmit="handleSubmit(); return false;">
-        <h2>Recipe</h2>
-        Name: <input type="text" id="name" value="{{name}}">
-        Description: <input type="text" id="description" value="{{description}}"><br>
-        {{#each ingredients}}
-        Ingredients: <input type="text" name="ingredients" value="{{this}}">
-        {{/each}}
-        <input type="submit">
-      </form>
-    </script>
+    <main id="main"></main>
+    <script id="recipe-form-template" type="text/x-handlebars-template">
+     <form id="recipe-form" onsubmit="handleSubmit(); return false;">
+         Name: <input id="name" name="name" type="text" value="{{name}}" />
+         Description: <input id="description" name="description" type="text" value="{{description}}" />
+       {{#each ingredients}}
+         Ingredients:  <input name="ingredients" type="text" value="{{this}}" />
+       {{/each}}
+       <p>
+         <input type="submit" />
+       </p>
+     </form>
+   </script>
     <script id="recipe-template" type="text/x-handlebars-template">
-      <div id="recipe">
-        <header id="recipeName">{{name}}</header>
-        <a href="#" onclick="displayEditForm(); return false;">Edit Recipe</a>
-          <h2>Edit Recipe</h2>
-          {{>recipeDetailsPartial}}
-      </div>
-    </script>
+  <h2 id="recipeName">{{ name }}</h2>
+  <a href="#" onclick="displayEditForm()">Edit Recipe</a>
+  {{> recipeDetailsPartial }}
+</script>
     <script id="recipe-details-partial" type="text/x-handlebars-template">
-      <div id="recipeDescription">{{description}}</div>
-         {{#each ingredients}}
-          {{displayIngredient this}}
-         {{/each}}
+     <p id="recipeDescription">{{ description }}</p>
+      {{#each ingredients}}
+       {{ displayIngredient this}}
+      {{/each}}
     </script>
-    </main>
     <script src="node_modules/handlebars/dist/handlebars.min.js"></script>
     <script src="index.js"></script>
     <!-- Open this file and call `mocha.run()` in console to run tests -->
