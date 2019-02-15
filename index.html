@@ -13,11 +13,11 @@
     <script src="index.js"></script>
     <!-- Open this file and call `mocha.run()` in console to run tests -->
     <script id="recipe-form-template" type="text/x-handlebars-template">
-      <form id="recipe-form" onsubmit="handleSubmit();return false;">
-        <input type="text" id="name" value="{{name}}">
-        <input type="text" id="description" value="{{description}}">
+      <form id="recipe-form" onsubmit="handleSubmit(); return false;">
+        Name: <input type="text" id="name" value="{{name}}"><br>
+        Description: <input type="text" id="description" value="{{description}}"><br>
         {{#each ingredients}}
-        <input type="text" name="ingredients" value="{{this}}">
+        Ingredient{{@index}}: <input type="text" name="ingredients" value="{{this}}"><br>
         {{/each}}
         <input type="submit">
       </form>
@@ -26,15 +26,15 @@
     <script id="recipe-template" type="text/x-handlebars-template">
       <div id="recipe">
         <header id="recipeName">{{name}}</header>
-        <a href="#" onclick="displayEditForm();return false;">Edit Recipe</a>
-        {{> recipeDetailsPartial}}
+        <a href="#" onclick="displayEditForm(); return false;">Edit Recipe</a>
+        {{> recipeDetailsPartial }}
       </div>
     </script>
 
     <script id="recipe-details-partial" type="text/x-handlebars-template">
       <div id="recipeDescription">{{description}}</div>
       {{#each ingredients}}
-        {{{displayIngredient this}}}
+        {{ displayIngredient this }}
       {{/each}}
     </script>
 
