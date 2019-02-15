@@ -1,14 +1,14 @@
 function init() {
   //put any page initialization/handlebars initialization here
   Handlebars.registerHelper('displayIngredient', function(name) {
-    return '<li name="ingredients">' + name + '</li>';
+    return new Handlebars.SafeString('<li name="ingredients">' + name + '</li>');
   });
   Handlebars.registerPartial('recipeDetailsPartial', document.getElementById('recipe-details-partial').innerHTML);
 
   function renderForm() {
     const formTemplate = document.getElementById("recipe-form-template").innerHTML;
     const compileForm = Handlebars.compile(formTemplate);
-    const context = {ingredients: ["","","","","",""]};
+    const context = {ingredients: ["","","","",""]};
     document.getElementById("main").innerHTML = compileForm(context);
   };
 
@@ -24,7 +24,12 @@ function displayEditForm() {
 function handleSubmit() {
   const name = document.getElementById("name").value;
   const description = document.getElementById("description").value;
-  const context = {name: name, description: description};
+  const ingredientsNodes = document.getElementsByName('ingredients');
+  const ingredients = [];
+  Array.prototype.forEach.call(ingredientsNodes, function(ingredient, index) {
+    ingredients[index] = ingredient.value;
+  });
+  const context = {name: name, description: description, ingredients: ingredients};
 
   const recipeTemplate = document.getElementById("recipe-template").innerHTML;
   const compileForm = Handlebars.compile(recipeTemplate);
