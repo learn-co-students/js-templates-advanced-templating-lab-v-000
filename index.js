@@ -8,7 +8,8 @@ function init() {
   function renderForm() {
     const formTemplate = document.getElementById("recipe-form-template").innerHTML;
     const compileForm = Handlebars.compile(formTemplate);
-    document.getElementById("main").innerHTML = compileForm();
+    const context = {ingredients: ["","","","","",""]};
+    document.getElementById("main").innerHTML = compileForm(context);
   };
 
   renderForm();
@@ -22,9 +23,26 @@ function displayEditForm() {
 };
 function handleSubmit() {
   const name = document.getElementById("name").value;
-  const context = {name: name};
+  const description = document.getElementById("description").value;
+  const context = {name: name, description: description};
 
   const recipeTemplate = document.getElementById("recipe-template").innerHTML;
   const compileForm = Handlebars.compile(recipeTemplate);
   document.getElementById("main").innerHTML += compileForm(context);
+
+  // better solution:
+
+  // var recipe = {}
+  // var nameNode = document.getElementById('name');
+  // var descriptionNode = document.getElementById('description');
+  // var ingredientNodes = document.getElementsByName('ingredients');
+  // recipe.name = nameNode.value;
+  // recipe.description = descriptionNode.value;
+  // recipe.ingredients = [];
+  // for(var i = 0 ; i < ingredientNodes.length ; i++) {
+  //   recipe.ingredients.push(ingredientNodes[i].value);
+  // }
+  // var recipeTemplate = document.getElementById("recipe-template").innerHTML;
+  // var recipeTemplateFn = Handlebars.compile(recipeTemplate);
+  // document.getElementById('main').innerHTML = recipeTemplateFn(recipe);
 };

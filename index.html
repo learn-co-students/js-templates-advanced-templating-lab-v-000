@@ -14,14 +14,11 @@
     <!-- Open this file and call `mocha.run()` in console to run tests -->
     <script id="recipe-form-template" type="text/x-handlebars-template">
       <form id="recipe-form" onsubmit="handleSubmit();return false;">
-        <input type="text" id="name">
-        <input type="text" id="description">
-        <input type="number" name="ingredients" id="this">
-        <input type="text" name="ingredients" id="this">
-        <input type="number" name="ingredients" id="this">
-        <input type="text" name="ingredients" id="this">
-        <input type="number" name="ingredients" id="this">
-        <input type="text" name="ingredients" id="this">
+        <input type="text" id="name" value="{{name}}">
+        <input type="text" id="description" value="{{description}}">
+        {{#each ingredients}}
+        <input type="text" name="ingredients" value="{{this}}">
+        {{/each}}
         <input type="submit">
       </form>
     </script>
