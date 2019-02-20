@@ -22,6 +22,7 @@
     </script>
     <script src="test/index-test.js"></script>
 
+<!-- Form Template -->
     <script id="recipe-form-template" type="text/x-handlebars-template">
         <form id="recipe-form" onsubmit="handleSubmit(); return false;">
           <p>
@@ -35,7 +36,7 @@
           {{#each ingredients}}
           <p>
             <label for="ingredients">Ingredients </label>
-            <input id="ingredients" type="text" value="{{ingredients}}">
+            <input name="ingredients" type="text" value="{{ingredients}}">
           </p>
           {{/each}}
           <p>
@@ -43,6 +44,19 @@
           </p>
         </form>
     </script>
+
+  <!-- Recipe Template -->
+  <script id="recipe-template" type="text/x-handlebars-template">
+    <header id="recipeName">{{name}}</header>
+    <a href="#" onclick="displayEditForm();">Edit Recipe</a>
+    <p>{{description}}</p><br>
+    <p>Ingredients: </p>
+      <ul>
+        {{#each ingredients}}
+        <li>{{ingredient}}</li>
+        {{/each}}
+      </ul>
+  </script>
 </body>
 
 </html>
