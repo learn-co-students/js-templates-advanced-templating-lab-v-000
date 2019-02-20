@@ -11,11 +11,11 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
 
 function handleSubmit() {
-
+  console.log(document.getElementsByName("ingredients").value)
   let recipe = {
     name: document.getElementById("name").value,
-    desciption: document.getElementById("description").value,
-    ingredient: document.getElementByName("ingredients").value
+    description: document.getElementById("description").value,
+    ingredient: document.getElementsByName("ingredients").value
   }
 
   let recipeTemplate = Handlebars.compile(document.getElementById("recipe-template").innerHTML);
