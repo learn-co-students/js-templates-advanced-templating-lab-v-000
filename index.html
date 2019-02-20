@@ -49,13 +49,19 @@
   <script id="recipe-template" type="text/x-handlebars-template">
     <header id="recipeName">{{name}}</header>
     <a href="#" onclick="displayEditForm();">Edit Recipe</a>
-    <p>{{description}}</p><br>
-    <p>Ingredients: </p>
-      <ul>
-        {{#each ingredients}}
-        <li>{{ingredient}}</li>
-        {{/each}}
-      </ul>
+    {{> recipeDetailsPartial }}
+  </script>
+
+  <script id="recipe-details-partial" type="text/x-handlebars-template">
+    <div id="details-div">
+      <p id="recipeDescription">{{description}}</p>
+      <p>Ingredients: </p>
+        <ul>
+          {{#each ingredient}}
+          <li>{{displayIngredient}}</li>
+          {{/each}}
+        </ul>
+    </div>
   </script>
 </body>
 

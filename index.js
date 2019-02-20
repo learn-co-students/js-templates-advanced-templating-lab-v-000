@@ -4,18 +4,31 @@ function init() {
     let formTemplateFn = Handlebars.compile(formTemplate);
     document.getElementById('main').innerHTML = formTemplateFn({ingredients: ['', '', '', '', '']})
 
+    Handlebars.registerPartial('recipeDetailsPartial', document.getElementById("recipe-details-partial").innerHTML);
+
+    Handlebars.registerHelper('displayIngredient', function() {
+      return "Hello"
+    })
+
 }
+// function displayIngredient(ingredients) {
+//   // for (ingredient of ingredients) {
+//   //   return ingredient
+//   // }
+// }
+
+
+
 document.addEventListener("DOMContentLoaded", function(event) {
     init()
 })
 
 
 function handleSubmit() {
-  console.log(document.getElementsByName("ingredients").value)
   let recipe = {
     name: document.getElementById("name").value,
     description: document.getElementById("description").value,
-    ingredient: document.getElementsByName("ingredients").value
+    ingredients: {}
   }
 
   let recipeTemplate = Handlebars.compile(document.getElementById("recipe-template").innerHTML);
