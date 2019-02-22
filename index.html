@@ -29,21 +29,21 @@
     <script src="test/index-test.js"></script>
     <script id="recipe-form-template" type="text/x-handlebars-template">
       <form onsubmit="handleSubmit()" id="recipe-form">
-        Name: <input type="text" id="name"><br>
-        Description: <input type="text" id="description"><br>
-        Ingredients: <input type="text"  name="ingredients"><br>
-        Ingredients: <input type="text"  name="ingredients"><br>
-        Ingredients: <input type="text"  name="ingredients"><br>
-        Ingredients: <input type="text"  name="ingredients"><br>
-        Ingredients: <input type="text"  name="ingredients"><br>
+        Name: <input type="text" id="name" value="{{name}}"><br>
+        Description: <input type="text" id="description" value="{{description}}"><br>
+        {{#each ingredients}}
+          Ingredients: <input type="text"  name="ingredients" value="{{this}}"><br>
+        {{/each}}
         <input type="submit">
       </form>
     </script>
     <script id="recipe-template" type="text/x-handlebars-template">
-      <h3 id="recipeName">{{name}}</h3>
-      <a href="#" onclick="displayEditForm()">Edit Recipe</a>
-      <div id="recipeDetails">
-        {{> recipeDetailsPartial }}
+      <div id='recipe'>
+        <h3 id="recipeName">{{name}}</h3>
+        <a href="#" onclick="displayEditForm()">Edit Recipe</a>
+        <div id="recipeDetails">
+          {{> recipeDetailsPartial }}
+        </div>
       </div>
     </script>
 

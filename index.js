@@ -27,12 +27,37 @@ function handleSubmit(){
   let template = document.getElementById("recipe-template").innerHTML;
   let templateFn = Handlebars.compile(template);
   let html = templateFn(recipe);
+
   document.getElementById('recipe-form').remove();
   document.getElementById('main').innerHTML += html;
 }
+
 
 function displayEditForm() {
   let name = document.getElementById("recipeName").innerHTML;
   let description = document.getElementById("recipeDescription").innerHTML;
   let ingredients = document.getElementsByName("ingredients");
+  let ingredientValues = [];
+
+  for(let i=0; i<5; i++){
+    if (ingredients[i]){
+      ingredientValues.push(ingredients[i].innerHTML)
+    }else {
+      ingredientValues.push("")
+    }
+  }
+
+  let recipe =
+    {name: name,
+    description: description,
+    ingredients: ingredientValues
+    }
+
+  let template = document.getElementById("recipe-form-template").innerHTML;
+  let templateFn = Handlebars.compile(template);
+
+  let html = templateFn(recipe);
+
+  document.getElementById('recipe').remove();
+  document.getElementById('main').innerHTML += html;
 }

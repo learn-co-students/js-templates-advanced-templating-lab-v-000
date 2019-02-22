@@ -106,8 +106,9 @@ describe('Handlebars Templates Lab', function() {
         ingredientsValues.forEach(function(ing, index){
           ingredients[index].value = ing;
         })
-        nameField.value = "Fruit Salad"
+        console.log(document.getElementById("name"));
         descriptionField.value = "Yummy fruit salad"
+        nameField.value = "Fruit Salad"
         // submit the form and transition to show view
         handleSubmit()
         var spy = expect.spyOn(window.Handlebars, "compile").andCallThrough()
