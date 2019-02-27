@@ -35,9 +35,7 @@ function handleSubmit() {
   const recipeDescription = document.getElementById("description").value;
   const ingredientsNodes = document.getElementsByName('ingredients');
   const recipeIngredients = [];
-  // Array.prototype.forEach.call(ingredientsNodes, function(ingredient, index) {
-  //   ingredients[index] = ingredient.value;
-  // });
+  
   for (let i = 0 ; i < ingredientsNodes.length ; i++) {
     recipeIngredients.push(ingredientsNodes[i].value);
   }
