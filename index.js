@@ -1,4 +1,4 @@
-const db = {
+let db = {
         'name': 'Place holder',
 				'description': '',
         'ingredients': [{'ingredient': ''}, {'ingredient': ''}, {'ingredient': ''}, {'ingredient': ''}, {'ingredient': ''}]
@@ -32,18 +32,17 @@ function handleSubmit() {
 	db['name'] = document.getElementById("name").value;
 	db['description'] = document.getElementById("description").value;
 	
-	ingredients = document.getElementById("ingredients")
-	
-	iList = ingredients.getElementsByClassName("ingredient")
-	
-	debugger;
+	const ingredients = document.getElementById("ingredients");
+	const iList = ingredients.getElementsByClassName("ingredient");
 
-	ingedientArray = [];
+	const ingredientArray = [];
 	for (let i = 0; i < iList.length; i++) {
-        ingredientArray.push({ingredient: iList[i].value});
+		ingredientArray.push({ingredient: iList[i].value});
   }
 
 	db['ingredients'] = ingredientArray;	
+
+	debugger;
 
   let template = document.getElementById("recipe-template").innerHTML;
   let templateFunction = Handlebars.compile(template);
