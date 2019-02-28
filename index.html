@@ -12,6 +12,31 @@
     <script src="node_modules/handlebars/dist/handlebars.min.js"></script>
     <script src="index.js"></script>
     <!-- Open this file and call `mocha.run()` in console to run tests -->
+
+    <script id="recipe-form-template" type="text/x-handlebars-template">
+      <form id="recipe-form" onsubmit="handleSubmit(); return false;">
+
+        <label>Name: </label>
+        <input id="name" value="{{name}}"/><br>
+        <br>
+        <label>Description: </label>
+        <input id="description" value="{{description}}"/><br>
+        <br>
+        {{#each ingredients}}
+        <label>Ingredient: </label>
+        <input id="ingredient" value="{{ingredient}}"/><br>
+        <br>
+        {{/each}}
+        <br>
+        <input type="submit" />
+      </form>
+    </script>
+
+    <script id="recipe-template" type="text/x-handlebars-template">
+    
+    </script>
+
+
     <div id="mocha"></div>
     <script src="node_modules/mocha/mocha.js"></script>
     <script src="node_modules/expect/umd/expect.min.js"></script>
