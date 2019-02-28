@@ -18,12 +18,12 @@
     <script>mocha.setup('bdd');</script>
     <script src="test/index-test.js"></script>
 		<script id="recipe-form-template" type="text/x-handlebars-template">
-			<form id="recipe-form" name="recipe-form" onsubmit="handleSubmit()" method="post">
+			<form id="recipe-form" name="recipe-form" onsubmit="return handleSubmit()" method="post">
 				Name: <input type="text" id="name" name="name" value="{{this.name}}"><br></br>
 				Description: <input type="text" id="description" name="description" value="{{this.description}}"><br></br>
 				<div id="ingredients" name="ingredients">
 					{{#each this.ingredients}}
-						Ingredient: <input type="text" name="ingredient", value="{{ingredient}}"><br></br>
+						Ingredient: <input type="text" class="ingredient", value="{{ingredient}}"><br></br>
 					{{/each}}
 				</div>
 				<input type="submit" value="Submit">
