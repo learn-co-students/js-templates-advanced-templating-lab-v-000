@@ -50,6 +50,20 @@ function handleSubmit() {
 	return false;
 }
 
+function displayEditForm() {
+  let template = document.getElementById("recipe-form-template").innerHTML;
+  let templateFunction = Handlebars.compile(template);
+  //debugger;
+	let html = templateFunction(db);
+	document.getElementById("main").innerHTML = html;
+
+	document.getElementById("recipe-form").onsubmit = function() {
+		return handleSubmit();
+	};
+
+	return false;
+}
+
 document.addEventListener("DOMContentLoaded", function(event) {
   init()
 })
