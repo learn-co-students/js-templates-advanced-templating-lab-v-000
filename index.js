@@ -9,7 +9,7 @@ function init() {
 	Handlebars.registerPartial('recipeDetailsPartial', document.getElementById("recipe-details-partial").innerHTML);
 
 	Handlebars.registerHelper('displayIngredient', function() {	
-		return new Handlebars.SafeString("<li name='ingredients'>" + ingredient  + "</li>");
+		return new Handlebars.SafeString("<li name='ingredients'>" + this.ingredient  + "</li>");
 	})
 
 	renderRecipeForm(db);
@@ -42,13 +42,11 @@ function handleSubmit() {
 
 	db['ingredients'] = ingredientArray;	
 
-	debugger;
-
   let template = document.getElementById("recipe-template").innerHTML;
-  let templateFunction = Handlebars.compile(template);
+	let templateFunction = Handlebars.compile(template);
   let html = templateFunction(db);
 	document.getElementById("main").innerHTML = html;
-	
+
 	return false;
 }
 
