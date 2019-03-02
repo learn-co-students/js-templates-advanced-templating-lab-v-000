@@ -21,26 +21,26 @@
 			<form id="recipe-form" name="recipe-form" onsubmit="return handleSubmit()" method="post">
 				Name: <input type="text" id="name" name="name" value="{{this.name}}"><br></br>
 				Description: <input type="text" id="description" name="description" value="{{this.description}}"><br></br>
-				<div id="ingredients" name="ingredients">
+				<div id="ingredients">
 					{{#each this.ingredients}}
-						Ingredient: <input type="text" class="ingredient", value="{{ingredient}}"><br></br>
+						Ingredient: <input type="text" name="ingredients" class="ingredient" value="{{this}}"><br></br>
 					{{/each}}
 				</div>
 				<input type="submit" value="Submit">
 			</form>
 		</script>
 		<script id="recipe-template" type="text/x-handlebars-template">
-			<h1 id="recipeName">{{this.name}}</h1>
+			<h2 id="recipeName">{{name}}</h2>
 			<a href="#" onclick="displayEditForm();">Edit Recipe</a>
 			{{> recipeDetailsPartial}}
 		</script>
 		<script id="recipe-details-partial" type="text/x-handlebars-template">
-			<h1 id="recipeDescription">{{this.description}}</h1>
+			<h1 id="recipeDescription">{{description}}</h1>
 
 			<h2>Ingredients</h2>
 			<ul>
-				{{#each this.ingredients}}
-					{{displayIngredient}}
+				{{#each ingredients}}
+					{{displayIngredient this}}
 				{{/each}}
 			</ul>
 		</script>

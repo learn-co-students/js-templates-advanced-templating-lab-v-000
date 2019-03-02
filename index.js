@@ -1,15 +1,15 @@
 let db = {
         'name': 'Place holder',
 				'description': '',
-        'ingredients': [{'ingredient': ''}, {'ingredient': ''}, {'ingredient': ''}, {'ingredient': ''}, {'ingredient': ''}]
+        'ingredients': ["", "", "", "", ""]
 				};
 
 function init() {
   //put any page initialization/handlebars initialization here
 	Handlebars.registerPartial('recipeDetailsPartial', document.getElementById("recipe-details-partial").innerHTML);
 
-	Handlebars.registerHelper('displayIngredient', function() {	
-		return new Handlebars.SafeString("<li name='ingredients'>" + this.ingredient  + "</li>");
+	Handlebars.registerHelper('displayIngredient', function(ingredient) {	
+		return new Handlebars.SafeString('<li name="ingredients">' + ingredient  + '</li>');
 	})
 
 	renderRecipeForm(db);
@@ -37,7 +37,7 @@ function handleSubmit() {
 
 	const ingredientArray = [];
 	for (let i = 0; i < iList.length; i++) {
-		ingredientArray.push({ingredient: iList[i].value});
+		ingredientArray.push(iList[i].value);
   }
 
 	db['ingredients'] = ingredientArray;	
@@ -53,7 +53,6 @@ function handleSubmit() {
 function displayEditForm() {
   let template = document.getElementById("recipe-form-template").innerHTML;
   let templateFunction = Handlebars.compile(template);
-  //debugger;
 	let html = templateFunction(db);
 	document.getElementById("main").innerHTML = html;
 
