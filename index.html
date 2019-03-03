@@ -12,6 +12,40 @@
     <script src="node_modules/handlebars/dist/handlebars.min.js"></script>
     <script src="index.js"></script>
     <!-- Open this file and call `mocha.run()` in console to run tests -->
+    <script id="recipe-form-template" type="text/x-handlebars-template">
+      <form id="recipe-form" onsubmit="handleSubmit(); return false;">
+        <p>
+          <label for="name">Name: </label>
+          <input id="name" name="name" type="text" value="{{name}}" />
+        </p>
+        <p>
+          <label for="description">Description: </label>
+          <input id="description" name="description" type="text" value="{{description}}" />
+        </p>
+        {{#each ingredients}}
+          <p>
+            <label for="ingredients">Ingredient: </label>
+            <input name="ingredients" type="text" value="{{this}}" />
+          </p>
+        {{/each}}
+        <p>
+          <input type="submit" />
+        </p>
+      </form>
+    </script>
+
+    <script id="recipe-template" type="text/x-handlebars-template">
+      <h2 id="recipeName">{{ name }}</h2>
+      <a href="#" onclick="displayEditForm()">Edit Recipe</a>
+      {{> recipeDetailsPartial }}
+    </script>
+
+    <script id="recipe-details-partial" type="text/x-handlebars-template">
+      <p id="recipeDescription">{{ description }}</p>
+      {{#each ingredients}}
+        {{ displayIngredient this}}
+      {{/each}}
+    </script>
     <div id="mocha"></div>
     <script src="node_modules/mocha/mocha.js"></script>
     <script src="node_modules/expect/umd/expect.min.js"></script>
