@@ -16,7 +16,7 @@
       <form id="recipe-form" onsubmit="handleSubmit();return false;">
         <p>
           <label for="name">Name: </label>
-          <inut id="name" name="name" type="text" value="{{name}}" />
+          <input id="name" name="name" type="text" value="{{name}}" />
         </p>
         <p>
           <label for="description">Description: </label>
@@ -29,7 +29,7 @@
         </p>
         {{/each}}
         <p>
-          <input tpye="submit"/>
+          <input type="submit" />
         </p>
       </form>
     </script>
@@ -40,9 +40,9 @@
       {{> recipeDetailsPartial }}
     </script>
 
-    <script id="recipte-details-partial" type="text/x-handlebars-template">
+    <script id="recipe-details-partial" type="text/x-handlebars-template">
       <p id="recipeDescription">{{description}}</p>
-      {{#each ingredient}}
+      {{#each ingredients}}
         {{displayIngredient this}}
       {{/each}}
     </script>
