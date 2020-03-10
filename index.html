@@ -17,5 +17,44 @@
     <script src="node_modules/expect/umd/expect.min.js"></script>
     <script>mocha.setup('bdd');</script>
     <script src="test/index-test.js"></script>
+    
+    <!-- RECIPE FORM TEMPLATE -->
+    <script id="recipe-form-template" type="text/x-handlebars-template">
+      <form id="recipe-form" onsubmit="createRecipe();return false;">
+        {{>recipeFormPartial}}
+      </form>
+    </script>
+    <!-- RECIPE FORM PARTIAL -->
+    <script id="recipe-form-partial" type="text/x-handlebars-template">
+      Name: <input type="text" id="name" name="name" value="{{recipeName}}"><br>
+      Description: <input type="textarea" name="description" value="{{recipeDescription}}"><br>
+      {{#each ingredients}}
+        Ingredient: <input type="text" name="ingredients" value="{{this}}"><br>
+      {{else}}
+        Ingredient: <input type="text" name="ingredients"><br>
+        Ingredient: <input type="text" name="ingredients"><br>
+        Ingredient: <input type="text" name="ingredients"><br>
+        Ingredient: <input type="text" name="ingredients"><br>
+        Ingredient: <input type="text" name="ingredients"><br>
+      {{/each}}
+      <input type="submit">
+  </script>
+    <!-- RECIPE DETAILS PARTIAL -->
+    <script id="recipe-details-partial" type="text/x-handlebars-template">
+      <p id="description">{{description}}</p>
+      <ul id="ingredients">
+        {{#each ingredients}}
+          {{displayIngredient this}}
+        {{/each}}
+      </ul>
+    </script>
+    <!-- RECIPE TEMPLATE -->
+    <script id="recipe-template" type="text/x-handlebars-template">
+      <div id="recipe">
+        <p id="recipe-name">{{name}}</p>
+        {{>recipeDetailsPartial }}
+        <a onclick="displayEditForm()" href="#">Edit Recipe</a>
+      </div>
+    </script>
   </body>
 </html>
