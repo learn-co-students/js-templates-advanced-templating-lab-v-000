@@ -1,55 +1,46 @@
 function init() {
-  //put any page initialization/handlebars initialization here
+  var formTemplate = document.getElementById("recipe-form-template").innerHTML;
+  var formTemplateFn = Handlebars.compile(formTemplate);
+  document.getElementById('main').innerHTML = formTemplateFn({ingredients: ['','','','','']});
 
-  loadRecipeForm();
-  loadRecipe();
-  displayEditForm();
-  // handleSubmit();
+  Handlebars.registerPartial('recipeDetailsPartial', document.getElementById("recipe-details-partial").innerHTML);
+  Handlebars.registerHelper('displayIngredient', function(ingredient){
+    return new Handlebars.SafeString('<li name="ingredients">'+ ingredient + '</li>');
+  })
+}
 
-  function loadRecipeForm() {
-    var template = Handlebars.compile(document.getElementById("recipe-form-template").innerHTML);
-    var result = template();
-    document.getElementsByTagName("main")[0].innerHTML += result;
+function handleSubmit() {
+  var recipe = {}
+  var nameNode = document.getElementById('name');
+  var descriptionNode = document.getElementById('description');
+  var ingredientNodes = document.getElementsByName('ingredients');
+  recipe.name = nameNode.value;
+  recipe.description = descriptionNode.value;
+  recipe.ingredients = [];
+  for(var i = 0 ; i < ingredientNodes.length ; i++) {
+    recipe.ingredients.push(ingredientNodes[i].value);
   }
+  var recipeTemplate = document.getElementById("recipe-template").innerHTML;
+  var recipeTemplateFn = Handlebars.compile(recipeTemplate);
+  document.getElementById('main').innerHTML = recipeTemplateFn(recipe);
+}
 
-  function handleSubmit() {
-    var recipe = {};
-    //get all info
-    var name = document.getElementById("name").value;
-    var description = document.getElementById("description").value;
-    var ingredients = document.getElementsByName('ingredients');
-    //stick into recipe hash (3 keys)
-    var obj = new Object(name, description, ingredients);
-
-    //grab recipe template
-    var template = Handlebars.compile(document.getElementById("recipe-template").innerHTML);
-
-    //insert into main
-    var result = template();
-    document.getElementsByTagName("main")[0].innerHTML += result;
+function displayEditForm() {
+  var recipe = {}
+  var nameNode = document.getElementById('recipeName');
+  var descriptionNode = document.getElementById('recipeDescription');
+  var ingredientNodes = document.getElementsByName('ingredients');
+  recipe.name = nameNode.innerHTML;
+  recipe.description = descriptionNode.innerHTML;
+  recipe.ingredients = [];
+  for(var i = 0 ; i < ingredientNodes.length ; i++) {
+    recipe.ingredients.push(ingredientNodes[i].innerHTML);
   }
-
-  function loadRecipe() {
-    var template = Handlebars.compile(document.getElementById("recipe-template").innerHTML);
-    var result = template();
-    document.getElementsByTagName("main")[0].innerHTML += result;
-  }
-
-  function displayEditForm() {
-
-  }
-
-  Handlebars.registerHelper('displayIngredient', function(ingredient) {
-    var item = `<li name="ingredients">${ingredient}</li>`;
-    return new Handlebars.SafeString(item);
-  });
-
-  Handlebars.registerPartial("recipeDetailsPartial", function (description, ingredients) {
-    var desc = "<p>{{recipe.description}}</p>";
-    return new Handlebars.SafeString(desc);  }
-  );
+  var recipeFormTemplate = document.getElementById("recipe-form-template").innerHTML;
+  var recipeFormTemplateFn = Handlebars.compile(recipeFormTemplate);
+  document.getElementById('main').innerHTML = recipeFormTemplateFn(recipe);
 }
 
 document.addEventListener("DOMContentLoaded", function(event) {
-  init();
-});
+  init()
+})
