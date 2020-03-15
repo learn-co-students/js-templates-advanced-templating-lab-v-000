@@ -4,7 +4,7 @@ function init() {
   loadRecipeForm();
   loadRecipe();
   displayEditForm();
-  handleSubmit();
+  // handleSubmit();
 
   function loadRecipeForm() {
     var template = Handlebars.compile(document.getElementById("recipe-form-template").innerHTML);
@@ -13,11 +13,11 @@ function init() {
   }
 
   function handleSubmit() {
+    var recipe = {};
     //get all info
     var name = document.getElementById("name").value;
-    var description = document.getElementById("name").value;
-    var ingredients = document.getElementsByName("ingredients").value;
-
+    var description = document.getElementById("description").value;
+    var ingredients = document.getElementsByName('ingredients');
     //stick into recipe hash (3 keys)
     var obj = new Object(name, description, ingredients);
 
