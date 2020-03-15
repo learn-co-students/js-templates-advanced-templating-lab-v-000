@@ -3,6 +3,7 @@ function init() {
 
   loadRecipeForm();
   loadRecipe();
+  displayEditForm();
 
   function loadRecipeForm() {
     var template = Handlebars.compile(document.getElementById("recipe-form-template").innerHTML);
@@ -30,7 +31,8 @@ function init() {
   });
 
   Handlebars.registerPartial("recipeDetailsPartial", function (description, ingredients) {
-    "{{recipe.description}}"
+    desc = "<p>{{recipe.description}}</p>";
+    return new Handlebars.SafeString(desc);
   }
   );
 }
