@@ -32,8 +32,7 @@ function init() {
 
   Handlebars.registerPartial("recipeDetailsPartial", function (description, ingredients) {
     desc = "<p>{{recipe.description}}</p>";
-    return new Handlebars.SafeString(desc);
-  }
+    return new Handlebars.SafeString(desc);  }
   );
 }
 

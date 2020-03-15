@@ -42,7 +42,7 @@
       <p id="recipeDescription">{{description}}</p>
       {{#each ingredients}}
         <ul>
-          {{#displayIngredient(ingredient)}}
+          {{ displayIngredient this }}
         </ul>
       {{/each}}
     </script>
