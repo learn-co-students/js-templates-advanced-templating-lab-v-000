@@ -13,20 +13,20 @@ function init() {
   }
 
   function handleSubmit() {
-    // //get all info
+    //get all info
     var name = document.getElementById("name").value;
-    // var description = document.getElementById("name").value;
-    // var ingredients = document.getElementsByName("ingredients").value;
+    var description = document.getElementById("name").value;
+    var ingredients = document.getElementsByName("ingredients").value;
 
-    // //stick into recipe hash (3 keys)
-    // var obj = new Object(name, description, ingredients);
+    //stick into recipe hash (3 keys)
+    var obj = new Object(name, description, ingredients);
 
-    // //grab recipe template
-    // var template = Handlebars.compile(document.getElementById("recipe-template").innerHTML);
+    //grab recipe template
+    var template = Handlebars.compile(document.getElementById("recipe-template").innerHTML);
 
-    // //insert into main
-    // var result = template();
-    // document.getElementsByTagName("main")[0].innerHTML += result;
+    //insert into main
+    var result = template();
+    document.getElementsByTagName("main")[0].innerHTML += result;
   }
 
   function loadRecipe() {
