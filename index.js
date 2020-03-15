@@ -5,6 +5,16 @@ function init() {
     var result = template();
     document.getElementsByTagName("main")[0].innerHTML += result;
   }
+
+  function handleSubmit(params) {
+    
+  }
+
+  function loadRecipe() {
+    var template = Handlebars.compile(document.getElementById("recipe").innerHTML);
+    var result = template();
+    document.getElementsByTagName("main")[0].innerHTML += result;
+  }
 }
 document.addEventListener("DOMContentLoaded", function(event) {
   init();
