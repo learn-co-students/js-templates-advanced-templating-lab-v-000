@@ -31,9 +31,18 @@
     <script id="recipe-template" type="text/x-handlebars-template">
       {{#each this}}
         <article>
-          <header id="recipeName"><h3>Recipe #{{name}}</h3></header>
-          <a></a>
+          <header id="recipeName">{{name}}</header>
+          {{>recipeDetailsPartial}}
+          <a onclick="displayEditForm()">Edit Recipe</a>
         </article>
+      {{/each}}
+    </script>
+    <script id="recipe-details-partial" type="text/x-handlebars-template">
+      <p id="recipeDescription">{{description}}</p>
+      {{#each ingredients}}
+        <ul>
+          {{#displayIngredient(ingredient)}}
+        </ul>
       {{/each}}
     </script>
   </body>

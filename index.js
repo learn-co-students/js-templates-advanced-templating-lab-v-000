@@ -1,8 +1,8 @@
 function init() {
   //put any page initialization/handlebars initialization here
 
-  // i added this:
   loadRecipeForm();
+  loadRecipe();
 
   function loadRecipeForm() {
     var template = Handlebars.compile(document.getElementById("recipe-form-template").innerHTML);
@@ -15,10 +15,24 @@ function init() {
   }
 
   function loadRecipe() {
-    var template = Handlebars.compile(document.getElementById("recipe").innerHTML);
+    var template = Handlebars.compile(document.getElementById("recipe-template").innerHTML);
     var result = template();
     document.getElementsByTagName("main")[0].innerHTML += result;
   }
+
+  function displayEditForm() {
+
+  }
+
+  Handlebars.registerHelper('displayIngredient', function(ingredient) {
+    item = "<li name="ingredients">{{ingredient}}</li>";
+    return new Handlebars.SafeString(item);
+  });
+
+  Handlebars.registerPartial("recipeDetailsPartial", function (description, ingredients) {
+    "{{recipe.description}}"
+  }
+  );
 }
 
 document.addEventListener("DOMContentLoaded", function(event) {
